@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콜 오브 듀티 모던워페어 포럼</title>
+    <style>
+        .white{
+            color: white;
+        }
+        a { text-decoration: none }
+        a:link {text-decoration: none; color: white}
+        a:visited {text-decoration: none; color: white;}
+        a:active {text-decoration: none; color: white}
+        a:hover {text-decoration: none; color: white;}
+        aside{
+            width: 50px;
+            float: right;
+            margin-right: 300px;
+        }
+        section {
+	    margin-top: 10px;
+        }
+        img { display : block;
+        margin : auto;
+        }
+        .sub_news,.sub_news th,.sub_news td{border:0}
+        .sub_news a{color:white;;text-decoration:none}
+        .sub_news{width:1250px; border-bottom:1px solid #999; color:#666; font-size:12px;table-layout:fixed; margin-left:100px;}
+        .sub_news caption{display:none}
+        .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
+        .sub_news td{padding:8px 0 9px; border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+        .sub_news .date,.sub_news .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+        .sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+        .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+        .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+        .sub_news tr.reply .title a{padding-left:16px;background:url(img/ic_reply.png) 0 1px no-repeat}
+        #title{
+            color:white;
+            text-align: center;
+            font-family: 'D2Coding';
+            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
+        }
+        #menus {
+	    float: center;
+        }
+        #sub_menus {
+        width: 295px;
+        float: left;
+        }
+        #top_menu {
+	    text-align: right;
+        color:white;
+        margin-bottom: 40px;
+        }
+        #main_menu {
+        background: rgb(0, 0, 0);
+        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+
+        height: 50px;
+	    margin-top: 20px;
+        text-align: center;
+	    font-family: '맑은고딕';
+	    font-size: 20px;
+	    color: white;
+        }
+        #main_menu li {
+	    display: inline;
+        line-height: 50px;
+	    margin-left: 190px;
+        padding: 3px;
+        border-bottom: solid 2px;
+        }
+        #sub_main_menu {
+	    margin-top: 20px;
+        text-align: left;
+	    font-family: '맑은고딕';
+	    font-size: 20px;
+	    color: white;
+        margin-right: 30px;
+        }
+        #sub_main_menu h3 {
+	    font-size: 18px;
+        text-align: center;
+	    color: white;
+	    padding: 12px;
+        border: solid 1px;
+        }
+        #sub_main_menu li {
+        font-size: 18px;
+        padding: 10px;
+        border-bottom: dotted 1px #cccccc;
+        color: white;
+        list-style: none;
+        }
+        #main_img{
+            width: 100%;
+            height: 281px;
+            background-repeat: no-repeat;
+            background-position: top center;
+            margin-top: 20px;
+        }
+        #maintext{
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 30px;
+            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
+        }
+        #mainvedio{
+            display: block;
+            margin: auto;
+            margin-top: 30px;
+        }
+        #logo {
+	    float: left;
+        margin-left: 10px;
+        }
+        #textwrite {
+        float: right;
+        }
+        #order{
+            color: white;
+            text-align: center;
+        }
+        #main_contents {
+        color: white;
+	    width:1250px;
+        margin-left: 300px;
+	    float: center;
+    }
+        footer {
+        position: absolute;
+        bottom: 0; 
+	    width: 100%;
+	    height: 150px;
+	    margin-top: 30px;
+	    background: rgb(0, 0, 0);
+        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+        }
+        #footer_box {
+	    width: 1140px;
+	    margin: 0 auto;
+        }
+        #address {
+	float: right;
+	margin: 50px 30px 0 0;
+	color: white;
+}
+        
+    </style>
+</head>
+<header>
+    <div id='logo'>
+        <a href="Main.html">
+        <img src='img/logo.png' width='200' height='120'>
+        </a>
+    </div>
+    <h1 id="title"><a href="Main.html">콜 오브 듀티 모던워페어 포럼</a></h1>
+    <div id='top_menu'>
+		<a href="login.html">로그인</a> | <a href=SignUp.html>회원가입</a>
+    </div>
+</header>
+<nav id=menus>
+    <ul id='main_menu'>
+        <li><a href="Notice.html">공지사항</a></li>
+        <li><a href="Information.html">게임 정보</a></li>
+        <li><a href="Community.html">커뮤니티</a></li>
+        <li><a href="Inquiry.html">문의하기</a></li>
+    </ul>
+</nav>
+<nav id=sub_menus>
+    <ul id='sub_main_menu'>
+        <h3>유머게시판</h3>
+        <li><a href="Community.html">자유게시판</a></li>
+        <li><a href="Communityyumor.html">유머게시판</a></li>
+        <li><a href="CommunityInf.html">콜오브듀티 정보 게시판</a></li>
+    </ul>
+</nav>
+<aside>
+</aside>
+<body bgcolor='#020715'>
+    <section>
+        <table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+            <caption>게시판 리스트</caption>
+            <colgroup>
+            <col>
+            <col width="110">
+            <col width="100">
+            <col width="80">
+            </colgroup>
+            <thead>
+            <tr>
+            <th scope="col">제목</th>
+            <th scope="col">글쓴이</th>
+            <th scope="col">날짜</th>
+            <th scope="col">조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <td class="title">
+                <a href="#">게시글이 없습니다.</a>
+                <a class="comment" href="#"></a>
+                </td>
+                <td class="name"></td>
+                <td class="date"></td>
+                <td class="hit"></td>
+                </tr>
+                </tbody>
+            </table>
+            <div id='main_contents'>
+            <input type="button" id="textwrite" onclick="location.href='Writing.html' " name="btn1" value="글쓰기">
+            <p id="order" ><a href="Communityyumor.html"><b>1</b></a> &nbsp; 2 &nbsp;  3 &nbsp; 4 &nbsp; 5</p>
+            </div>
+    </section>
+</body>
+<footer>
+    <div id='footer_box'>
+    <ul id='address'>
+            <li>대전시 대덕구 법2동 1234 우:123-1234</li>
+            <li>TEL:042-123-1234 문의사항 : email@naver.com</li>
+            <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
+        </ul>
+    </div>
+</footer>
+</html>
