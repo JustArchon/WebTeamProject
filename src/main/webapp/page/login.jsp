@@ -1,10 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›ŒíŽ˜ì–´ í¬ëŸ¼</title>
+    <title>ÄÝ ¿Àºê µàÆ¼ ¸ð´ø¿öÆä¾î Æ÷·³</title>
     <style>
         .white{
             color: white;
@@ -217,7 +220,7 @@ fieldset, img {
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›ŒíŽ˜ì–´ í¬ëŸ¼</h1>
+    <h1 id="title">ÄÝ ¿Àºê µàÆ¼ ¸ð´ø¿öÆä¾î Æ÷·³</h1>
 </header>
 <aside>
 </aside>
@@ -226,31 +229,32 @@ fieldset, img {
         <div id='main_contents'>
         <div class="inner_login">
             <div class="login">
+            <form method="post" action="loginAction.jsp" id="login">
                     <fieldset>
-                    <legend class="screen_out">ë¡œê·¸ì¸ ì •ë³´ ìž…ë ¥í¼</legend>
+                    <legend class="screen_out">·Î±×ÀÎ Á¤º¸ ÀÔ·ÂÆû</legend>
                     <div class="box_login">
                         <div class="inp_text">
-                        <label for="loginId" class="screen_out">ì•„ì´ë””</label>
-                        <input type="email" id="loginId" name="loginId" placeholder="ID" >
+                        <label for="loginId" class="screen_out">¾ÆÀÌµð</label>
+                        <input type="text" id="loginId" name="userID" placeholder="ID" >
                         </div>
                         <div class="inp_text">
-                        <label for="loginPw" class="screen_out">ë¹„ë°€ë²ˆí˜¸</label>
-                        <input type="password" id="loginPw" name="password" placeholder="Password" >
+                        <label for="loginPw" class="screen_out">ºñ¹Ð¹øÈ£</label>
+                        <input type="password" id="loginPw" name="userPassword" placeholder="Password" >
                         </div>
                     </div>
-                    <a href="MainLG.html"><button type="submit" class="btn_login">ë¡œê·¸ì¸</button></a>
+                    <input type="submit" class="btn_login form-control">·Î±×ÀÎ
                     <div class="login_append">
                         <div class="inp_chk">
                         <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
                         <label for="keepLogin" class="lab_g">
                 <span class="img_top ico_check"></span>
-                <span class="txt_lab">ë¡œê·¸ì¸ ìƒíƒœ ìœ ì§€</span>
+                <span class="txt_lab">·Î±×ÀÎ »óÅÂ À¯Áö</span>
                 </label>
                         </div>
                         <span class="txt_find">
-                        <a href="#" class="link_find">ì•„ì´ë””</a>
+                        <a href="#" class="link_find">¾ÆÀÌµð</a>
                             / 
-                        <a href="#" class="link_find">ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a>
+                        <a href="#" class="link_find">ºñ¹Ð¹øÈ£ Ã£±â</a>
                         </span>
                     </div>
                     
@@ -265,8 +269,8 @@ fieldset, img {
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>

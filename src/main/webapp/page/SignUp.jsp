@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ÏΩú Ïò§Î∏å ÎìÄÌã∞ Î™®ÎçòÏõåÌéòÏñ¥ Ìè¨Îüº</title>
+    <title>ø¿¥√ ππ ∏‘¡ˆ?</title>
     <style>
         .white{
             color: white;
@@ -93,64 +95,65 @@
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title">ÏΩú Ïò§Î∏å ÎìÄÌã∞ Î™®ÎçòÏõåÌéòÏñ¥ Ìè¨Îüº</h1>
+    <h1 id="title">ø¿¥√ ππ ∏‘¡ˆ?</h1>
 </header>
 <aside>
 </aside>
 <body bgcolor='#020715'>
     <section>
         <div id='main_contents'>
-            <h3>ÌöåÏõêÍ∞ÄÏûÖ</h3>
+            <h3>»∏ø¯∞°¿‘</h3>
         <left>
-            <form>
+            <form method="post" action="SignUpAction.jsp" id="signup">
                 <table width="800">
                 </table>    
                 <table width="700" height="600" cellpadding="0" style="border-collapse:collapse; font-size:9pt;">
                     <tr class="register" height="30">
                         <td width="5%" align="center">*</td>
-                        <td width="15%">ÌöåÏõê ID</td>
-                        <td><input type="text" name="wUserID" />&nbsp;<input type="button" name="IDcheck" value="ID Ï§ëÎ≥µÌôïÏù∏" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">ÎπÑÎ∞ÄÎ≤àÌò∏</td>
-                        <td><input type="password" name="wUserPW" id="pw" onchange="isSame()" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">ÎπÑÎ∞ÄÎ≤àÌò∏ ÌôïÏù∏</td>
-                        <td><input type="password" name="wUserPWConfirm" id="pwCheck" onchange="isSame()" />&nbsp;&nbsp;<span id="same"></span></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">Ïù¥ Î¶Ñ</td>
-                        <td><input type="text" name="wUserName" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">ÎãâÎÑ§ÏûÑ</td>
-                        <td><input type="text" name="wUserNickname" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">ÏÑ± Î≥Ñ</td>
+                        <td width="15%">»∏ø¯ ID</td>
                         <td>
-                            ÎÇ® ÏÑ±<input type="radio" name="wUserGender" value="1" checked />&nbsp;Ïó¨ ÏÑ±<input type="radio" name="wUserGender" value="2"/>
+                        <input type="text" class="form-control" name="userID" />&nbsp;<input type="button" name="IDcheck" value="ID ¡ﬂ∫π»Æ¿Œ" /></td>
+                    </tr>
+                    <tr height="7">
+                        <td colspan="3"><hr /></td>
+                    </tr>
+                    <tr class="register" height="30">
+                        <td width="5%" align="center">*</td>
+                        <td width="15%">∫Òπ–π¯»£</td>
+                        <td><input type="password" class="form-control" name="userPassword" id="pw" onchange="isSame()" /></td>
+                    </tr>
+                    <tr height="7">
+                        <td colspan="3"><hr /></td>
+                    </tr>
+                    <tr class="register" height="30">
+                        <td width="5%" align="center">*</td>
+                        <td width="15%">¿Ã ∏ß</td>
+                        <td><input type="text" class="form-control" name="userName" /></td>
+                        </tr>
+                    <tr height="7">
+                        <td colspan="3"><hr /></td>
+                    </tr>
+                    <tr class="register" height="30">
+                        <td width="5%" align="center">*</td>
+                        <td width="15%">¡¡æ∆«œ¥¬ ¿ΩΩƒ</td>
+                        <td><input type="text" class="form-control" name="Favoritefood" /></td>
+                    </tr>
+                    <tr height="7">
+                        <td colspan="3"><hr /></td>
+                    </tr>
+                    <tr class="register" height="30">
+                        <td width="5%" align="center">*</td>
+                        <td width="15%">√ÎπÃ</td>
+                        <td><input type="text" class="form-control" name="Hobbies" /></td>
+                    </tr>
+                    <tr height="7">
+                        <td colspan="3"><hr /></td>
+                    </tr>
+                    <tr class="register" height="30">
+                        <td width="5%" align="center">*</td>
+                        <td width="15%">º∫ ∫∞</td>
+                        <td>
+                            ≥≤ º∫<input type="radio" class="form-control" name="userGender" value="1" checked />&nbsp;ø© º∫<input type="radio" name="wUserGender" value="2"/>
                         </td>
                     </tr>
                     <tr height="7">
@@ -158,46 +161,18 @@
                     </tr>
                     <tr class="register" height="30">
                         <td width="5%" align="center">*</td>
-                        <td width="15%">ÏßëÏ†ÑÌôî</td>
-                        <td><input type="tel" name="wUserHomePhone" /></td>
+                        <td width="15%">¿Ã∏ﬁ¿œ</td>
+                        <td><input class="form-control" type="email" name="userEmail" /></td>
                     </tr>
                     <tr height="7">
                         <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">Ìú¥ÎåÄÏ†ÑÌôî</td>
-                        <td><input type="tel" name="wUserCellPhone" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr class="register" height="30">
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">Ïù¥Î©îÏùº</td>
-                        <td><input type="email" name="wUserEmail" /></td>
-                    </tr>
-                    <tr height="7">
-                        <td colspan="3"><hr /></td>
-                    </tr>
-                    <tr>
-                        <td width="5%" align="center">*</td>
-                        <td width="15%">Ï£º ÏÜå</td>
-                        <td>
-                            <input type="text" size="10" name="wPostCode" id="postcode" placeholder="Ïö∞Ìé∏Î≤àÌò∏" readonly="readonly" onclick="">
-                            <input type="button" onclick="" value="Ïö∞Ìé∏Î≤àÌò∏ Ï∞æÍ∏∞"><br><br />
-                            <input type="text" size="30" name="wRoadAddress" id="roadAddress" placeholder="ÎèÑÎ°úÎ™ÖÏ£ºÏÜå" readonly="readonly" onclick="">
-                            <input type="text" size="30" name="wJibunAddress" id="jibunAddress" placeholder="ÏßÄÎ≤àÏ£ºÏÜå" readonly="readonly" onclick="">
-                            <br /><span id="guide" style="color:#999;font-size:10px;"></span>   
-                            <br /><br /><input type="text" name="wRestAddress" placeholder="ÎÇòÎ®∏ÏßÄ Ï£ºÏÜå" size="70" />
-                        </td>
                     </tr>
          
                 </table>
                 <br />
                 <table>
                     <tr height="40">
-                        <td><input type="button" id="textwrite" onclick="location.href='login.html' " name="btn1" value="ÌöåÏõêÍ∞ÄÏûÖ">&nbsp;<input type="button" id="textwrite" onclick="location.href='Main.html' " name="btn1" value="Ï∑®ÏÜå"></td>
+                        <td><input type="submit" class="btn btn-primary form-control" value="»∏ø¯∞°¿‘">&nbsp;<input type="button" id="textwrite" onclick="location.href='Main.html' " name="btn1" value="√Îº“"></td>
                     </tr>
                 </table>
             </form>
@@ -207,8 +182,8 @@
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ÎåÄÏ†ÑÏãú ÎåÄÎçïÍµ¨ Î≤ï2Îèô 1234 Ïö∞:123-1234</li>
-            <li>TEL:042-123-1234 Î¨∏ÏùòÏÇ¨Ìï≠ : email@naver.com</li>
+            <li>¥Î¿¸Ω√ ¥Î¥ˆ±∏ π˝2µø 1234 øÏ:123-1234</li>
+            <li>TEL:042-123-1234 πÆ¿«ªÁ«◊ : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>

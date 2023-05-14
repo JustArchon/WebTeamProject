@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</title>
+    <title>Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</title>
     <style>
         body{
             background-color : #020715;
@@ -56,7 +58,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -70,7 +72,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         #sub_main_menu {
 	    margin-top: 20px;
         text-align: left;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -143,25 +145,25 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</a></h1>
+    <h1 id="title"><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</a></h1>
     <div id='top_menu'>
-		<a href="login.jsp">ë¡œê·¸ì¸</a> | <a href=SignUp.jsp>íšŒì›ê°€ì…</a>
+		<a href="login.jsp">·Î±×ÀÎ</a> | <a href=SignUp.jsp>È¸¿ø°¡ÀÔ</a>
     </div>
 </header>
 <nav id=menus>
     <ul id='main_menu'>
-        <li><a href="Notice.html">ê³µì§€ì‚¬í•­</a></li>
-        <li><a href="Information.html">ê²Œì„ ì •ë³´</a></li>
-        <li><a href="Community.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-        <li><a href="Inquiry.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Notice.html">°øÁö»çÇ×</a></li>
+        <li><a href="Information.html">°ÔÀÓ Á¤º¸</a></li>
+        <li><a href="Community.html">Ä¿¹Â´ÏÆ¼</a></li>
+        <li><a href="Inquiry.html">¹®ÀÇÇÏ±â</a></li>
     </ul>
 </nav>
 <nav id=sub_menus>
     <ul id='sub_main_menu'>
-        <h3>í¬ëŸ¼ ë°”ë¡œê°€ê¸°</h3>
-        <li><a href="Main.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´</a></li>
-        <li>ì½œ ì˜¤ë¸Œ ë“€í‹° ì½œë“œì›Œ</li>
-        <li>ì½œ ì˜¤ë¸Œ ë“€í‹° ì›Œì¡´</li>
+        <h3>Æ÷·³ ¹Ù·Î°¡±â</h3>
+        <li><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î</a></li>
+        <li>Äİ ¿Àºê µàÆ¼ Äİµå¿ö</li>
+        <li>Äİ ¿Àºê µàÆ¼ ¿öÁ¸</li>
     </ul>
 </nav>
 <aside>
@@ -169,15 +171,15 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 <body>
     <back>
     <section>
-        <h3 id='maintext'>ì‹œì¦Œ6</h3>
+        <h3 id='maintext'>½ÃÁğ6</h3>
         <video id="mainvedio" src="video/Trailer.mp4" width="800"  controls autoplay></video>
     </section>
 </body>
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>
