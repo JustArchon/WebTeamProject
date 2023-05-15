@@ -1,6 +1,6 @@
 package BBSService;
 
-public class Inquiry {
+public class BBS {
 	private int InquiryID;
 	private String ititle;
 	private String iemail;

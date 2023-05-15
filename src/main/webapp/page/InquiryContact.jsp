@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</title>
+    <title>Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</title>
     <style>
         .white{
             color: white;
@@ -54,7 +56,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -68,7 +70,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         #sub_main_menu {
 	    margin-top: 20px;
         text-align: left;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         margin-right: 30px;
@@ -163,83 +165,96 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</a></h1>
+    <h1 id="title"><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</a></h1>
     <div id='top_menu'>
-		<a href="login.html">ë¡œê·¸ì¸</a> | <a href=SignUp.html>íšŒì›ê°€ì…</a>
+		<a href="SignOut.jsp">·Î±×¾Æ¿ô</a> | <a href=SignUp.html>È¸¿ø°¡ÀÔ</a>
     </div>
 </header>
 <nav id=menus>
     <ul id='main_menu'>
-        <li><a href="Notice.html">ê³µì§€ì‚¬í•­</a></li>
-        <li><a href="Information.html">ê²Œì„ ì •ë³´</a></li>
-        <li><a href="Community.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-        <li><a href="Inquiry.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Notice.html">°øÁö»çÇ×</a></li>
+        <li><a href="Information.html">°ÔÀÓ Á¤º¸</a></li>
+        <li><a href="Community.html">Ä¿¹Â´ÏÆ¼</a></li>
+        <li><a href="Inquiry.html">¹®ÀÇÇÏ±â</a></li>
     </ul>
 </nav>
 <aside>
 </aside>
 <body bgcolor='#020715'>
+	<%
+	String userid = (String)session.getAttribute("userID");
+	if(userid == null){
+	%>
+		<script>
+			alert("·Î±×ÀÎ ÈÄ ÀÌ¿ëÇØÁÖ¼¼¿ä");
+			location.href='login.jsp';
+		</script>
+	<%
+	}
+	%>
     <section>
         <nav id=sub_menus>
             <ul id='sub_main_menu'>
-                <h3>ë¬¸ì˜í•˜ê¸°</h3>
-                <li><a href="Inquiry.html">FAQ</a></li>
-                <li><a href="InquiryContact.html">ë¬¸ì˜í•˜ê¸°</a></li>
+                <h3>¹®ÀÇÇÏ±â</h3>
+                <li><a href="Inquiry.jsp">FAQ</a></li>
+                <li><a href="InquiryContact.html">¹®ÀÇÇÏ±â</a></li>
             </ul>
         </nav>
         <div id='main_contents'>
-            <h3>ë¬¸ì˜í•˜ê¸°</h3>
+            <h3>¹®ÀÇÇÏ±â</h3>
+            <form method="post" action="InquiryContactAction.jsp" id="InquiryContact">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
-                        <td>ì´ë©”ì¼ì£¼ì†Œ</td>
-                        <td><input type = text name = name size=25> </td>
+                        <td>ÀÌ¸ŞÀÏÁÖ¼Ò</td>
+                        <td><input type = text class="form-control" name = iemail size=25> </td>
                         </tr>
 
                         <tr>
-                            <td>ë¬¸ì˜ ìœ í˜•</td>
+                            <td>¹®ÀÇ À¯Çü</td>
                             <td>
-                                <select name = 'type'>
-                                    <option>ìœ ì € ì‹ ê³ </option>
-                                    <option>ê³„ì • ê´€ë ¨ì‚¬í•­</option>
-                                    <option>ê±´ì˜ ì‚¬í•­</option>
+                                <select id="itype" class="form-control" name = 'itype'>
+                                    <option value="1">À¯Àú ½Å°í</option>
+                                    <option value="2">°èÁ¤ °ü·Ã»çÇ×</option>
+                                    <option value="3">°ÇÀÇ »çÇ×</option>
                                 </select>
                             </td>
                             </tr>
 
                         <tr>
-                        <td>ë¬¸ì˜ ì œëª©</td>
-                        <td><input type = text name = title size=60></td>
+                        <td>¹®ÀÇ Á¦¸ñ</td>
+                        <td><input type = text class="form-control" name = ititle size=60></td>
                         </tr>
  
                         <tr>
-                        <td>ë¬¸ì˜ ë‚´ìš©</td>
-                        <td><textarea name = content cols=85 rows=15></textarea></td>
+                        <td>¹®ÀÇ ³»¿ë</td>
+                        <td><textarea name = icontent class="form-control" cols=85 rows=15></textarea></td>
                         </tr>
  
                         <tr>
-                        <td>ë¹„ë°€ë²ˆí˜¸</td>
-                        <td><input type = password name = pw size=10 maxlength=10></td>
+                        <td>ºñ¹Ğ¹øÈ£</td>
+                        <td><input type = ipassword class="form-control" name = pw size=10 maxlength=10></td>
                         </tr>
                         <tr>
-                            <td>íŒŒì¼ ì²¨ë¶€</td>
-                            <td><input type = file name = file size=10 maxlength=10></td>
+                            <td>ÆÄÀÏ Ã·ºÎ</td>
+                            <td><input type = ifile class="form-control" name = file size=10 maxlength=10></td>
                             </tr>
                         </table>
                 </td>
                 </tr>
         </table>
+        </form>
         <center>
-            <input type = "submit" id="contact" value="ë¬¸ì˜í•˜ê¸°">
-            </center>
+        	<input type="submit" class="btn btn-primary form-control" value="¹®ÀÇÇÏ±â">
+         </center>
             </div>
     </section>
 </body>
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>

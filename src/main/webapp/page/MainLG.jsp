@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</title>
+    <title>Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</title>
     <style>
         .white{
             color: white;
@@ -53,7 +55,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -67,7 +69,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         #sub_main_menu {
 	    margin-top: 20px;
         text-align: left;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -93,25 +95,19 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
             background-position: top center;
             margin-top: 20px;
         }
-        #main_contents {
-        color: white;
-	    width: 1000px;
-        margin-left: 300px;
-	    float: center;
-	    margin-top: 25px;
-    }
-        #main_contents h3 {
-	    font-size: 22px;
-	    padding-bottom: 8px;
-	    border-bottom: solid 1px #cccccc;
+        #maintext{
+            color: white;
+            font-size: 30px;
+            text-align: center;
+            display: block;
+            margin: auto;
+            margin-top: 30px;
+            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
         }
-        #main_contents p {
-	    margin-top: 30px;
-	    line-height: 180%;
-        }
-        #main_contents #figure {
-	    margin-top: 10px;
-	    text-align: left;
+        #mainvedio{
+            display: block;
+            margin: auto;
+            margin-top: 30px;
         }
         #logo {
 	    float: left;
@@ -146,49 +142,40 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
+    <h1 id="title"><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</a></h1>
     <div id='top_menu'>
-		<a href="login.html">ë¡œê·¸ì¸</a> | <a href=SignUp.html>íšŒì›ê°€ì…</a>
+		<a href="SignOut.jsp">·Î±×¾Æ¿ô</a> | <a href=#>È¸¿øÁ¤º¸¼öÁ¤</a>
     </div>
 </header>
 <nav id=menus>
     <ul id='main_menu'>
-        <li><a href="Notice.html">ê³µì§€ì‚¬í•­</a></li>
-        <li><a href="Information.html">ê²Œì„ ì •ë³´</a></li>
-        <li><a href="Community.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-        <li><a href="Inquiry.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Notice.html">°øÁö»çÇ×</a></li>
+        <li><a href="Information.html">°ÔÀÓ Á¤º¸</a></li>
+        <li><a href="Community.html">Ä¿¹Â´ÏÆ¼</a></li>
+        <li><a href="Inquiry.jsp">¹®ÀÇÇÏ±â</a></li>
+    </ul>
+</nav>
+<nav id=sub_menus>
+    <ul id='sub_main_menu'>
+        <h3>Æ÷·³ ¹Ù·Î°¡±â</h3>
+        <li><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î</a></li>
+        <li>Äİ ¿Àºê µàÆ¼ Äİµå¿ö</li>
+        <li>Äİ ¿Àºê µàÆ¼ ¿öÁ¸</li>
     </ul>
 </nav>
 <aside>
 </aside>
 <body bgcolor='#020715'>
     <section>
-        <nav id=sub_menus>
-            <ul id='sub_main_menu'>
-                <h3>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´</h3>
-                <li><a href="Information.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´</a></li>
-                <li><a href="Information-codmp.html">ëª¨ë˜ì›Œí˜ì–´ ë§µ ì¢…ë¥˜</a></li>
-                <li><a href="Information-codwp.html">ëª¨ë˜ì›Œí˜ì–´ ë¬´ì¥ ì¢…ë¥˜</a></li>
-                <li><a href="Information-codpk.html">ëª¨ë˜ì›Œí˜ì–´ íŠ¹ì „ ì¢…ë¥˜</a></li>
-                <li><a href="Information-codks.html">ëª¨ë˜ì›Œí˜ì–´ í‚¬ìŠ¤íŠ¸ë¦­ ì¢…ë¥˜</a></li>
-                
-            </ul>
-        </nav>
-        <div id='main_contents'>
-            <h3>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</h3>
-            <p>ì¹˜ì†ŸëŠ” ë¬¼ê°€ì™€, ê³„ì†í•´ì„œ ì˜¤ë¥´ëŠ” ë°°ë‹¬ë£Œ. ê·¸ëŸ° ìš°ë¦¬ë“¤ì„ ìœ„í•´ì„œ ë‹¤ì–‘í•œ ë ˆì‹œí”¼ë¥¼ ëª¨ì•„ë‘ì–´ ë°©ì£¼ë¥¼ ë§Œë“¤ê¸° ìœ„í•´ ë§Œë“¤ì–´ì¡ŒìŠµë‹ˆë‹¤.</p>
-            <div id='figure'>
-                <img src='img/callduty.jpg' width='60%'height='100%'>
-            </div>
-            <p>ê·¸ëŸ° ì—¬ëŸ¬ë¶„ë“¤ì„ ìœ„í•´ ì‚¬ì´íŠ¸ ìš´ì˜ì§„ì´ ì œê³µí•˜ëŠ” ê¸°ë³¸ë ˆì‹œí”¼ì™€ ë‹¤ê°™ì´ ê³µìœ í•˜ëŠ” ë ˆì‹œí”¼ë¥¼ ë³´ê³  ë‹¤ê°™ì´ ì§‘ë°¥ì„ ë¨¹ì–´ë´…ì‹œë‹¤!</p>
-        </div>
+        <h3 id='maintext'>½ÃÁğ6</h3>
+        <video id="mainvedio" src="video/Trailer.mp4" width="800"  controls autoplay></video>
     </section>
 </body>
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>

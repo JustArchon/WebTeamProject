@@ -216,7 +216,7 @@ fieldset, img {
 </head>
 <header>
     <div id='logo'>
-        <a href="Main.html">
+        <a href="Main.jsp">
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>

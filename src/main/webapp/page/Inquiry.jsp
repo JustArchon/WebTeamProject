@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›ŒíŽ˜ì–´ í¬ëŸ¼</title>
+    <title>ÄÝ ¿Àºê µàÆ¼ ¸ð´ø¿öÆä¾î Æ÷·³</title>
     <style>
         .white{
             color: white;
@@ -65,7 +67,7 @@
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -79,7 +81,7 @@
         #sub_main_menu {
 	    margin-top: 20px;
         text-align: left;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         margin-right: 30px;
@@ -167,31 +169,31 @@
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›ŒíŽ˜ì–´ í¬ëŸ¼</a></h1>
+    <h1 id="title"><a href="Main.html">ÄÝ ¿Àºê µàÆ¼ ¸ð´ø¿öÆä¾î Æ÷·³</a></h1>
     <div id='top_menu'>
-		<a href="login.html">ë¡œê·¸ì¸</a> | <a href=SignUp.html>íšŒì›ê°€ìž…</a>
+		<a href="login.html">·Î±×ÀÎ</a> | <a href=SignUp.html>È¸¿ø°¡ÀÔ</a>
     </div>
 </header>
 <nav id=menus>
     <ul id='main_menu'>
-        <li><a href="Notice.html">ê³µì§€ì‚¬í•­</a></li>
-        <li><a href="Information.html">ê²Œìž„ ì •ë³´</a></li>
-        <li><a href="Community.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-        <li><a href="Inquiry.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Notice.html">°øÁö»çÇ×</a></li>
+        <li><a href="Information.html">°ÔÀÓ Á¤º¸</a></li>
+        <li><a href="Community.html">Ä¿¹Â´ÏÆ¼</a></li>
+        <li><a href="Inquiry.html">¹®ÀÇÇÏ±â</a></li>
     </ul>
 </nav>
 <nav id=sub_menus>
     <ul id='sub_main_menu'>
         <h3>FAQ</h3>
-        <li><a href="Inquiry.html">FAQ</a></li>
-        <li><a href="InquiryContact.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Inquiry.jsp">FAQ</a></li>
+        <li><a href="InquiryContact.jsp">¹®ÀÇÇÏ±â</a></li>
     </ul>
 </nav>
 <aside>
 </aside>
 <body bgcolor='#020715'>
-    <table class="sub_news" border="1" cellspacing="0" summary="ê²Œì‹œíŒì˜ ê¸€ì œëª© ë¦¬ìŠ¤íŠ¸">
-        <caption>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸</caption>
+    <table class="sub_news" border="1" cellspacing="0" summary="°Ô½ÃÆÇÀÇ ±ÛÁ¦¸ñ ¸®½ºÆ®">
+        <caption>°Ô½ÃÆÇ ¸®½ºÆ®</caption>
         <colgroup>
         <col>
         <col width="110">
@@ -200,35 +202,35 @@
         </colgroup>
         <thead>
         <tr>
-        <th scope="col">ì œëª©</th>
-        <th scope="col">ê¸€ì“´ì´</th>
-        <th scope="col">ë‚ ì§œ</th>
-        <th scope="col">ì¡°íšŒìˆ˜</th>
+        <th scope="col">Á¦¸ñ</th>
+        <th scope="col">±Û¾´ÀÌ</th>
+        <th scope="col">³¯Â¥</th>
+        <th scope="col">Á¶È¸¼ö</th>
         </tr>
         </thead>
         <tbody>
         <tr>
         <td class="title">
-        <a href="#">í™ˆíŽ˜ì´ì§€ ë¡œê·¸ì¸ì´ ì•ˆë ë•Œ</a>
+        <a href="#">È¨ÆäÀÌÁö ·Î±×ÀÎÀÌ ¾ÈµÉ¶§</a>
         <a class="comment" href="#"></a>
         </td>
-        <td class="name">ê´€ë¦¬ìž</td>
+        <td class="name">°ü¸®ÀÚ</td>
         <td class="date">2021/01/30</td>
         <td class="hit">1</td>
         </tr>
         <tr>
             <td class="title">
-            <a href="#">ë¹„ë°€ë²ˆí˜¸ë¥¼ ìžŠì–´ë²„ë ¸ì–´ìš”</a>
+            <a href="#">ºñ¹Ð¹øÈ£¸¦ ÀØ¾î¹ö·È¾î¿ä</a>
             <a class="comment" href="#"></a>
             </td>
-            <td class="name">ê´€ë¦¬ìž</td>
+            <td class="name">°ü¸®ÀÚ</td>
             <td class="date">2021/01/30</td>
             <td class="hit">1</td>
             </tr>
         </tbody>
         </table>
         <div id='main_contents'>
-            <p id="order" ><a href="Inquiry.html"><b>1</b></a> &nbsp; <a href="Inquiry-2.html">2</a> &nbsp;  3 &nbsp; 4 &nbsp; 5</p>
+            <p id="order" ><a href="Inquiry.jsp"><b>1</b></a> &nbsp; <a href="Inquiry-2.html">2</a> &nbsp;  3 &nbsp; 4 &nbsp; 5</p>
         </div>
     <section>
         
@@ -237,8 +239,8 @@
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>

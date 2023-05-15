@@ -6,11 +6,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class InquiryDAO {
+public class BBSDAO {
 	private Connection conn;
 	private ResultSet rs;
 	
-	public InquiryDAO() {
+	public BBSDAO() {
 		try {
 			String dbURL = "jdbc:h2:tcp://localhost/~/Todayfood";
 			String dbID = "Todayfood";

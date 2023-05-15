@@ -22,7 +22,7 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어 있습니다.')");
-			script.println("location.href = 'main.html'");
+			script.println("location.href = 'MainLG.jsp'");
 			script.println("history.back()");
 			script.println("</script>");
 		}
@@ -31,10 +31,10 @@
 		int result = userDAO.login(user.getUserID(), user.getUserPassword());
 				
 		if (result == 1) {
-			session.setAttribute("loginId", user.getUserID());
+			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'MainLG.html'");
+			script.println("location.href = 'MainLG.jsp'");
 			script.println("</script>");
 		} else if (result == 0) {
 			PrintWriter script = response.getWriter();

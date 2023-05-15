@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>콜 오브 듀티 모던워페어 포럼</title>
+    <title>오늘 뭐 먹지?</title>
     <style>
         body{
             background-color : #020715;
@@ -141,11 +141,11 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 </head>
 <header>
     <div id='logo'>
-        <a href="Main.html">
+        <a href="Main.jsp">
         <img src='img/logo.png' width='200' height='120'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">콜 오브 듀티 모던워페어 포럼</a></h1>
+    <h1 id="title"><a href="Main.jsp">오늘 뭐 먹지?</a></h1>
     <div id='top_menu'>
 		<a href="login.jsp">로그인</a> | <a href=SignUp.jsp>회원가입</a>
     </div>
@@ -158,17 +158,19 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <li><a href="Inquiry.html">문의하기</a></li>
     </ul>
 </nav>
-<nav id=sub_menus>
-    <ul id='sub_main_menu'>
-        <h3>포럼 바로가기</h3>
-        <li><a href="Main.html">콜 오브 듀티 모던워페어</a></li>
-        <li>콜 오브 듀티 콜드워</li>
-        <li>콜 오브 듀티 워존</li>
-    </ul>
-</nav>
 <aside>
 </aside>
 <body>
+	<%
+	String userid = (String)session.getAttribute("userID");
+	if(userid != null){
+	%>
+		<script>
+			location.href='MainLG.jsp';
+		</script>
+	<%
+	}
+	%>
     <back>
     <section>
         <h3 id='maintext'>시즌6</h3>
