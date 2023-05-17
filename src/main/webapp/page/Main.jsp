@@ -9,7 +9,7 @@
     <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
     <style>
         body{
-            background-color : #020715;
+            background-color : #ffffff;
         }
         .white{
             color: white;
@@ -48,12 +48,7 @@
         margin-bottom: 40px;
         }
         #main_menu {
-            background: rgb(0, 0, 0);
-background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+            background: rgb(255, 255, 255);
 
         height: 50px;
 	    margin-top: 20px;
@@ -74,7 +69,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         text-align: left;
 	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
-	    color: white;
+	    color: black;
         }
         #sub_main_menu h3 {
 	    font-size: 18px;
@@ -120,12 +115,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 	    width: 100%;
 	    height: 150px;
 	    margin-top: 30px;
-	    background: rgb(0, 0, 0);
-        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+	    background: rgb(255, 255, 255);
         }
         #footer_box {
 	    width: 1140px;

@@ -160,7 +160,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 <header>
     <div id='logo'>
         <a href="Main.html">
-        <img src='img/logo.png' width='200' height='120'>
+        <img src='img/logo.png' width='180' height='160'>
         </a>
     </div>
     <h1 id="title"><a href="Main.html">콜 오브 듀티 모던워페어 포럼</a></h1>
@@ -182,56 +182,49 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
     <section>
         <nav id=sub_menus>
             <ul id='sub_main_menu'>
-                <h3>포럼 바로가기</h3>
-                <li><a href="Main.html">콜 오브 듀티 모던워페어</a></li>
-                <li>콜 오브 듀티 콜드워</li>
-                <li>콜 오브 듀티 워존</li>
+                <h3>게시판 바로가기</h3>
+                <li><a href="Main.html">레시피 게시판</a></li>
+                <li>리뷰 게시판</li>
             </ul>
         </nav>
         <div id='main_contents'>
             <h3>글 쓰기</h3>
+            <form method="post" action="WritingAction.jsp" id="Writing">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
                             <td>게시판 선택</td>
                             <td>
-                                <select name = 'type'>
-                                    <optgroup label="공지사항">
-                                    <option>포럼 공지사항</option>
-                                    <option>콜오브듀티 뉴스&소식</option>
-                                    <option>콜오브듀티 업데이트</option>
-                                    <optgroup label="커뮤니티">
-                                    <option>자유게시판</option>
-                                    <option>유머게시판</option>
-                                    <option>콜오브듀티 정보게시판</option>
-                                    </optgroup>
-                                </optgroup>
+                                <select name = 'bbstype' class="form-control">
+                                    <option value="recipe">레시피게시판</option>
+                                    <option value="review">리뷰게시판</option>
                                 </select>
                             </td>
                             </tr>
 
                         <tr>
                         <td>제목</td>
-                        <td><input type = text name = title size=60></td>
+                        <td><input type = text class="form-control" name = bbstitle size=60></td>
                         </tr>
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea name = content cols=85 rows=15></textarea></td>
+                        <td><textarea class="form-control" name = bbscontent cols=85 rows=15></textarea></td>
                         </tr>
  
                         <tr>
                         <td>비밀번호</td>
-                        <td><input type = password name = pw size=10 maxlength=10></td>
+                        <td><input type = password class="form-control" name = bbspassword size=10 maxlength=10></td>
                         </tr>
                         <tr>
-                            <td>파일 첨부</td>
-                            <td><input type = file name = file size=10 maxlength=10></td>
+                            <td>사진 첨부</td>
+                            <td><input type = file class="form-control" name = file size=10 maxlength=10></td>
                             </tr>
                         </table>
                 </td>
                 </tr>
         </table>
+        </form>
         <center>
             <input type = "submit" id="contact" value="확인">
             </center>

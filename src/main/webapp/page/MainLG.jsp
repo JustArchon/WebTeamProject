@@ -6,16 +6,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>콜 오브 듀티 모던워페어 포럼</title>
+    <title>오늘 뭐 먹지?</title>
     <style>
         .white{
-            color: white;
+            color: black;
         }
         a { text-decoration: none }
-        a:link {text-decoration: none; color: white}
-        a:visited {text-decoration: none; color: white;}
-        a:active {text-decoration: none; color: white}
-        a:hover {text-decoration: none; color: white;}
+        a:link {text-decoration: none; color: black}
+        a:visited {text-decoration: none; color: black;}
+        a:active {text-decoration: none; color: black}
+        a:hover {text-decoration: none; color: black;}
         aside{
             width: 50px;
             float: right;
@@ -28,10 +28,10 @@
         margin : auto;
         }
         #title{
-            color:white;
+            color:black;
             text-align: center;
             font-family: 'D2Coding';
-            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
+//            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
         }
         #menus {
 	    float: center;
@@ -41,23 +41,18 @@
         }
         #top_menu {
 	    text-align: right;
-        color:white;
+        color:black;
         margin-bottom: 40px;
         }
         #main_menu {
-            background: rgb(0, 0, 0);
-background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+            background: rgb(255, 255, 255);
 
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
 	    font-family: '맑은고딕';
 	    font-size: 20px;
-	    color: white;
+	    color: black;
         }
         #main_menu li {
 	    display: inline;
@@ -71,12 +66,12 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         text-align: left;
 	    font-family: '맑은고딕';
 	    font-size: 20px;
-	    color: white;
+	    color: black;
         }
         #sub_main_menu h3 {
 	    font-size: 18px;
         text-align: center;
-	    color: white;
+	    color: black;
 	    padding: 12px;
         border: solid 1px;
         }
@@ -84,7 +79,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         font-size: 18px;
         padding: 10px;
         border-bottom: dotted 1px #cccccc;
-        color: white;
+        color: black;
         list-style: none;
 	    margin-left: 10px;
         }
@@ -96,7 +91,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
             margin-top: 20px;
         }
         #maintext{
-            color: white;
+            color: black;
             font-size: 30px;
             text-align: center;
             display: block;
@@ -117,12 +112,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 	    width: 100%;
 	    height: 150px;
 	    margin-top: 30px;
-	    background: rgb(0, 0, 0);
-        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
+	    background: rgb(255, 255, 255);
         }
         #footer_box {
 	    width: 1140px;
@@ -131,20 +121,31 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         #address {
 	float: right;
 	margin: 50px 30px 0 0;
-	color: white;
+	color: black;
 }
         
     </style>
 </head>
 <header>
     <div id='logo'>
-        <a href="Main.html">
-        <img src='img/logo.png' width='200' height='120'>
+        <a href="Main.jsp">
+        <img src='img/logo.png' width='180' height='160'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">콜 오브 듀티 모던워페어 포럼</a></h1>
+    <h1 id="title"><a href="Main.html">오늘 뭐 먹지?</a></h1>
     <div id='top_menu'>
-		<a href="SignOut.jsp">로그아웃</a> | <a href=#>회원정보수정</a>
+    	<%
+	String userid = (String)session.getAttribute("userID");
+	if(userid != null){
+	%>
+		<a href="SignOut.jsp">로그아웃</a> | <a href=#>마이 페이지</a>
+	<%
+	}else{
+	%>
+	<a href="login.jsp">로그인</a> | <a href=SignUp.jsp>회원가입</a>
+	<%
+	}
+	%>
     </div>
 </header>
 <nav id=menus>
@@ -155,17 +156,9 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <li><a href="Inquiry.jsp">문의하기</a></li>
     </ul>
 </nav>
-<nav id=sub_menus>
-    <ul id='sub_main_menu'>
-        <h3>포럼 바로가기</h3>
-        <li><a href="Main.html">콜 오브 듀티 모던워페어</a></li>
-        <li>콜 오브 듀티 콜드워</li>
-        <li>콜 오브 듀티 워존</li>
-    </ul>
-</nav>
 <aside>
 </aside>
-<body bgcolor='#020715'>
+<body bgcolor='#ffffff'>
     <section>
         <h3 id='maintext'>시즌6</h3>
         <video id="mainvedio" src="video/Trailer.mp4" width="800"  controls autoplay></video>
