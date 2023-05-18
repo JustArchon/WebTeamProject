@@ -37,7 +37,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int getNext() {
-		String SQL = "SELECT BBSrecipereviewID FROM BBSrecipereview ORDER BY BBSrecipereviewID DESC";
+		String SQL = "SELECT BBSID FROM BBSRECIPEREVIEW ORDER BY BBSID DESC";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -51,18 +51,17 @@ public class BBSrecipereviewDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
-	public int write(String BBSrecipereviewTitle, String userID, String BBStype, String BBSrecipereviewContent, String BBSpassword) {
-		String SQL = "INSERT INTO BBSrecipereview VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+	public int write(String BbsrecipereviewTitle, String userID, String BBStype, String BBSrecipereviewContent, String BBSpassword) {
+		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, BBSrecipereviewTitle);
+			pstmt.setString(2, BbsrecipereviewTitle);
 			pstmt.setString(3, userID);
 			pstmt.setString(4, BBStype);
-			pstmt.setString(5, getDate());
-			pstmt.setString(6, BBSrecipereviewContent);
-			pstmt.setString(7, BBSpassword);
-			pstmt.setInt(8, 1);
+			pstmt.setString(5, BBSrecipereviewContent);
+			pstmt.setString(6, BBSpassword);
+			pstmt.setString(7, getDate());
 			
 			return pstmt.executeUpdate(); 
 		} catch(Exception e) {
@@ -72,7 +71,7 @@ public class BBSrecipereviewDAO {
 	}
 		
 	public ArrayList<BBSrecipereview> getList(int pageNumber) {
-		String SQL = "SELECT * FROM BBSrecipereview WHERE BBSrecipereviewID < ? AND BBSrecipereviewAvailable = 1 ORDER BY BBSrecipereviewID DESC LIMIT 10";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND BBSrecipereviewAvailable = 1 ORDER BY BBSID DESC LIMIT 10";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -81,10 +80,10 @@ public class BBSrecipereviewDAO {
 			while (rs.next()) {
 				BBSrecipereview BBSrecipereview = new BBSrecipereview();
 				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
-				BBSrecipereview.setBBStitle(rs.getString(2));
+				BBSrecipereview.setBbstitle(rs.getString(2));
 				BBSrecipereview.setUserID(rs.getString(3));
-				BBSrecipereview.setBBSpassword(rs.getString(4));
-				BBSrecipereview.setBBScontent(rs.getString(5));
+				BBSrecipereview.setBbspassword(rs.getString(4));
+				BBSrecipereview.setBbscontent(rs.getString(5));
 				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(1));
 				list.add(BBSrecipereview);
 			}			
@@ -95,7 +94,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public boolean nextPage(int pageNumber) {
-		String SQL = "SELECT * FROM BBSrecipereview WHERE BBSrecipereviewID < ? AND BBSrecipereviewAvailable = 1";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND BBSrecipereviewAvailable = 1";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -110,7 +109,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public BBSrecipereview getBBSrecipereview(int BBSrecipereviewID) {
-		String SQL = "SELECT * FROM BBSrecipereview WHERE BBSrecipereviewID = ?";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID = ?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -119,10 +118,10 @@ public class BBSrecipereviewDAO {
 			if (rs.next()) {
 				BBSrecipereview BBSrecipereview = new BBSrecipereview();
 				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
-				BBSrecipereview.setBBStitle(rs.getString(2));
+				BBSrecipereview.setBbstitle(rs.getString(2));
 				BBSrecipereview.setUserID(rs.getString(3));
-				BBSrecipereview.setBBSpassword(rs.getString(4));
-				BBSrecipereview.setBBScontent(rs.getString(5));
+				BBSrecipereview.setBbspassword(rs.getString(4));
+				BBSrecipereview.setBbscontent(rs.getString(5));
 				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(1));
 				return BBSrecipereview;
 			}			
@@ -133,7 +132,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int update(int BBSrecipereviewID, String BBSrecipereviewTitle, String BBSrecipereviewContent) {
-		String SQL = "UPDATE BBSrecipereview SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ? WHERE BBSrecipereviewID =?";
+		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ? WHERE BBSID =?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, BBSrecipereviewTitle);
@@ -148,7 +147,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int delete(int BBSrecipereviewID) {
-		String SQL = "UPDATE BBSrecipereview SET BBSrecipereviewAvailable = 0 WHERE BBSrecipereviewID = ?";
+		String SQL = "UPDATE BBSrecipereview SET BBSrecipereviewAvailable = 0 WHERE BBSID = ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, BBSrecipereviewID);

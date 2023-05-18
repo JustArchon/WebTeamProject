@@ -8,9 +8,9 @@
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="bbs" class="BBSService.BBSrecipereview" scope="page" />
-<jsp:setProperty name="bbs" property="bbsTitle" />
 <jsp:setProperty name="bbs" property="bbstype" />
-<jsp:setProperty name="bbs" property="bbsContent" />
+<jsp:setProperty name="bbs" property="bbstitle" />
+<jsp:setProperty name="bbs" property="bbscontent" />
 <jsp:setProperty name="bbs" property="bbspassword" />
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@
   		script.println("history.back()");
   		script.println("</script>");
   	} else {
-  		if (bbs.getBBStitle() == null || bbs.getBBScontent() == null) {
+  		if (bbs.getBbstitle() == null || bbs.getBbscontent() == null) {
   				PrintWriter script = response.getWriter();
   				script.println("<script>");
   				script.println("alert('입력이 안된 사항이 있습니다.')");
@@ -40,7 +40,7 @@
   				script.println("</script>");
   			} else {
   				BBSrecipereviewDAO bbsDAO = new BBSrecipereviewDAO();
-  				int result = bbsDAO.write(bbs.getBBStitle(), userID, bbs.getBbstype(), bbs.getBBScontent(), bbs.getBBSpassword());
+  				int result = bbsDAO.write(bbs.getBbstitle(), userID, bbs.getBbstype(), bbs.getBbscontent(), bbs.getBbspassword());
   				if (result == -1) {
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
@@ -50,7 +50,7 @@
   				} else {
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("location.href = 'bbs.jsp'");
+  					script.println("location.href = 'MainLG.jsp'");
   					script.println("</script>");
   				}
   			}

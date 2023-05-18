@@ -1,10 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</title>
+    <title>Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</title>
     <style>
         .white{
             color: white;
@@ -54,7 +56,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         height: 50px;
 	    margin-top: 20px;
         text-align: center;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         }
@@ -68,7 +70,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         #sub_main_menu {
 	    margin-top: 20px;
         text-align: left;
-	    font-family: 'ë§‘ì€ê³ ë”•';
+	    font-family: '¸¼Àº°íµñ';
 	    font-size: 20px;
 	    color: white;
         margin-right: 30px;
@@ -163,17 +165,17 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
         <img src='img/logo.png' width='180' height='160'>
         </a>
     </div>
-    <h1 id="title"><a href="Main.html">ì½œ ì˜¤ë¸Œ ë“€í‹° ëª¨ë˜ì›Œí˜ì–´ í¬ëŸ¼</a></h1>
+    <h1 id="title"><a href="Main.html">Äİ ¿Àºê µàÆ¼ ¸ğ´ø¿öÆä¾î Æ÷·³</a></h1>
     <div id='top_menu'>
-		<a href="login.html">ë¡œê·¸ì¸</a> | <a href=SignUp.html>íšŒì›ê°€ì…</a>
+		<a href="login.jsp">·Î±×ÀÎ</a> | <a href=SignUp.html>È¸¿ø°¡ÀÔ</a>
     </div>
 </header>
 <nav id=menus>
     <ul id='main_menu'>
-        <li><a href="Notice.html">ê³µì§€ì‚¬í•­</a></li>
-        <li><a href="Information.html">ê²Œì„ ì •ë³´</a></li>
-        <li><a href="Community.html">ì»¤ë®¤ë‹ˆí‹°</a></li>
-        <li><a href="Inquiry.html">ë¬¸ì˜í•˜ê¸°</a></li>
+        <li><a href="Notice.html">°øÁö»çÇ×</a></li>
+        <li><a href="Information.html">°ÔÀÓ Á¤º¸</a></li>
+        <li><a href="Community.html">Ä¿¹Â´ÏÆ¼</a></li>
+        <li><a href="Inquiry.html">¹®ÀÇÇÏ±â</a></li>
     </ul>
 </nav>
 <aside>
@@ -182,42 +184,42 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
     <section>
         <nav id=sub_menus>
             <ul id='sub_main_menu'>
-                <h3>ê²Œì‹œíŒ ë°”ë¡œê°€ê¸°</h3>
-                <li><a href="Main.html">ë ˆì‹œí”¼ ê²Œì‹œíŒ</a></li>
-                <li>ë¦¬ë·° ê²Œì‹œíŒ</li>
+                <h3>°Ô½ÃÆÇ ¹Ù·Î°¡±â</h3>
+                <li><a href="Main.html">·¹½ÃÇÇ °Ô½ÃÆÇ</a></li>
+                <li>¸®ºä °Ô½ÃÆÇ</li>
             </ul>
         </nav>
         <div id='main_contents'>
-            <h3>ê¸€ ì“°ê¸°</h3>
+            <h3>±Û ¾²±â</h3>
             <form method="post" action="WritingAction.jsp" id="writing">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
-                            <td>ê²Œì‹œíŒ ì„ íƒ</td>
+                            <td>°Ô½ÃÆÇ ¼±ÅÃ</td>
                             <td>
                                 <select name = 'bbstype' class="form-control">
-                                    <option value="recipe">ë ˆì‹œí”¼ê²Œì‹œíŒ</option>
-                                    <option value="review">ë¦¬ë·°ê²Œì‹œíŒ</option>
+                                    <option value="recipe">·¹½ÃÇÇ°Ô½ÃÆÇ</option>
+                                    <option value="review">¸®ºä°Ô½ÃÆÇ</option>
                                 </select>
                             </td>
                             </tr>
 
                         <tr>
-                        <td>ì œëª©</td>
-                        <td><input type = text class="form-control" name ="bbstitle" size=60></td>
+                        <td>Á¦¸ñ</td>
+                        <td><input type = "text" class="form-control" name = "bbstitle" id = "bbstitle" size=60></td>
                         </tr>
  
                         <tr>
-                        <td>ë‚´ìš©</td>
+                        <td>³»¿ë</td>
                         <td><textarea class="form-control" name = "bbscontent" cols=85 rows=15></textarea></td>
                         </tr>
  
                         <tr>
-                        <td>ë¹„ë°€ë²ˆí˜¸</td>
-                        <td><input type = password class="form-control" name = "bbspassword" size=10 maxlength=10></td>
+                        <td>ºñ¹Ğ¹øÈ£</td>
+                        <td><input type = "password" class="form-control" name = "bbspassword" size=10 maxlength=10></td>
                         </tr>
                         <tr>
-                            <td>ì‚¬ì§„ ì²¨ë¶€</td>
+                            <td>»çÁø Ã·ºÎ</td>
                             <td><input type = file class="form-control" name = file size=10 maxlength=10></td>
                             </tr>
                         </table>
@@ -225,7 +227,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
                 </tr>
         
         <center>
-        	<input type="submit" class="btn btn-primary form-control" value="í™•ì¸">
+        	<input type="submit" class="btn btn-primary form-control" value="È®ÀÎ">
             </center>
             </table>
         </form>
@@ -236,8 +238,8 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
 <footer>
     <div id='footer_box'>
     <ul id='address'>
-            <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
-            <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
+            <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
+            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
             <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
         </ul>
     </div>
