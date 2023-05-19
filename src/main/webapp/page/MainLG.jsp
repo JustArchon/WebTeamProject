@@ -129,12 +129,12 @@
 <header>
     <div id='logo'>
         <a href="Main.jsp">
-        <img src='img/logo.png' width='180' height='160'>
+        <img src='img/logo.png' width='160' height='140'>
         </a>
     </div>
     <h1 id="title"><a href="Main.html">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
     <div id='top_menu'>
-    	<%
+    <%
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null){
 	%>

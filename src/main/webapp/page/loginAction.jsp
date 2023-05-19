@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 <title>JSP 게시판 웹 사이트</title>
 </head>
 <body>
@@ -34,7 +34,7 @@
 			session.setAttribute("userID", user.getUserID());
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("location.href = 'MainLG.jsp'");
+			script.println("location.href = 'index.jsp'");
 			script.println("</script>");
 		} else if (result == 0) {
 			PrintWriter script = response.getWriter();
