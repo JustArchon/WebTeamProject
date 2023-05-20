@@ -6,8 +6,28 @@ public class BBSrecipereview {
 	private String userID;
 	private String bbstype;
 	private String bbscontent;
-	private String bbspassword;
-	private String BBSrecipereviewFile;
+	private String filename;
+	private String bbsdate;
+	private int bbscount;
+	private int bbslikeamount;
+	public String getBbsdate() {
+		return bbsdate;
+	}
+	public void setBbsdate(String bbsdate) {
+		this.bbsdate = bbsdate;
+	}
+	public int getBbscount() {
+		return bbscount;
+	}
+	public void setBbscount(int bbscount) {
+		this.bbscount = bbscount;
+	}
+	public int getBbslikeamount() {
+		return bbslikeamount;
+	}
+	public void setBbslikeamount(int bbslikeamount) {
+		this.bbslikeamount = bbslikeamount;
+	}
 	private int BBSrecipereviewAvailable;
 	public int getBBSrecipereviewID() {
 		return BBSrecipereviewID;
@@ -39,23 +59,17 @@ public class BBSrecipereview {
 	public void setBbscontent(String bbscontent) {
 		this.bbscontent = bbscontent;
 	}
-	public String getBbspassword() {
-		return bbspassword;
-	}
-	public void setBbspassword(String bbspassword) {
-		this.bbspassword = bbspassword;
-	}
-	public String getBBSrecipereviewFile() {
-		return BBSrecipereviewFile;
-	}
-	public void setBBSrecipereviewFile(String bBSrecipereviewFile) {
-		BBSrecipereviewFile = bBSrecipereviewFile;
-	}
 	public int getBBSrecipereviewAvailable() {
 		return BBSrecipereviewAvailable;
 	}
 	public void setBBSrecipereviewAvailable(int bBSrecipereviewAvailable) {
 		BBSrecipereviewAvailable = bBSrecipereviewAvailable;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	

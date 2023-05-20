@@ -51,17 +51,20 @@ public class BBSrecipereviewDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
-	public int write(String BbsrecipereviewTitle, String userID, String BBStype, String BBSrecipereviewContent, String BBSpassword) {
-		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?)";
+	public int write(BBSrecipereview to) {
+		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, BbsrecipereviewTitle);
-			pstmt.setString(3, userID);
-			pstmt.setString(4, BBStype);
-			pstmt.setString(5, BBSrecipereviewContent);
-			pstmt.setString(6, BBSpassword);
-			pstmt.setString(7, getDate());
+			pstmt.setString(2, to.getBbstitle());
+			pstmt.setString(3, to.getUserID());
+			pstmt.setString(4, to.getBbstype());
+			pstmt.setString(5, to.getBbscontent());
+			pstmt.setString(6, getDate());
+			pstmt.setInt(7, 0);
+			pstmt.setInt(8, 0);
+			pstmt.setInt(9, 1);
+			pstmt.setString(10, to.getFilename());
 			
 			return pstmt.executeUpdate(); 
 		} catch(Exception e) {
@@ -71,7 +74,7 @@ public class BBSrecipereviewDAO {
 	}
 		
 	public ArrayList<BBSrecipereview> getList(int pageNumber) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND BBSrecipereviewAvailable = 1 ORDER BY BBSID DESC LIMIT 10";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID DESC LIMIT 10";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -82,9 +85,13 @@ public class BBSrecipereviewDAO {
 				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
 				BBSrecipereview.setBbstitle(rs.getString(2));
 				BBSrecipereview.setUserID(rs.getString(3));
-				BBSrecipereview.setBbspassword(rs.getString(4));
+				BBSrecipereview.setBbstype(rs.getString(4));
 				BBSrecipereview.setBbscontent(rs.getString(5));
-				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(1));
+				BBSrecipereview.setBbsdate(rs.getString(6));
+				BBSrecipereview.setBbscount(rs.getInt(7));
+				BBSrecipereview.setBbslikeamount(rs.getInt(8));
+				BBSrecipereview.setFilename(rs.getString(10));
+				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(9));
 				list.add(BBSrecipereview);
 			}			
 		} catch(Exception e) {
@@ -120,7 +127,6 @@ public class BBSrecipereviewDAO {
 				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
 				BBSrecipereview.setBbstitle(rs.getString(2));
 				BBSrecipereview.setUserID(rs.getString(3));
-				BBSrecipereview.setBbspassword(rs.getString(4));
 				BBSrecipereview.setBbscontent(rs.getString(5));
 				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(1));
 				return BBSrecipereview;

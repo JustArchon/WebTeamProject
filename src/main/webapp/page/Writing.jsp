@@ -2,58 +2,162 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>콜 오브 듀티 모던워페어 포럼</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>오늘 뭐 먹지?</title>
     <style>
-        .white{
-            color: white;
-        }
-        a { text-decoration: none }
-        a:link {text-decoration: none; color: white}
-        a:visited {text-decoration: none; color: white;}
-        a:active {text-decoration: none; color: white}
-        a:hover {text-decoration: none; color: white;}
-        aside{
-            width: 50px;
-            float: right;
-            margin-right: 300px;
-        }
-        section {
-	    margin-top: 10px;
-        }
-        img { display : block;
-        margin : auto;
-        }
-        #title{
-            color:white;
-            text-align: center;
-            font-family: 'D2Coding';
-            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
-        }
-        #menus {
-	    float: center;
-        }
-        #sub_menus {
-        width: 295px;
-        float: left;
-        }
-        #top_menu {
-	    text-align: right;
-        color:white;
-        margin-bottom: 40px;
-        }
-        #main_menu {
-            background: rgb(0, 0, 0);
-background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
-background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
+      body {
+        margin: 0;
+      }
+      main {
+        margin: 0px 300px;
+      }
+      .border_bottom {
+        border-bottom: solid 1px #cccccc;
+      }
 
-        height: 50px;
+      .white {
+        color: black;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        text-decoration: none;
+        color: black;
+      }
+      a:visited {
+        text-decoration: none;
+        color: black;
+      }
+      a:active {
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+        text-decoration: none;
+        color: black;
+      }
+      aside {
+        width: 50px;
+        float: right;
+        margin-right: 300px;
+      }
+      section {
+        margin-top: 10px;
+      }
+      img {
+        display: block;
+        margin: auto;
+      }
+      #title {
+        color: black;
+        text-align: center;
+        font-family: "D2Coding";
+        font-size: 36px;
+      }
+      #sub_menus {
+        float: left;
+      }
+      #top_menu {
+        text-align: right;
+        color: black;
+        margin-bottom: 40px;
+      }
+      #main_img {
+        width: 100%;
+        height: 281px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        margin-top: 20px;
+      }
+      #main_contents {
+        color: black;
+        width: 1000px;
+        float: center;
+        margin-top: 25px;
+      }
+      #main_contents h3 {
+        font-size: 30px;
+        padding-bottom: 8px;
+        text-align: center;
+      }
+      #main_contents p {
+        margin-top: 30px;
+        line-height: 180%;
+      }
+      #main_contents #figure {
+        margin-top: 10px;
+        text-align: left;
+      }
+      #logo {
+        float: left;
+        margin: 0px 30px;
+      }
+      footer {
+        width: 100%;
+        height: 150px;
+        margin-top: 30px;
+        background: rgb(255, 255, 255);
+      }
+      .title_container {
+        margin-left: 50px;
+        margin-bottom: 100px;
+      }
+      #top_menu {
+        padding: 15px;
+      }
+      .main_contents_etc {
+        border-bottom: solid 1px #cccccc;
+        width: 100%;
+        padding-bottom: 15px;
+        margin-bottom: 60px;
+      }
+      #like {
+        border-bottom: solid 1px #cccccc;
+        width: 100%;
+        padding-bottom: 15px;
+        margin: 60px 0px;
+        text-align: end;
+      }
+      .comment_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 70px;
+      }
+      .comment_container form div {
+        display: flex;
+        justify-content: end;
+      }
+      .comment__form_input {
+        width: 100%;
+        height: 100px;
+      }
+      .comment_number {
+        margin-bottom: 5px;
+      }
+      footer {
+        display: flex;
+        height: 200px;
+        align-items: end;
+        background-color: #cccccc;
+        margin-top: 150px;
+      }
+      #address {
+        margin-right: 50px;
+      }
+      .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+      }
+#main_menu {
+height: 50px;
 	    margin-top: 20px;
         text-align: center;
 	    font-family: '맑은고딕';
@@ -96,19 +200,7 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
             background-position: top center;
             margin-top: 20px;
         }
-        #main_contents {
-        color: white;
-	    width: 1000px;
-        margin-left: 300px;
-	    float: center;
-	    margin-top: 25px;
-    }
-        #main_contents h3 {
-	    font-size: 22px;
-	    padding-bottom: 8px;
-	    border-bottom: solid 1px #cccccc;
-        }
-        table.table2{
+         table.table2{
                 border-collapse: separate;
                 border-spacing: 1px;
                 text-align: left;
@@ -129,77 +221,50 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
                  vertical-align: top;
                  border-bottom: 1px solid #ccc;
         }
-        #contact{
-            margin-right: 250px;
-        }
-        #logo {
-	    float: left;
-        margin-left: 10px;
-        }
-        footer {
-	    width: 100%;
-	    height: 150px;
-	    margin-top: 30px;
-	    background: rgb(0, 0, 0);
-        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        }
-        #footer_box {
-	    width: 1140px;
-	    margin: 0 auto;
-        }
-        #address {
-	float: right;
-	margin: 50px 30px 0 0;
-	color: white;
-}
-        
     </style>
-</head>
-<header>
-    <div id='logo'>
-        <a href="Main.html">
-        <img src='img/logo.png' width='180' height='160'>
+  </head>
+  <header>
+    <div id="top_menu">
+    <%
+	String userid = (String)session.getAttribute("userID");
+	if(userid != null){
+	%>
+		<a href="#.html">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
+	<%
+	}else{
+	%>
+		<a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
+	<%
+	}
+	%>
+    </div>
+    <div class="title_container">
+      <div id="logo">
+        <a href="index.jsp">
+          <img src="img/logotodayfood.png" width="140" height="120" />
         </a>
+      </div>
+      <h1 id="title"><a href="index.jsp">오늘 뭐 먹지?</a></h1>
     </div>
-    <h1 id="title"><a href="Main.html">콜 오브 듀티 모던워페어 포럼</a></h1>
-    <div id='top_menu'>
-		<a href="login.jsp">로그인</a> | <a href=SignUp.html>회원가입</a>
-    </div>
-</header>
-<nav id=menus>
-    <ul id='main_menu'>
-        <li><a href="Notice.html">공지사항</a></li>
-        <li><a href="Information.html">게임 정보</a></li>
-        <li><a href="Community.html">커뮤니티</a></li>
-        <li><a href="Inquiry.html">문의하기</a></li>
-    </ul>
-</nav>
-<aside>
-</aside>
-<body bgcolor='#020715'>
-    <section>
-        <nav id=sub_menus>
-            <ul id='sub_main_menu'>
-                <h3>게시판 바로가기</h3>
-                <li><a href="Main.html">레시피 게시판</a></li>
-                <li>리뷰 게시판</li>
-            </ul>
-        </nav>
-        <div id='main_contents'>
-            <h3>글 쓰기</h3>
-            <form method="post" action="WritingAction.jsp" id="writing">
+  </header>
+  
+  <body bgcolor="#ffffff">
+    <main>
+      <section>
+        <div id="main_contents">
+           <h3>글 쓰기</h3>
+            <form method="post" encType = "multipart/form-data" action="WritingAction.jsp" id="writing">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
-                            <td>게시판 선택</td>
+                            <td>음식 분류</td>
                             <td>
                                 <select name = 'bbstype' class="form-control">
-                                    <option value="recipe">레시피게시판</option>
-                                    <option value="review">리뷰게시판</option>
+                                    <option value="koreanfood">한식</option>
+                                    <option value="westernfood">양식</option>
+                                    <option value="chinafood">중식</option>
+                                    <option value="simplemeal">간단식</option>
+                                    <option value="diet">다이어트식</option>
                                 </select>
                             </td>
                             </tr>
@@ -213,35 +278,30 @@ background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(12, 12, 30) 70%);
                         <td>내용</td>
                         <td><textarea class="form-control" name = "bbscontent" cols=85 rows=15></textarea></td>
                         </tr>
- 
-                        <tr>
-                        <td>비밀번호</td>
-                        <td><input type = "password" class="form-control" name = "bbspassword" size=10 maxlength=10></td>
-                        </tr>
+
                         <tr>
                             <td>사진 첨부</td>
-                            <td><input type = file class="form-control" name = file size=10 maxlength=10></td>
+                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10></td>
                             </tr>
                         </table>
                 </td>
                 </tr>
         
         <center>
-        	<input type="submit" class="btn btn-primary form-control" value="확인">
+        	<input type="submit" class="button_style form-control" value="확인">
             </center>
             </table>
         </form>
-            </div>
-            
-    </section>
-</body>
-<footer>
-    <div id='footer_box'>
-    <ul id='address'>
-            <li>대전시 대덕구 법2동 1234 우:123-1234</li>
-            <li>TEL:042-123-1234 문의사항 : email@naver.com</li>
-            <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
-        </ul>
+      </section>
+    </main>
+  </body>
+  <footer>
+    <div id="footer_box">
+      <ul id="address">
+        <li>대전시 대덕구 법2동 1234 우:123-1234</li>
+        <li>TEL:042-123-1234 문의사항 : email@naver.com</li>
+        <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
+      </ul>
     </div>
-</footer>
+  </footer>
 </html>
