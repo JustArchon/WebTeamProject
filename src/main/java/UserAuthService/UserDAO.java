@@ -66,5 +66,24 @@ public class UserDAO {
 		}
 		return -1;
 	}
+	public int update(User user) {
+        String SQL = "UPDATE MEMBER SET NAME=?, PASSWORD=?, USERMAIL=?, USERGENDER=?, ROLE=?, FAVORITE_FOOD=?, HOBBIES=? WHERE USERID=?";
+        try {
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, user.getUserName());
+            pstmt.setString(2, user.getUserPassword());
+            pstmt.setString(3, user.getUserEmail());
+            pstmt.setInt(4, user.getUserGender());
+            pstmt.setString(5, user.getRole());
+            pstmt.setString(6, user.getFavoritefood());
+            pstmt.setString(7, user.getHobbies());
+            pstmt.setString(8, user.getUserID());
+            
+            return pstmt.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 
 }

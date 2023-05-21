@@ -1,22 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html lang="en">
+
+<!DOCTYPE html><html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
     <style>
-	body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-      img {
-        width: 100%;
+      body {
+        margin: 0;
+      }
+      main {
+        margin: 0px 300px;
+      }
+      .border_bottom {
+        border-bottom: solid 1px #cccccc;
+      }
+
+      .white {
+        color: black;
       }
       a {
         text-decoration: none;
@@ -91,7 +94,7 @@
       }
       #logo {
         float: left;
-        margin: 0px 10px;
+        margin: 0px 30px;
       }
       footer {
         width: 100%;
@@ -106,6 +109,36 @@
       #top_menu {
         padding: 15px;
       }
+      .main_contents_etc {
+        border-bottom: solid 1px #cccccc;
+        width: 100%;
+        padding-bottom: 15px;
+        margin-bottom: 60px;
+      }
+      #like {
+        border-bottom: solid 1px #cccccc;
+        width: 100%;
+        padding-bottom: 15px;
+        margin: 60px 0px;
+        text-align: end;
+      }
+      .comment_container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        margin-left: 70px;
+      }
+      .comment_container form div {
+        display: flex;
+        justify-content: end;
+      }
+      .comment__form_input {
+        width: 100%;
+        height: 100px;
+      }
+      .comment_number {
+        margin-bottom: 5px;
+      }
       footer {
         display: flex;
         height: 200px;
@@ -116,78 +149,6 @@
       #address {
         margin-right: 50px;
       }
-      .grid_container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 30px;
-      }
-      .main {
-        margin: 10px 100px;
-      }
-      .grid-item img {
-        width: 100%;
-        height: 350px;
-        object-fit: cover;
-      }
-      .item-img {
-        position: relative;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      }
-      .item-img:not(:hover) > .item-title {
-        transition: background-color 0.5s ease-in-out;
-        background-color: #6f6f6f7c;
-      }
-      .item-title {
-        position: absolute;
-        bottom: 0px;
-        background-color: #cccccc7c;
-        width: 100%;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-direction: column;
-        height: 40%;
-        box-sizing: border-box;
-        padding-top: 50px;
-        font-size: larger;
-      }
-
-      p {
-        margin: 0;
-      }
-      .item_etc {
-        height: 30px;
-        font-size: 15px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-      }
-
-      .item-footer {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        box-sizing: border-box;
-        padding: 5px;
-      }
-      .header {
-        display: flex;
-      }
-      .main__header {
-        margin-right: 50px;
-        border-bottom: 2px solid white;
-        transition: border-bottom 0.2s;
-      }
-      .main__header:hover {
-        border-bottom: 2px solid #959595;
-      }
-      form input{
-	margin-bottom: 20px;
-	width: 100%;
-	box-sizing: border-box;
-}
       .button_style {
         margin-top: 10px;
         background-color: black;
@@ -292,18 +253,30 @@
   </head>
   <header>
     <div id="top_menu">
+    <%
+	String userid = (String)session.getAttribute("userID");
+	if(userid != null){
+	%>
+		<a href="#.html">¸¶ÀÌÆäÀÌÁö</a> | <a href="SignOut.jsp">·Î±×¾Æ¿ô</a>
+	<%
+	}else{
+	%>
+		<a href="login.jsp">·Î±×ÀÎ</a> | <a href="SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+	<%
+	}
+	%>
     </div>
     <div class="title_container">
       <div id="logo">
         <a href="index.jsp">
-          <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
       <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
     </div>
   </header>
-  <body>
-    <section class="main">
+  <body bgcolor="#ffffff">
+    <main>
+      <section>
         <div id="main_contents">
         <div class="inner_login">
             <div class="login">
@@ -342,6 +315,7 @@
             </div>
         </div>
       </section>
+    </main>
   </body>
   <footer>
     <div id="footer_box">

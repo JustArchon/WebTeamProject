@@ -192,7 +192,10 @@
 	<%
 	}else{
 	%>
-		<a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
+		<script>
+			alert("로그인 후 이용해주세요");
+			location.href='../login.jsp';
+		</script>
 	<%
 	}
 	%>
@@ -209,8 +212,9 @@
   <body>
     <section class="main">
       <div class="header">
-        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">내 게시글</h3></a>
-        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">회원 정보 수정</h3></a>
+        <a href="mypage.jsp"><h3 class="main__header">내 게시글</h3></a>
+        <a href="userUpdate.jsp"><h3 class="main__header">회원 정보 수정</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">내 문의목록</h3></a>
         <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">문의 하기</h3></a>
       </div>
       <div class="grid_container">
