@@ -253,7 +253,7 @@ height: 50px;
       <section>
         <div id="main_contents">
            <h3>±Û ¾²±â</h3>
-            <form method="post" encType = "multipart/form-data" action="WritingAction.jsp" id="writing">
+            <form method="post" encType = "multipart/form-data" action="WritingAction.jsp" id="writing" accept-charset="UTF-8">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>

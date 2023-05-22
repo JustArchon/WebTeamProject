@@ -10,6 +10,8 @@ public class BBSrecipereview {
 	private String bbsdate;
 	private int bbscount;
 	private int bbslikeamount;
+	private int BBSrecipereviewAvailable;
+	private int BBSComentcount;
 	public String getBbsdate() {
 		return bbsdate;
 	}
@@ -28,7 +30,7 @@ public class BBSrecipereview {
 	public void setBbslikeamount(int bbslikeamount) {
 		this.bbslikeamount = bbslikeamount;
 	}
-	private int BBSrecipereviewAvailable;
+	
 	public int getBBSrecipereviewID() {
 		return BBSrecipereviewID;
 	}
@@ -70,6 +72,12 @@ public class BBSrecipereview {
 	}
 	public void setFilename(String filename) {
 		this.filename = filename;
+	}
+	public int getBBSComentcount() {
+		return BBSComentcount;
+	}
+	public void setBBSComentcount(int bBSComentcount) {
+		BBSComentcount = bBSComentcount;
 	}
 
 	

@@ -50,7 +50,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 23px;
+        font-size: 36px;
       }
       #sub_menus {
         float: left;
@@ -180,23 +180,22 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
-      #textwrite {
-      margin-right: 100px;
-        float: right;
-        }
     </style>
   </head>
   <header>
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
-	if(userid != null){
+	if(userid != null && userid.equals("admin")){
 	%>
-		<a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
+		<a href="#.html">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
 	<%
 	}else{
 	%>
-		<a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
+		<script>
+			alert("이 페이지는 관리자만 접근 가능합니다.");
+			location.href='../index.jsp';
+		</script>
 	<%
 	}
 	%>
@@ -207,16 +206,16 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="../index.jsp">오늘 뭐 먹지?</a></h1>
+      <h1 id="title"><a href="#">오늘 뭐 먹지? 관리 페이지</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="TodayFood.jsp"><h3 class="main__header">오늘의 메뉴</h3></a>
-        <a href="Recentlyposts.jsp"><h3 class="main__header">최신 글</h3></a>
-        <a href="RecipeBBS.jsp"><h3 class="main__header">레시피 게시판</h3></a>
-        <a href="#"><h3 class="main__header">검색하기</h3></a>
+        <a href="mypage.jsp"><h3 class="main__header">회원 관리</h3></a>
+        <a href="userUpdate.jsp"><h3 class="main__header">게시글 목록</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">덧글 목록</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">문의사항 확인</h3></a>
       </div>
       <div class="grid_container">
       <%
@@ -248,7 +247,6 @@
             %>
       </div>
     </section>
-    <input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>
     <div id="footer_box">

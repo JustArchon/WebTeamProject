@@ -255,7 +255,7 @@
 		<div>
 			<label for="inputUserGender">失 紺: </label><br/>
 			害 失: <input type="radio" id="inputUserGender" name="userGender" value="1">
-			食 失: <input type="radio" id="inputUserGender" name="wuserGender" value="2">
+			食 失: <input type="radio" id="inputUserGender" name="userGender" value="2">
 		</div>
 		
 		

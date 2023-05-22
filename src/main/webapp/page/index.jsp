@@ -53,7 +53,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 23px;
+        font-size: 36px;
       }
       #sub_menus {
         float: left;
@@ -189,16 +189,27 @@
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
-	if(userid != null){
-	%>
-		<a href="Mypage/mypage.jsp">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
-	<%
-	}else{
-	%>
-		<a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
-	<%
-	}
-	%>
+    
+    if(userid != null && userid.equals("admin")){
+    %>
+    <a href="ManagePage/Managepage.jsp">홈페이지 관리</a> |
+    <%
+    }
+    %>
+    <%
+    if(userid != null){
+    %>
+    <a href="Mypage/mypage.jsp">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
+    <%
+    }
+    %>
+    <%
+    if(userid == null){
+    %>
+    <a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
+    <%
+    }
+    %>
     </div>
     <div class="title_container">
       <div id="logo">
@@ -225,23 +236,23 @@
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
-          <a href="view.jsp">
+          <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src=../bbsUpload/<%=list.get(i).getUserID() %><%=list.get(i).getBbstitle() %>게시글의사진.jpg
+                src=../bbsUpload/<%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
                 alt=""
               />
               <div class="item-title">
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
                   <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span>3</span>개
+                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
                 </div>
               </div>
             </div>
             <div class="item-footer">
               <strong>작성자: <%= list.get(i).getUserID() %></strong>
-              <p>♥<span><%= list.get(i).getBbslikeamount() %></span></p>
+              <p>♥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>
         </div>

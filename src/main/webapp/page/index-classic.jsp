@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="BBSService.BBSrecipereview"%>
+<%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,7 +53,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 23px;
+        font-size: 36px;
       }
       #sub_menus {
         float: left;
@@ -180,75 +183,92 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
-      #textwrite {
-      margin-right: 100px;
-        float: right;
-        }
+      .sub_news,.sub_news th,.sub_news td{border:0}
+        .sub_news a{color:black;;text-decoration:none}
+        .sub_news{width:1250px; border-bottom:1px solid #999; color:#666; font-size:12px;table-layout:fixed; margin-left:100px;}
+        .sub_news caption{display:none}
+        .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:top}
+        .sub_news td{padding:8px 0 9px; border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+        .sub_news .date,.sub_news .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+        .sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+        .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+        .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+        .sub_news tr.reply .title a{padding-left:16px;background:url(img/ic_reply.png) 0 1px no-repeat}
     </style>
   </head>
   <header>
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
-	if(userid != null){
-	%>
-		<a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
-	<%
-	}else{
-	%>
-		<a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
-	<%
-	}
-	%>
+    
+    if(userid != null && userid.equals("admin")){
+    %>
+    <a href="ManagePage/Managepage.jsp">홈페이지 관리</a> |
+    <%
+    }
+    %>
+    <%
+    if(userid != null){
+    %>
+    <a href="Mypage/mypage.jsp">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
+    <%
+    }
+    %>
+    <%
+    if(userid == null){
+    %>
+    <a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
+    <%
+    }
+    %>
     </div>
     <div class="title_container">
       <div id="logo">
-        <a href="../index.jsp">
+        <a href="index.jsp">
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="../index.jsp">오늘 뭐 먹지?</a></h1>
+      <h1 id="title"><a href="index.jsp">오늘 뭐 먹지?</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="TodayFood.jsp"><h3 class="main__header">오늘의 메뉴</h3></a>
-        <a href="Recentlyposts.jsp"><h3 class="main__header">최신 글</h3></a>
-        <a href="RecipeBBS.jsp"><h3 class="main__header">레시피 게시판</h3></a>
+        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">오늘의 메뉴</h3></a>
+        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">최신 글</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">레시피 게시판</h3></a>
         <a href="#"><h3 class="main__header">검색하기</h3></a>
       </div>
-      <div class="grid_container">
-      <%
-      for(int i = 0; i < 6; i++){
-      %>
-        <div class="grid-item">
-          <a href="#">
-            <div class="item-img">
-              <img
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div class="item-title">
-                <strong>닭가슴살 샐러드</strong>
-                <div class="item_etc">
-                  <p><span>2023</span>년 <span>4</span>월<span> 28 </span>일</p>
-                  · 댓글 <span>3</span>개
-                </div>
-              </div>
-            </div>
-            <div class="item-footer">
-              <strong>작성자</strong>
-              <p>♥<span>15</span></p>
-            </div>
-          </a>
-        </div>
-            <%
-      		}
-            %>
+        <table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+            <caption>게시판 리스트</caption>
+            <colgroup>
+            <col>
+            <col width="110">
+            <col width="100">
+            <col width="80">
+            </colgroup>
+            <thead>
+            <tr>
+            <th scope="col">제목</th>
+            <th scope="col">글쓴이</th>
+            <th scope="col">날짜</th>
+            <th scope="col">조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <td class="title">
+            <a href="#">게시글이 없습니다.</a>
+            <a class="comment" href="#"></a>
+            </td>
+            <td class="name"></td>
+            <td class="date"></td>
+            <td class="hit"></td>
+            </tr>
+            </tbody>
+            </table>
       </div>
     </section>
-    <input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>
     <div id="footer_box">

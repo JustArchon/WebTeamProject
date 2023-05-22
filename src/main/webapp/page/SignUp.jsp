@@ -1,110 +1,213 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>¿À´Ã ¹¹¸ÔÁö?</title>
     <style>
-        .white{
-            color: white;
-        }
-        a { color: #333; text-decoration: none }
-        a:link {text-decoration: none; color: white}
-        a:visited {text-decoration: none; color: white;}
-        a:active {text-decoration: none; color: white}
-        a:hover {text-decoration: none; color: white;}
-        aside{
-            width: 50px;
-            float: right;
-            margin-right: 300px;
-        }
-        tr, td{
-            color: white;
-        }
-        section {
-	    margin-top: 10px;
-        }
-        img { display : block;
-        margin : auto;
-        }
-        #title{
-            color:white;
-            text-align: center;
-            font-family: 'D2Coding';
-            text-shadow: 4px 4px 4px rgba(66, 74, 94, 1);
-        }
-        #menus {
-	    float: center;
-        }
-        #sub_menus {
+	body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+      img {
+        width: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:link {
+        text-decoration: none;
+        color: black;
+      }
+      a:visited {
+        text-decoration: none;
+        color: black;
+      }
+      a:active {
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+        text-decoration: none;
+        color: black;
+      }
+      aside {
+        width: 50px;
+        float: right;
+        margin-right: 300px;
+      }
+      section {
+        margin-top: 10px;
+      }
+      img {
+        display: block;
+        margin: auto;
+      }
+      #title {
+        color: black;
+        text-align: center;
+        font-family: "D2Coding";
+        font-size: 23px;
+      }
+      #sub_menus {
         float: left;
-        }
-        #top_menu {
-	    text-align: right;
-        color:white;
+      }
+      #top_menu {
+        text-align: right;
+        color: black;
         margin-bottom: 40px;
-        }
-        #logo {
-	    float: left;
-        margin-left: 10px;
-        }
-        #main_contents {
+      }
+      #main_img {
+        width: 100%;
+        height: 281px;
+        background-repeat: no-repeat;
+        background-position: top center;
+        margin-top: 20px;
+      }
+      #main_contents {
+        color: black;
+        width: 1000px;
+        float: center;
+        margin-top: 25px;
+      }
+      #main_contents h3 {
+        font-size: 30px;
+        padding-bottom: 8px;
+        text-align: center;
+      }
+      #main_contents p {
+        margin-top: 30px;
+        line-height: 180%;
+      }
+      #main_contents #figure {
+        margin-top: 10px;
+        text-align: left;
+      }
+      #logo {
+        float: left;
+        margin: 0px 10px;
+      }
+      footer {
+        width: 100%;
+        height: 150px;
+        margin-top: 30px;
+        background: rgb(255, 255, 255);
+      }
+      .title_container {
+        margin-left: 50px;
+        margin-bottom: 100px;
+      }
+      #top_menu {
+        padding: 15px;
+      }
+      footer {
+        display: flex;
+        height: 200px;
+        align-items: end;
+        background-color: #cccccc;
+        margin-top: 150px;
+      }
+      #address {
+        margin-right: 50px;
+      }
+      .grid_container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 30px;
+      }
+      .main {
+        margin: 10px 100px;
+      }
+      .grid-item img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+      }
+      .item-img {
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      .item-img:not(:hover) > .item-title {
+        transition: background-color 0.5s ease-in-out;
+        background-color: #6f6f6f7c;
+      }
+      .item-title {
+        position: absolute;
+        bottom: 0px;
+        background-color: #cccccc7c;
+        width: 100%;
         color: white;
-	    width: 700px;
-        margin-left: 500px;
-	    float: center;
-	    margin-top: 25px;
-    }
-    #main_contents h3 {
-	    font-size: 22px;
-	    padding-bottom: 8px;
-	    border-bottom: solid 1px #cccccc;
-        }
-        #main_contents p {
-	    margin-top: 30px;
-	    line-height: 180%;
-        }
-        footer {
-	    width: 100%;
-	    height: 150px;
-	    margin-top: 30px;
-	    background: rgb(0, 0, 0);
-        background: -moz-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -webkit-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -o-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: -ms-linear-gradient(22deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        background: linear-gradient(112deg, rgb(0, 0, 0) 30%, rgb(23, 23, 56) 70%);
-        }
-        #footer_box {
-	    width: 1140px;
-	    margin: 0 auto;
-        }
-        #address {
-	float: right;
-	margin: 50px 30px 0 0;
-	color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 40%;
+        box-sizing: border-box;
+        padding-top: 50px;
+        font-size: larger;
+      }
+
+      p {
+        margin: 0;
+      }
+      .item_etc {
+        height: 30px;
+        font-size: 15px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+
+      .item-footer {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-sizing: border-box;
+        padding: 5px;
+      }
+      .header {
+        display: flex;
+      }
+      .main__header {
+        margin-right: 50px;
+        border-bottom: 2px solid white;
+        transition: border-bottom 0.2s;
+      }
+      .main__header:hover {
+        border-bottom: 2px solid #959595;
+      }
+      form input{
+	margin-bottom: 20px;
+	width: 100%;
+	box-sizing: border-box;
 }
     </style>
-</head>
-<header>
-    <div id='logo'>
-        <a href="Main.html">
-        <img src='img/logo.png' width='200' height='120'>
-        </a>
+  </head>
+  <header>
+    <div id="top_menu">
     </div>
-    <h1 id="title">¿À´Ã ¹¹ ¸ÔÁö?</h1>
-</header>
-<aside>
-</aside>
-<body bgcolor='#020715'>
-    <section>
-        <div id='main_contents'>
-            <h3>È¸¿ø°¡ÀÔ</h3>
-        <left>
-            <form method="post" action="SignUpAction.jsp" id="signup">
+    <div class="title_container">
+      <div id="logo">
+        <a href="index.jsp">
+          <img src="img/logotodayfood.png" width="180" height="160" />
+        </a>
+      </div>
+      <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+    </div>
+  </header>
+  <body>
+    <section class="main">
+      <div class="header">
+      </div>
+      <h1>È¸¿ø°¡ÀÔ</h1>
+	            <form method="post" action="SignUpAction.jsp" id="signup">
                 <table width="800">
                 </table>    
                 <table width="700" height="600" cellpadding="0" style="border-collapse:collapse; font-size:9pt;">
@@ -112,7 +215,7 @@
                         <td width="5%" align="center">*</td>
                         <td width="15%">È¸¿ø ID</td>
                         <td>
-                        <input type="text" class="form-control" name="userID" />&nbsp;<input type="button" name="IDcheck" value="ID Áßº¹È®ÀÎ" /></td>
+                        <input type="text" class="form-control" name="userID" /></td>
                     </tr>
                     <tr height="7">
                         <td colspan="3"><hr /></td>
@@ -176,16 +279,16 @@
                     </tr>
                 </table>
             </form>
-        </left>
+	<input type="button" id="textwrite" onclick="location.href='index.jsp'" name="btn1" value="¸ÞÀÎ È­¸é >">
     </section>
-</body>
-<footer>
-    <div id='footer_box'>
-    <ul id='address'>
-            <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-            <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
-            <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
-        </ul>
+  </body>
+  <footer>
+    <div id="footer_box">
+      <ul id="address">
+        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
+        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
+      </ul>
     </div>
-</footer>
+  </footer>
 </html>

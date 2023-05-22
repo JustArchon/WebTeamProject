@@ -52,7 +52,7 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int write(BBSrecipereview to) {
-		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -65,6 +65,7 @@ public class BBSrecipereviewDAO {
 			pstmt.setInt(8, 0);
 			pstmt.setInt(9, 1);
 			pstmt.setString(10, to.getFilename());
+			pstmt.setInt(11, 0);
 			
 			return pstmt.executeUpdate(); 
 		} catch(Exception e) {
@@ -92,6 +93,7 @@ public class BBSrecipereviewDAO {
 				BBSrecipereview.setBbslikeamount(rs.getInt(8));
 				BBSrecipereview.setFilename(rs.getString(10));
 				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(9));
+				BBSrecipereview.setBBSComentcount(rs.getInt(11));
 				list.add(BBSrecipereview);
 			}			
 		} catch(Exception e) {
@@ -127,8 +129,13 @@ public class BBSrecipereviewDAO {
 				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
 				BBSrecipereview.setBbstitle(rs.getString(2));
 				BBSrecipereview.setUserID(rs.getString(3));
+				BBSrecipereview.setBbstype(rs.getString(4));
 				BBSrecipereview.setBbscontent(rs.getString(5));
-				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(1));
+				BBSrecipereview.setBbsdate(rs.getString(6));
+				BBSrecipereview.setBbscount(rs.getInt(7));
+				BBSrecipereview.setBbslikeamount(rs.getInt(8));
+				BBSrecipereview.setFilename(rs.getString(10));
+				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(9));
 				return BBSrecipereview;
 			}			
 		} catch(Exception e) {
