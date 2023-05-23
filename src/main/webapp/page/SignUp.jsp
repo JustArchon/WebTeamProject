@@ -239,7 +239,7 @@
                     <tr class="register" height="30">
                         <td width="5%" align="center">*</td>
                         <td width="15%">좋아하는 음식</td>
-                        <td><input type="text" class="form-control" name="Favoritefood" /></td>
+                        <td><input type="text" class="form-control" name="favoritefood" /></td>
                     </tr>
                     <tr height="7">
                         <td colspan="3"><hr /></td>
@@ -247,7 +247,7 @@
                     <tr class="register" height="30">
                         <td width="5%" align="center">*</td>
                         <td width="15%">취미</td>
-                        <td><input type="text" class="form-control" name="Hobbies" /></td>
+                        <td><input type="text" class="form-control" name="hobbies" /></td>
                     </tr>
                     <tr height="7">
                         <td colspan="3"><hr /></td>
@@ -256,7 +256,7 @@
                         <td width="5%" align="center">*</td>
                         <td width="15%">성 별</td>
                         <td>
-                            남 성<input type="radio" class="form-control" name="userGender" value="1" checked />&nbsp;여 성<input type="radio" name="wUserGender" value="2"/>
+                            남 성<input type="radio" class="form-control" name="userGender" value="남성" checked />&nbsp;여 성<input type="radio" class="form-control" name="userGender" value="여성"/>
                         </td>
                     </tr>
                     <tr height="7">

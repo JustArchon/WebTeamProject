@@ -2,15 +2,17 @@
     pageEncoding="UTF-8"%>
 <%@ page import="UserAuthService.UserDAO" %>
 <%@ page import="java.io.PrintWriter" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%
+request.setCharacterEncoding("euc-kr");
+%>
 <jsp:useBean id="user" class="UserAuthService.User" scope="page" />
 <jsp:setProperty name="user" property="userID" />
 <jsp:setProperty name="user" property="userPassword" />
 <jsp:setProperty name="user" property="userName" />
 <jsp:setProperty name="user" property="userGender" />
 <jsp:setProperty name="user" property="userEmail" />
-<jsp:setProperty name="user" property="role" />
-<jsp:setProperty name="user" property="cadeposts" />
+<jsp:setProperty name="user" property="favoritefood" />
+<jsp:setProperty name="user" property="hobbies" />
 <!DOCTYPE html>
 <html>
 <head>

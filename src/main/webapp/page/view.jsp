@@ -78,21 +78,29 @@
         margin-top: 20px;
       }
       #main_contents {
+      display: flex;
+      flex-direction: column;
         color: black;
-        width: 1000px;
+        width: 100%;
         float: center;
         margin-top: 25px;
       }
       #main_contents h3 {
+            display: flex;
+      flex-direction: column;
         font-size: 30px;
         padding-bottom: 8px;
         text-align: center;
       }
       #main_contents p {
+            display: flex;
+      flex-direction: column;
         margin-top: 30px;
         line-height: 180%;
       }
       #main_contents #figure {
+            display: flex;
+      flex-direction: column;
         margin-top: 10px;
         text-align: left;
       }
@@ -107,9 +115,13 @@
         background: rgb(255, 255, 255);
       }
       .title_container {
-        margin-left: 50px;
-        margin-bottom: 100px;
-      }
+  		display: flex;
+  		flex-direction: column;
+  		align-items: center;
+  		justify-content: center;
+  		font-size: 30px;
+  		font-weight: 400;
+		}
       #top_menu {
         padding: 15px;
       }
@@ -127,6 +139,7 @@
         text-align: end;
       }
       .comment_container {
+      	width: 100%;
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -206,8 +219,8 @@
   	}
   	BBSrecipereview BBS = new BBSrecipereviewDAO().getBBSrecipereview(bbsID);
 	
-  	String real = "C:\\Users\\User\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamProject\\bbsUpload";
-  	File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"게시글의사진.jpg");
+  	//String real = "C:\\Users\\User\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamProject\\bbsUpload";
+  	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"게시글의사진.jpg");
   %>
     <main>
       <section>
@@ -215,15 +228,13 @@
           <h3><%= BBS.getBbstitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
             <!-- 작성자, 날짜 -->
-            <span>작성자:</span> <%= BBS.getUserID() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span>
+            <span>작성자:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span>
           </div>
           <div id="figure">
-          <% if(viewFile.exists()){ %>
             <img
               src="../bbsUpload/<%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>게시글의사진.jpg"
               style="width: 700px"
             />
-            <% } %>
           </div>
           <p><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %>
           </p>
@@ -232,7 +243,7 @@
       </section>
       <!-- 댓글 -->
       <section class="comment_container">
-        <div class="comment_number"><span>3</span><span>개의 댓글</span></div>
+        <div class="comment_number"><span><%=BBS.getBBSComentcount() %></span><span>개의 댓글</span></div>
         <form action="" method="post">
           <input
             type="text"

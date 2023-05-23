@@ -53,7 +53,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 36px;
+        font-size: 26px;
       }
       #sub_menus {
         float: left;
@@ -99,10 +99,14 @@
         margin-top: 30px;
         background: rgb(255, 255, 255);
       }
-      .title_container {
-        margin-left: 50px;
-        margin-bottom: 100px;
-      }
+	.title_container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 35px;
+	  font-weight: 500;
+	}
       #top_menu {
         padding: 15px;
       }
@@ -189,6 +193,7 @@
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
+    String username = (String)session.getAttribute("userName");
     
     if(userid != null && userid.equals("admin")){
     %>
@@ -251,7 +256,7 @@
               </div>
             </div>
             <div class="item-footer">
-              <strong>작성자: <%= list.get(i).getUserID() %></strong>
+              <strong>작성자: <%= list.get(i).getUserName() %></strong>
               <p>♥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>

@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="UserAuthService.User"%>
+<%@ page import="UserAuthService.UserDAO"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -50,7 +53,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 36px;
+        font-size: 26px;
       }
       #sub_menus {
         float: left;
@@ -96,10 +99,14 @@
         margin-top: 30px;
         background: rgb(255, 255, 255);
       }
-      .title_container {
-        margin-left: 50px;
-        margin-bottom: 100px;
-      }
+   .title_container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-size: 35px;
+     font-weight: 500;
+   }
       #top_menu {
         padding: 15px;
       }
@@ -180,6 +187,22 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
+            .sub_news,.sub_news th,.sub_news td{border:0}
+        .sub_news a{color:black;;text-decoration:none}
+        .sub_news{width:1250px; border-bottom:1px solid #999; color:#666; font-size:12px;table-layout:fixed; margin-left:100px;}
+        .sub_news caption{display:none}
+        .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:middle}
+        .sub_news td{padding:8px 0 9px; border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+        .sub_news .date,.sub_news .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+        .sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+        .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+        .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+        .sub_news tr.reply .title a{padding-left:16px;background:url(img/ic_reply.png) 0 1px no-repeat}
+        
+        .sub_news {
+        	margin: 10px 0;
+        	width: 100%;
+        }
     </style>
   </head>
   <header>
@@ -188,7 +211,7 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null && userid.equals("admin")){
 	%>
-		<a href="#.html">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
+		<a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
 	<%
 	}else{
 	%>
@@ -206,46 +229,65 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="#">오늘 뭐 먹지? 관리 페이지</a></h1>
+      <h1 id="title"><a href="Managepage.jsp">오늘 뭐 먹지? 관리 페이지</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="mypage.jsp"><h3 class="main__header">회원 관리</h3></a>
+        <a href="Managepage.jsp"><h3 class="main__header">회원 관리</h3></a>
         <a href="userUpdate.jsp"><h3 class="main__header">게시글 목록</h3></a>
         <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">덧글 목록</h3></a>
         <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">문의사항 확인</h3></a>
       </div>
-      <div class="grid_container">
+      <div class="row text-center">
+      <table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+            <caption>게시판 리스트</caption>
+            <colgroup>
+            <col width="40">
+            <col width="60">
+            </colgroup>
+            <thead>
+            <tr>
+            <th scope="col">회원 순번</th>
+            <th scope="col">회원 ID</th>
+            <th scope="col">닉네임</th>
+            <th scope="col">이메일</th>
+            <th scope="col">성별</th>
+            <th scope="col">가입날짜</th>
+            <th scope="col">역할</th>
+            <th scope="col">좋아하는 음식</th>
+            <th scope="col">취미</th>
+            <th scope="col">회원 관리</th>
+            </tr>
+            </thead>
+            <tbody>
       <%
-      for(int i = 0; i < 6; i++){
+      int pageNumber = 1;
+      	UserDAO UserDAO = new UserDAO();
+		//ArrayList<User> list = UserDAO.getList();
+      //for(int i = 0; i < list.size(); i++){
       %>
-        <div class="grid-item">
-          <a href="#">
-            <div class="item-img">
-              <img
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-                alt=""
-              />
-              <div class="item-title">
-                <strong>닭가슴살 샐러드</strong>
-                <div class="item_etc">
-                  <p><span>2023</span>년 <span>4</span>월<span> 28 </span>일</p>
-                  · 댓글 <span>3</span>개
-                </div>
-              </div>
-            </div>
-            <div class="item-footer">
-              <strong>작성자</strong>
-              <p>♥<span>15</span></p>
-            </div>
-          </a>
-        </div>
-            <%
-      		}
+        <tr>
+        <td class="title">
+        <a>1</a>
+        </td>
+        <td class="id">admin</td>
+        <td class="nickname">admin</td>
+        <td class="email">admin@todayfood.co.kr</td>
+        <td class="gender">남</td>
+        <td class="date">2021/01/28</td>
+        <td class="role">관리자</td>
+        <td class="role">고기</td>
+        <td class="role">컴퓨터</td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
+        </tr>
+          	<%
+      		//}
             %>
-      </div>
+            </tbody>
+        </table>
+       </div>
     </section>
   </body>
   <footer>

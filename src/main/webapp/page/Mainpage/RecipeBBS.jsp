@@ -50,7 +50,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 23px;
+        font-size: 26px;
       }
       #sub_menus {
         float: left;
@@ -96,10 +96,14 @@
         margin-top: 30px;
         background: rgb(255, 255, 255);
       }
-      .title_container {
-        margin-left: 50px;
-        margin-bottom: 100px;
-      }
+	.title_container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 35px;
+	  font-weight: 500;
+	}
       #top_menu {
         padding: 15px;
       }
@@ -192,7 +196,7 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null){
 	%>
-		<a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
+		<a href="../#.html">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
 	<%
 	}else{
 	%>

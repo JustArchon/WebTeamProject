@@ -4,6 +4,7 @@ public class BBSrecipereview {
 	private int BBSrecipereviewID;
 	private String bbstitle;
 	private String userID;
+	private String userName;
 	private String bbstype;
 	private String bbscontent;
 	private String filename;
@@ -78,6 +79,12 @@ public class BBSrecipereview {
 	}
 	public void setBBSComentcount(int bBSComentcount) {
 		BBSComentcount = bBSComentcount;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	

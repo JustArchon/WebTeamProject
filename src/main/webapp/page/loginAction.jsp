@@ -22,16 +22,17 @@
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("alert('이미 로그인이 되어 있습니다.')");
-			script.println("location.href = 'MainLG.jsp'");
+			script.println("location.href = 'index.jsp'");
 			script.println("history.back()");
 			script.println("</script>");
 		}
 	
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.login(user.getUserID(), user.getUserPassword());
-				
+		String username = userDAO.getName(user.getUserID());
 		if (result == 1) {
 			session.setAttribute("userID", user.getUserID());
+			session.setAttribute("userName", username);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href = 'index.jsp'");

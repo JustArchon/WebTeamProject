@@ -4,6 +4,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import BBSService.BBSrecipereview;
 
 public class UserDAO {
 	
@@ -54,9 +57,9 @@ public class UserDAO {
 			pstmt.setString(2, user.getUserID());
 			pstmt.setString(3, user.getUserPassword());
 			pstmt.setString(4, user.getUserEmail());
-			pstmt.setInt(5, user.getUserGender());
+			pstmt.setString(5, user.getUserGender());
 			pstmt.setTimestamp(6, timestamp);
-			pstmt.setString(7, user.getRole());
+			pstmt.setString(7, "Member");
 			pstmt.setString(8, user.getFavoritefood());
 			pstmt.setString(9, user.getHobbies());
 			
@@ -65,7 +68,25 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -1;
-	}
+	} 
+	
+	public String getName(String userID) {
+		String username = null;
+		String SQL = "SELECT NAME FROM MEMBER WHERE USERID LIKE ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				username = rs.getString(1);
+			}
+		} catch(Exception e) {
+            e.printStackTrace();
+        }
+		return username;
+		
+	} 
+	
 	public int update(User user) {
         String SQL = "UPDATE MEMBER SET NAME=?, PASSWORD=?, USERMAIL=?, USERGENDER=?, ROLE=?, FAVORITE_FOOD=?, HOBBIES=? WHERE USERID=?";
         try {
@@ -73,7 +94,7 @@ public class UserDAO {
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getUserPassword());
             pstmt.setString(3, user.getUserEmail());
-            pstmt.setInt(4, user.getUserGender());
+            pstmt.setString(4, user.getUserGender());
             pstmt.setString(5, user.getRole());
             pstmt.setString(6, user.getFavoritefood());
             pstmt.setString(7, user.getHobbies());
@@ -85,5 +106,33 @@ public class UserDAO {
         }
         return -1;
     }
+	
+/*	public ArrayList<User> getList() {
+		String SQL = "SELECT * FROM MEMBER ORDER BY ID ASC";
+		ArrayList<User> list = new ArrayList<User>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				User User = new User();
+				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
+				UsersetBbstitle(rs.getString(2));
+				BBSrecipereview.setUserID(rs.getString(3));
+				BBSrecipereview.setBbstype(rs.getString(4));
+				BBSrecipereview.setBbscontent(rs.getString(5));
+				BBSrecipereview.setBbsdate(rs.getString(6));
+				BBSrecipereview.setBbscount(rs.getInt(7));
+				BBSrecipereview.setBbslikeamount(rs.getInt(8));
+				BBSrecipereview.setFilename(rs.getString(10));
+				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(9));
+				BBSrecipereview.setBBSComentcount(rs.getInt(11));
+				list.add(User);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	*/
 
 }

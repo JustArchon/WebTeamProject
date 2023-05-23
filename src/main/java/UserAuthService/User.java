@@ -4,13 +4,17 @@ public class User {
 	private String userID;
 	private String userPassword;
 	private String userEmail;
-	private int userGender;
-	private String Favoritefood;
-	private String Hobbies;
-	private Boolean cadeposts;
+	private String userGender;
+	private String favoritefood;
+	private String hobbies;
 	private String role;
-	
-	
+	private boolean candelposts;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public String getUserID() {
 		return userID;
 	}
@@ -23,23 +27,29 @@ public class User {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public int getUserGender() {
-		return userGender;
-	}
-	public void setUserGender(int userGender) {
-		this.userGender = userGender;
-	}
 	public String getUserEmail() {
 		return userEmail;
 	}
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+	public String getUserGender() {
+		return userGender;
+	}
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+	public String getFavoritefood() {
+		return favoritefood;
+	}
+	public void setFavoritefood(String favoritefood) {
+		this.favoritefood = favoritefood;
+	}
+	public String getHobbies() {
+		return hobbies;
+	}
+	public void setHobbies(String hobbies) {
+		this.hobbies = hobbies;
 	}
 	public String getRole() {
 		return role;
@@ -47,22 +57,12 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Boolean getCadeposts() {
-		return cadeposts;
+	public boolean isCandelposts() {
+		return candelposts;
 	}
-	public void setCadeposts(Boolean cadeposts) {
-		this.cadeposts = cadeposts;
+	public void setCandelposts(boolean candelposts) {
+		this.candelposts = candelposts;
 	}
-	public String getHobbies() {
-		return Hobbies;
-	}
-	public void setHobbies(String hobbies) {
-		Hobbies = hobbies;
-	}
-	public String getFavoritefood() {
-		return Favoritefood;
-	}
-	public void setFavoritefood(String favoritefood) {
-		Favoritefood = favoritefood;
-	}
+
+	
 }

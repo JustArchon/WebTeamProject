@@ -17,8 +17,12 @@
 <body>
 <%
   	String userID = null;
+	String userName = null;
   	if (session.getAttribute("userID") != null) {
   		userID = (String) session.getAttribute("userID");
+  	}
+  	if (session.getAttribute("userName") != null) {
+  		userName = (String) session.getAttribute("userName");
   	}
   	
   	
@@ -39,6 +43,7 @@
 	BBS.setBbstitle(bbstitle);
 	BBS.setBbstype(bbstype);
 	BBS.setUserID(userID);
+	BBS.setUserName(userName);
 	BBS.setBbstitle(bbstitle);
 	BBS.setBbscontent(bbscontent);
 	BBS.setFilename(filename);

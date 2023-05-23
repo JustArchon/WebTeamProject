@@ -265,6 +265,7 @@ height: 50px;
                                     <option value="chinafood">중식</option>
                                     <option value="simplemeal">간단식</option>
                                     <option value="diet">다이어트식</option>
+                                    <option value="dessert">디저트</option>
                                 </select>
                             </td>
                             </tr>

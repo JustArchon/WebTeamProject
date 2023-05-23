@@ -99,10 +99,15 @@
         margin-top: 30px;
         background: rgb(255, 255, 255);
       }
-      .title_container {
-        margin-left: 50px;
-        margin-bottom: 100px;
-      }
+.title_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 400;
+}
+
       #top_menu {
         padding: 15px;
       }
@@ -194,6 +199,11 @@
         .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
         .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
         .sub_news tr.reply .title a{padding-left:16px;background:url(img/ic_reply.png) 0 1px no-repeat}
+        
+        .sub_news {
+        	margin: 10px 0;
+        	width: 100%;
+        }
     </style>
   </head>
   <header>
