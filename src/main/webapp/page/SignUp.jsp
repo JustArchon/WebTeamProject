@@ -275,7 +275,7 @@
                 <br />
                 <table>
                     <tr height="40">
-                        <td><input type="submit" class="btn btn-primary form-control" value="회원가입">&nbsp;<input type="button" id="textwrite" onclick="location.href='Main.html' " name="btn1" value="취소"></td>
+                        <td><input type="submit" class="btn btn-primary form-control" value="회원가입">&nbsp;<input type="button" id="textwrite" onclick="location.href='index.jsp' " name="btn1" value="취소"></td>
                     </tr>
                 </table>
             </form>

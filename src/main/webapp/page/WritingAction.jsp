@@ -40,6 +40,7 @@
   	String bbscontent = multi.getParameter( "bbscontent" );
 	
 	BBSrecipereview BBS = new BBSrecipereview();
+	BBSrecipereviewDAO BBSDAO = new BBSrecipereviewDAO();
 	BBS.setBbstitle(bbstitle);
 	BBS.setBbstype(bbstype);
 	BBS.setUserID(userID);
@@ -74,12 +75,12 @@
   				} else {
   					if(filename != null){
   						File oldFile = new File(realFolder+"\\"+filename);
-  						File newFile = new File(realFolder+"\\"+(BBS.getUserID())+(BBS.getBbstitle()).replaceAll(" ", "")+"게시글의사진.jpg");
+  						File newFile = new File(realFolder+"\\"+(BBSDAO.getPresent())+(BBS.getUserID())+(BBS.getBbstitle()).replaceAll(" ", "")+"게시글의사진.jpg");
   						oldFile.renameTo(newFile);
   					}
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("location.href = 'index.jsp'");
+  					script.println("location.href = 'RecipeBBS.jsp'");
   					script.println("</script>");
   				}
   			}

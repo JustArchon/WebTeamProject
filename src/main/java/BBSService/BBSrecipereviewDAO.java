@@ -51,6 +51,20 @@ public class BBSrecipereviewDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
+	public int getPresent() {
+		String SQL = "SELECT BBSID FROM BBSRECIPEREVIEW ORDER BY BBSID DESC";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
 	public int write(BBSrecipereview to) {
 		String SQL = "INSERT INTO BBSRECIPEREVIEW VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
@@ -118,6 +132,8 @@ public class BBSrecipereviewDAO {
 		}
 		return false;
 	}
+	
+	
 	
 	public BBSrecipereview getBBSrecipereview(int BBSrecipereviewID) {
 		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID = ?";

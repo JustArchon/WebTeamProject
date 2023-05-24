@@ -232,7 +232,7 @@
           </div>
           <div id="figure">
             <img
-              src="../bbsUpload/<%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>게시글의사진.jpg"
+              src="../bbsUpload/<%=bbsID %><%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>게시글의사진.jpg"
               style="width: 700px"
             />
           </div>

@@ -211,7 +211,7 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null && userid.equals("admin")){
 	%>
-		<a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
+		<a href="../ManagePage/Managepage.jsp">홈페이지 관리</a> | <a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
 	<%
 	}else{
 	%>
@@ -236,9 +236,9 @@
     <section class="main">
       <div class="header">
         <a href="Managepage.jsp"><h3 class="main__header">회원 관리</h3></a>
-        <a href="userUpdate.jsp"><h3 class="main__header">게시글 목록</h3></a>
-        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">덧글 목록</h3></a>
-        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">문의사항 확인</h3></a>
+        <a href="PostListpage.jsp"><h3 class="main__header">게시글 목록</h3></a>
+        <a href="CommentListpage.jsp"><h3 class="main__header">덧글 목록</h3></a>
+        <a href="InquiryListpage.jsp"><h3 class="main__header">문의사항 확인</h3></a>
       </div>
       <div class="row text-center">
       <table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="BBSService.BBSrecipereview"%>
+<%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -192,18 +195,30 @@
   </head>
   <header>
     <div id="top_menu">
-    <%
+<%
 	String userid = (String)session.getAttribute("userID");
-	if(userid != null){
-	%>
-		<a href="../#.html">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
-	<%
-	}else{
-	%>
-		<a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
-	<%
-	}
-	%>
+    String username = (String)session.getAttribute("userName");
+    
+    if(userid != null && userid.equals("admin")){
+    %>
+    <a href="../ManagePage/Managepage.jsp">홈페이지 관리</a> |
+    <%
+    }
+    %>
+    <%
+    if(userid != null){
+    %>
+    <a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
+    <%
+    }
+    %>
+    <%
+    if(userid == null){
+    %>
+    <a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
+    <%
+    }
+    %>
     </div>
     <div class="title_container">
       <div id="logo">
@@ -223,27 +238,30 @@
         <a href="#"><h3 class="main__header">검색하기</h3></a>
       </div>
       <div class="grid_container">
-      <%
-      for(int i = 0; i < 6; i++){
+		<%
+      int pageNumber = 1;
+      	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
+      for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
-          <a href="#">
+          <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
                 alt=""
               />
               <div class="item-title">
-                <strong>닭가슴살 샐러드</strong>
+                <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
-                  <p><span>2023</span>년 <span>4</span>월<span> 28 </span>일</p>
-                  · 댓글 <span>3</span>개
+                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
+                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
                 </div>
               </div>
             </div>
             <div class="item-footer">
-              <strong>작성자</strong>
-              <p>♥<span>15</span></p>
+              <strong>작성자: <%= list.get(i).getUserName() %></strong>
+              <p>♥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>
         </div>

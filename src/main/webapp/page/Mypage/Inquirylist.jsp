@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="BBSService.BBSrecipereview"%>
-<%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="UserAuthService.User"%>
+<%@ page import="UserAuthService.UserDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,14 +99,14 @@
         margin-top: 30px;
         background: rgb(255, 255, 255);
       }
-	.title_container {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  justify-content: center;
-	  font-size: 35px;
-	  font-weight: 500;
-	}
+   .title_container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     font-size: 35px;
+     font-weight: 500;
+   }
       #top_menu {
         padding: 15px;
       }
@@ -187,6 +187,22 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
+            .sub_news,.sub_news th,.sub_news td{border:0}
+        .sub_news a{color:black;;text-decoration:none}
+        .sub_news{width:1250px; border-bottom:1px solid #999; color:#666; font-size:12px;table-layout:fixed; margin-left:100px;}
+        .sub_news caption{display:none}
+        .sub_news th{padding:5px 0 6px;border-top:solid 1px #999;border-bottom:solid 1px #b2b2b2;background-color:#f1f1f4;color:#333;font-weight:bold;line-height:20px;vertical-align:middle}
+        .sub_news td{padding:8px 0 9px; border-bottom:solid 1px #d2d2d2;text-align:center;line-height:18px;}
+        .sub_news .date,.sub_news .hit{padding:0;font-family:Tahoma;font-size:11px;line-height:normal}
+        .sub_news .title{text-align:left; padding-left:15px; font-size:13px;}
+        .sub_news .title .pic,.sub_news .title .new{margin:0 0 2px;vertical-align:middle}
+        .sub_news .title a.comment{padding:0;background:none;color:#f00;font-size:12px;font-weight:bold}
+        .sub_news tr.reply .title a{padding-left:16px;background:url(img/ic_reply.png) 0 1px no-repeat}
+        
+        .sub_news {
+        	margin: 10px 0;
+        	width: 100%;
+        }
     </style>
   </head>
   <header>
@@ -232,39 +248,51 @@
         <a href="userUpdate.jsp"><h3 class="main__header">회원 정보 수정</h3></a>
         <a href="Inquirylist.jsp"><h3 class="main__header">내 문의목록</h3></a>
         <a href="Inquiry.jsp"><h3 class="main__header">문의 하기</h3></a>
-      </div>
-      <div class="grid_container">
+        </div>
+      <div class="row text-center">
+      <table class="sub_news" border="1" cellspacing="0" summary="게시판의 글제목 리스트">
+            <caption>게시판 리스트</caption>
+            <colgroup>
+            <col width="10">
+            <col width="170">
+            <col width="40">
+            <col width="40">
+            <col width="40">
+            <col width="40">
+            </colgroup>
+            <thead>
+            <tr>
+            <th scope="col">문의 순번</th>
+            <th scope="col">제목</th>
+            <th scope="col">글쓴이</th>
+            <th scope="col">문의 날짜</th>
+            <th scope="col">문의 유형</th>
+            <th scope="col">들어가기</th>
+            </tr>
+            </thead>
+            <tbody>
       <%
       int pageNumber = 1;
-      	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
-      for(int i = 0; i < list.size(); i++){
+      	UserDAO UserDAO = new UserDAO();
+		//ArrayList<User> list = UserDAO.getList();
+      //for(int i = 0; i < list.size(); i++){
       %>
-        <div class="grid-item">
-          <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
-            <div class="item-img">
-              <img
-                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
-                alt=""
-              />
-              <div class="item-title">
-                <strong><%= list.get(i).getBbstitle() %></strong>
-                <div class="item_etc">
-                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
-                </div>
-              </div>
-            </div>
-            <div class="item-footer">
-              <strong>작성자: <%= list.get(i).getUserName() %></strong>
-              <p>♥ <span><%= list.get(i).getBbslikeamount() %></span></p>
-            </div>
-          </a>
-        </div>
-            <%
-      		}
+        <tr>
+        <td class="title">
+        <a>1</a>
+        </td>
+        <td class="id">admin</td>
+        <td class="nickname">admin</td>
+        <td class="date">2021/01/28</td>
+        <td class="type">건의사항</td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
+        </tr>
+          	<%
+      		//}
             %>
-      </div>
+            </tbody>
+        </table>
+       </div>
     </section>
   </body>
   <footer>

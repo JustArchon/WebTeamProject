@@ -187,6 +187,32 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
+    form input{
+	margin-bottom: 20px;
+	width: 100%;
+	box-sizing: border-box;
+}
+table.table2{
+                border-collapse: separate;
+                border-spacing: 1px;
+                text-align: left;
+                line-height: 1.5;
+                border-top: 1px solid #333;
+                margin : 20px 10px;
+        }
+        table.table2 tr {
+                 width: 50px;
+                 padding: 10px;
+                font-weight: bold;
+                vertical-align: top;
+                border-bottom: 1px solid #ccc;
+        }
+        table.table2 td {
+                 width: 100px;
+                 padding: 10px;
+                 vertical-align: top;
+                 border-bottom: 1px solid #ccc;
+        }
     </style>
   </head>
   <header>
@@ -233,38 +259,53 @@
         <a href="Inquirylist.jsp"><h3 class="main__header">내 문의목록</h3></a>
         <a href="Inquiry.jsp"><h3 class="main__header">문의 하기</h3></a>
       </div>
-      <div class="grid_container">
-      <%
-      int pageNumber = 1;
-      	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
-      for(int i = 0; i < list.size(); i++){
-      %>
-        <div class="grid-item">
-          <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
-            <div class="item-img">
-              <img
-                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
-                alt=""
-              />
-              <div class="item-title">
-                <strong><%= list.get(i).getBbstitle() %></strong>
-                <div class="item_etc">
-                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
-                </div>
-              </div>
-            </div>
-            <div class="item-footer">
-              <strong>작성자: <%= list.get(i).getUserName() %></strong>
-              <p>♥ <span><%= list.get(i).getBbslikeamount() %></span></p>
-            </div>
-          </a>
-        </div>
-            <%
-      		}
-            %>
-      </div>
+            <h3>문의하기</h3>
+            <form method="post" action="InquiryContactAction.jsp" id="InquiryContact">
+            <table style="padding-top: 1px" align = left border=0 cellpadding=2 >
+                <table class = "table2">
+                        <tr>
+                        <td>이메일주소</td>
+                        <td><input type = text class="form-control" name = iemail size=25> </td>
+                        </tr>
+
+                        <tr>
+                            <td>문의 유형</td>
+                            <td>
+                                <select id="itype" class="form-control" name = 'itype'>
+                                    <option value="1">유저 신고</option>
+                                    <option value="2">계정 관련사항</option>
+                                    <option value="3">건의 사항</option>
+                                </select>
+                            </td>
+                            </tr>
+
+                        <tr>
+                        <td>문의 제목</td>
+                        <td><input type = text class="form-control" name = ititle size=60></td>
+                        </tr>
+ 
+                        <tr>
+                        <td>문의 내용</td>
+                        <td><textarea name = icontent class="form-control" cols=85 rows=15></textarea></td>
+                        </tr>
+ 
+                        <tr>
+                        <td>비밀번호</td>
+                        <td><input type = ipassword class="form-control" name = pw size=10 maxlength=10></td>
+                        </tr>
+                        <tr>
+                            <td>파일 첨부</td>
+                            <td><input type = ifile class="form-control" name = file size=10 maxlength=10></td>
+                            </tr>
+                        </table>
+                </td>
+                </tr>
+        </table>
+        <center>
+        	<input type="submit" class="btn btn-primary form-control" value="문의하기">
+         </center>
+         </form>
+	<input type="button" id="textwrite" onclick="location.href='Main.html'" name="btn1" value="메인 화면 >">
     </section>
   </body>
   <footer>
