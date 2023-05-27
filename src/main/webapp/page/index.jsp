@@ -251,7 +251,7 @@
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
                   <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
+                   · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개 · 조회수: <span> <%= list.get(i).getBbscount() %></span>
                 </div>
               </div>
             </div>

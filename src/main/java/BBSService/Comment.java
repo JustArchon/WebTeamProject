@@ -4,8 +4,10 @@ public class Comment {
 	private int commentID;
 	private int bbsID;
 	private String userID;
-	private String userNAME;
+	private String userName;
 	private String commentDate;
+	private String commentText;
+	private int commentAvilable;
 	public int getCommentID() {
 		return commentID;
 	}
@@ -24,11 +26,11 @@ public class Comment {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	public String getUserNAME() {
-		return userNAME;
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserNAME(String userNAME) {
-		this.userNAME = userNAME;
+	public void setUserName(String userNAME) {
+		this.userName = userNAME;
 	}
 	public String getCommentDate() {
 		return commentDate;
@@ -36,10 +38,10 @@ public class Comment {
 	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
 	}
-	public String getCommentText() {
+	public String getcommentText() {
 		return commentText;
 	}
-	public void setCommentText(String commentText) {
+	public void setcommentText(String commentText) {
 		this.commentText = commentText;
 	}
 	public int getCommentAvilable() {
@@ -48,7 +50,6 @@ public class Comment {
 	public void setCommentAvilable(int commentAvilable) {
 		this.commentAvilable = commentAvilable;
 	}
-	private String commentText;
-	private int commentAvilable;
+	
 
 }

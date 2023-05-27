@@ -191,5 +191,17 @@ public class BBSrecipereviewDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	public int updateBbsCount(int BBSCOMENTCOUNT, int BBSID) {
+		String SQL = "UPDATE BBSrecipereview SET BBSCOMENTCOUNT = ? WHERE BBSID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, BBSCOMENTCOUNT);
+			pstmt.setInt(2, BBSID);
+			return pstmt.executeUpdate(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

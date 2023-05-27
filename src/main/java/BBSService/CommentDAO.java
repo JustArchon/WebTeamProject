@@ -48,17 +48,20 @@ public class CommentDAO {
 		}
 		return 1; //첫번째 댓글인 경우
 	}
-	public int write(int boardID, int bbsID, String userID, String commentText) {
+	public int write(int bbsID, String userID, String userName, String commentText) {
 		String SQL = "INSERT INTO comment VALUES(?, ?, ?, ?, ?, ?, ?)";
+		String SQL2 = "INSERT INTO comment VALUES(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(2, getNext());
-			pstmt.setInt(3, bbsID);
-			pstmt.setString(4, userID);
+			pstmt.setInt(1, getNext());
+			pstmt.setInt(2, bbsID);
+			pstmt.setString(3, userID);
+			pstmt.setString(4, userName);
 			pstmt.setString(5, getDate());
 			pstmt.setString(6, commentText);
 			pstmt.setInt(7, 1);
 			pstmt.executeUpdate();
+			PreparedStatement pstmt2 = conn.prepareStatement(SQL2);
 			return getNext();
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -79,21 +82,21 @@ public class CommentDAO {
 		}
 		return ""; //오류
 	}
-	public ArrayList<Comment> getList(int boardID, int bbsID){
-		String SQL = "SELECT * FROM comment WHERE boardID = ? AND bbsID= ? AND commentAvailable = 1 ORDER BY bbsID DESC"; 
+	public ArrayList<Comment> getList(int bbsID){
+		String SQL = "SELECT * FROM comment WHERE bbsID= ? AND commentAvailable = 1 ORDER BY bbsID DESC"; 
 		ArrayList<Comment> list = new ArrayList<Comment>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, boardID);
-			pstmt.setInt(2,  bbsID);
+			pstmt.setInt(1, bbsID);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Comment cmt = new Comment();
-				cmt.setCommentID(rs.getInt(2));
-				cmt.setBbsID(rs.getInt(3));
-				cmt.setUserID(rs.getString(4));
+				cmt.setCommentID(rs.getInt(1));
+				cmt.setBbsID(rs.getInt(2));
+				cmt.setUserID(rs.getString(3));
+				cmt.setUserName(rs.getString(4));
 				cmt.setCommentDate(rs.getString(5));
-				cmt.setCommentText(rs.getString(6));
+				cmt.setcommentText(rs.getString(6));
 				cmt.setCommentAvilable(rs.getInt(7));
 				list.add(cmt);
 			}
@@ -127,7 +130,7 @@ public class CommentDAO {
 				cmt.setBbsID(rs.getInt(3));
 				cmt.setUserID(rs.getString(4));
 				cmt.setCommentDate(rs.getString(5));
-				cmt.setCommentText(rs.getString(6));
+				cmt.setcommentText(rs.getString(6));
 				cmt.setCommentAvilable(rs.getInt(7));
 				return cmt;
 			}
@@ -142,6 +145,20 @@ public class CommentDAO {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, commentID);
 			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	public int getCommentCount(int bbsID) {
+		String SQL = "SELECT COUNT(COMMENTID) FROM COMMENT WHERE BBSID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, bbsID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

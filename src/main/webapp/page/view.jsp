@@ -4,6 +4,9 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="BBSService.CommentDAO"%>
+<%@ page import="BBSService.Comment"%>
+<%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -173,6 +176,16 @@
         border-radius: 5px;
         padding: 5px 15px;
       }
+      
+      .B1 {
+ 		margin-right: 4px;
+ 		float: right;
+		}
+		.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
     </style>
   </head>
   <header>
@@ -213,7 +226,7 @@
   		PrintWriter script = response.getWriter();
   		script.println("<script>");
   		script.println("alert('유효하지 않는 글입니다.')");
-  		script.println("location.href = 'bbs.jsp'");
+  		script.println("location.href = 'index.jsp'");
   		script.println("history.back()");
   		script.println("</script>");
   	}
@@ -228,7 +241,7 @@
           <h3><%= BBS.getBbstitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
             <!-- 작성자, 날짜 -->
-            <span>작성자:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span>
+            <span>작성자:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span><span> | 조회수:</span> <%= BBS.getBbscount() %><button type="submit" class="B1">글 수정</button><button type="submit" class="B1">글 삭제</button>
           </div>
           <div id="figure">
             <img
@@ -238,20 +251,58 @@
           </div>
           <p><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %>
           </p>
-          <div id="like"><span>좋아요</span><span>♡</span></div>
+          <div id="like"><span>좋아요 </span><span>♡</span></div>
         </div>
+
       </section>
       <!-- 댓글 -->
       <section class="comment_container">
         <div class="comment_number"><span><%=BBS.getBBSComentcount() %></span><span>개의 댓글</span></div>
-        <form action="" method="post">
+    <div id="comment">
+    	<table class="table table-striped" style="text-align: center;">
+					<tbody>
+								<%
+									CommentDAO commentDAO = new CommentDAO();
+									ArrayList<BBSService.Comment> list = commentDAO.getList(bbsID);
+									for (int i = 0; i < list.size(); i++) {
+								%>
+										<table class="table table-striped"
+											style="text-align: center;">
+											<tbody>
+												<tr>
+													<td align="left"><%=list.get(i).getUserName()%></td>
+
+													<td align="right"><%=list.get(i).getCommentDate().substring(0, 11) + list.get(i).getCommentDate().substring(11, 13)
+						+ "시" + list.get(i).getCommentDate().substring(14, 16) + "분"%></td>
+												</tr>
+
+												<tr>
+													<td align="left"><%=list.get(i).getcommentText()%></td>
+													<td align="right"><a
+														href="commentUpdate.jsp?bbsID=<%=bbsID%>&commentID="
+														class="btn btn-warning">수정</a> <a
+														onclick="return confirm('정말로 삭제하시겠습니까?')"
+														href="commentDeleteAction.jsp?bbsID=<%=bbsID%>&commentID="
+														class="btn btn-danger">삭제</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<%
+									}
+								%>
+							</tr>
+					</table>
+        <form method="post" action="CommentAction.jsp?bbsID=<%= bbsID %>" id="comment">
           <input
             type="text"
             placeholder="댓글을 입력하세요."
-            class="comment__form_input"
+            class="comment__form_input form-control"
+            name="commentText"
           />
           <div>
-            <button type="submit" class="button_style">댓글 등록</button>
+            <button type="submit" class="button_style form-control" value="댓글 등록">댓글 등록</button>
           </div>
         </form>
       </section>

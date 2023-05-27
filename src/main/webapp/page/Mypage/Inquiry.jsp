@@ -295,7 +295,7 @@ table.table2{
                         </tr>
                         <tr>
                             <td>ÆÄÀÏ Ã·ºÎ</td>
-                            <td><input type = ifile class="form-control" name = file size=10 maxlength=10></td>
+                            <td><input type = file class="form-control" name = file size=10 maxlength=10></td>
                             </tr>
                         </table>
                 </td>

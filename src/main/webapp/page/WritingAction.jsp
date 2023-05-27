@@ -80,7 +80,7 @@
   					}
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("location.href = 'RecipeBBS.jsp'");
+  					script.println("location.href = 'Mainpage/RecipeBBS.jsp'");
   					script.println("</script>");
   				}
   			}
