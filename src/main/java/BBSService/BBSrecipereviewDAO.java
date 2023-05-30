@@ -88,9 +88,37 @@ public class BBSrecipereviewDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	
+	public ArrayList<BBSrecipereview> getRandList() {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW ORDER BY RAND() LIMIT 3";
+		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BBSrecipereview BBSrecipereview = new BBSrecipereview();
+				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
+				BBSrecipereview.setBbstitle(rs.getString(2));
+				BBSrecipereview.setUserID(rs.getString(3));
+				BBSrecipereview.setUserName(rs.getString(4));
+				BBSrecipereview.setBbstype(rs.getString(5));
+				BBSrecipereview.setBbscontent(rs.getString(6));
+				BBSrecipereview.setBbsdate(rs.getString(7));
+				BBSrecipereview.setBbscount(rs.getInt(8));
+				BBSrecipereview.setBbslikeamount(rs.getInt(9));
+				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(10));
+				BBSrecipereview.setFilename(rs.getString(11));
+				BBSrecipereview.setBBSComentcount(rs.getInt(12));
+				list.add(BBSrecipereview);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 		
 	public ArrayList<BBSrecipereview> getList(int pageNumber) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID DESC LIMIT 10";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID DESC LIMIT 8";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -117,6 +145,26 @@ public class BBSrecipereviewDAO {
 		}
 		return list;
 	}
+	public ArrayList<BBSrecipereview> getManageList() {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW ORDER BY BBSID ASC";
+		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BBSrecipereview BBSrecipereview = new BBSrecipereview();
+				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
+				BBSrecipereview.setBbstitle(rs.getString(2));
+				BBSrecipereview.setUserName(rs.getString(4));
+				BBSrecipereview.setBbstype(rs.getString(5));;
+				BBSrecipereview.setBbsdate(rs.getString(7));
+				list.add(BBSrecipereview);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 	
 	public boolean nextPage(int pageNumber) {
 		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND BBSrecipereviewAvailable = 1";
@@ -132,8 +180,6 @@ public class BBSrecipereviewDAO {
 		}
 		return false;
 	}
-	
-	
 	
 	public BBSrecipereview getBBSrecipereview(int BBSrecipereviewID) {
 		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID = ?";
@@ -191,6 +237,7 @@ public class BBSrecipereviewDAO {
 		}
 		return -1; // 데이터베이스 오류
 	}
+	
 	public int updateBbsCount(int BBSCOMENTCOUNT, int BBSID) {
 		String SQL = "UPDATE BBSrecipereview SET BBSCOMENTCOUNT = ? WHERE BBSID = ?";
 		try {
@@ -202,6 +249,17 @@ public class BBSrecipereviewDAO {
 			e.printStackTrace();
 		}
 		return -1;
+	}
+	
+	public void updateBBShitCnt(int BBSID) {
+		String SQL = "UPDATE BBSrecipereview SET BBSCOUNT = (BBSCOUNT+1) WHERE BBSID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, BBSID);
+			pstmt.executeUpdate(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

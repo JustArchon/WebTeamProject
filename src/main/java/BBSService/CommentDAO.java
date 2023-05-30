@@ -50,7 +50,6 @@ public class CommentDAO {
 	}
 	public int write(int bbsID, String userID, String userName, String commentText) {
 		String SQL = "INSERT INTO comment VALUES(?, ?, ?, ?, ?, ?, ?)";
-		String SQL2 = "INSERT INTO comment VALUES(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
@@ -60,9 +59,7 @@ public class CommentDAO {
 			pstmt.setString(5, getDate());
 			pstmt.setString(6, commentText);
 			pstmt.setInt(7, 1);
-			pstmt.executeUpdate();
-			PreparedStatement pstmt2 = conn.prepareStatement(SQL2);
-			return getNext();
+			return pstmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -98,6 +95,27 @@ public class CommentDAO {
 				cmt.setCommentDate(rs.getString(5));
 				cmt.setcommentText(rs.getString(6));
 				cmt.setCommentAvilable(rs.getInt(7));
+				list.add(cmt);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list; //데이터베이스 오류
+	}
+	
+	public ArrayList<Comment> getManageList(){
+		String SQL = "SELECT * FROM comment ORDER BY COMMENTID ASC"; 
+		ArrayList<Comment> list = new ArrayList<Comment>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Comment cmt = new Comment();
+				cmt.setCommentID(rs.getInt(1));
+				cmt.setBbsID(rs.getInt(2));
+				cmt.setUserName(rs.getString(4));
+				cmt.setCommentDate(rs.getString(5));
+				cmt.setcommentText(rs.getString(6));
 				list.add(cmt);
 			}
 		}catch(Exception e) {

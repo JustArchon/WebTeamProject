@@ -222,7 +222,7 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">ฟภดร นน ธิม๖?</a></h1>
+      <h1 id="title"><a href="../index.jsp">ฟภดร นน ธิม๖?</a></h1>
     </div>
   </header>
   <body>

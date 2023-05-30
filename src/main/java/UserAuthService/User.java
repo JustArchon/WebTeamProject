@@ -8,7 +8,14 @@ public class User {
 	private String favoritefood;
 	private String hobbies;
 	private String role;
+	private String userjoindate;
 	private boolean candelposts;
+	public String getUserjoindate() {
+		return userjoindate;
+	}
+	public void setUserjoindate(String userjoindate) {
+		this.userjoindate = userjoindate;
+	}
 	public String getUserName() {
 		return userName;
 	}

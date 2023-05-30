@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="UserAuthService.User"%>
-<%@ page import="UserAuthService.UserDAO"%>
+<%@ page import="BBSService.Comment"%>
+<%@ page import="BBSService.CommentDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -266,23 +266,23 @@
             <tbody>
       <%
       int pageNumber = 1;
-      	UserDAO UserDAO = new UserDAO();
-		//ArrayList<User> list = UserDAO.getList();
-      //for(int i = 0; i < list.size(); i++){
+      CommentDAO CommentDAO = new CommentDAO();
+	  ArrayList<Comment> list = CommentDAO.getManageList();
+      for(int i = 0; i < list.size(); i++){
       %>
         <tr>
         <td class="title">
-        <a>1</a>
+        <a><%=list.get(i).getCommentID() %></a>
         </td>
-        <td class="id">admin</td>
-        <td class="nickname">admin</td>
-        <td class="email">admin</td>
-        <td class="gender">남</td>
+        <td class="id"><%=list.get(i).getcommentText() %></td>
+        <td class="nickname"><%=list.get(i).getUserName() %></td>
+        <td class="email"><%=list.get(i).getCommentDate() %></td>
+        <td class="gender">레시피 게시판</td>
         <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="바로가기"></td>
         <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
         </tr>
           	<%
-      		//}
+      		}
             %>
             </tbody>
         </table>

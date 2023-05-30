@@ -237,7 +237,7 @@
       <%
       int pageNumber = 1;
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getRandList();
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">

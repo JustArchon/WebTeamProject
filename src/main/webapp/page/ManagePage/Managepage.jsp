@@ -265,25 +265,25 @@
       <%
       int pageNumber = 1;
       	UserDAO UserDAO = new UserDAO();
-		//ArrayList<User> list = UserDAO.getList();
-      //for(int i = 0; i < list.size(); i++){
+		ArrayList<User> list = UserDAO.getManageList();
+      for(int i = 0; i < list.size(); i++){
       %>
         <tr>
         <td class="title">
-        <a>1</a>
+        <a><%=i %></a>
         </td>
-        <td class="id">admin</td>
-        <td class="nickname">admin</td>
-        <td class="email">admin@todayfood.co.kr</td>
-        <td class="gender">남</td>
-        <td class="date">2021/01/28</td>
-        <td class="role">관리자</td>
-        <td class="role">고기</td>
-        <td class="role">컴퓨터</td>
+        <td class="id"><%=list.get(i).getUserID() %></td>
+        <td class="nickname"><%=list.get(i).getUserName() %></td>
+        <td class="email"><%=list.get(i).getUserEmail() %></td>
+        <td class="gender"><%=list.get(i).getUserGender() %></td>
+        <td class="date"><%=list.get(i).getUserjoindate() %></td>
+        <td class="role"><%=list.get(i).getRole() %></td>
+        <td class="role"><%=list.get(i).getFavoritefood() %></td>
+        <td class="role"><%=list.get(i).getHobbies() %></td>
         <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
         </tr>
           	<%
-      		//}
+      		}
             %>
             </tbody>
         </table>

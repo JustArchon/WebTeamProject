@@ -107,7 +107,7 @@ public class UserDAO {
         return -1;
     }
 	
-/*	public ArrayList<User> getList() {
+	public ArrayList<User> getManageList() {
 		String SQL = "SELECT * FROM MEMBER ORDER BY ID ASC";
 		ArrayList<User> list = new ArrayList<User>();
 		try {
@@ -115,17 +115,14 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				User User = new User();
-				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
-				UsersetBbstitle(rs.getString(2));
-				BBSrecipereview.setUserID(rs.getString(3));
-				BBSrecipereview.setBbstype(rs.getString(4));
-				BBSrecipereview.setBbscontent(rs.getString(5));
-				BBSrecipereview.setBbsdate(rs.getString(6));
-				BBSrecipereview.setBbscount(rs.getInt(7));
-				BBSrecipereview.setBbslikeamount(rs.getInt(8));
-				BBSrecipereview.setFilename(rs.getString(10));
-				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(9));
-				BBSrecipereview.setBBSComentcount(rs.getInt(11));
+				User.setUserID(rs.getString(3));
+				User.setUserName(rs.getString(2));
+				User.setUserEmail(rs.getString(5));
+				User.setUserGender(rs.getString(6));
+				User.setUserjoindate(rs.getString(7));
+				User.setRole(rs.getString(8));
+				User.setFavoritefood(rs.getString(9));
+				User.setHobbies(rs.getString(10));
 				list.add(User);
 			}			
 		} catch(Exception e) {
@@ -133,6 +130,6 @@ public class UserDAO {
 		}
 		return list;
 	}
-	*/
+	
 
 }

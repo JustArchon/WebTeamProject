@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="UserAuthService.User"%>
-<%@ page import="UserAuthService.UserDAO"%>
+<%@ page import="BBSService.BBSrecipereview"%>
+<%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -266,23 +266,23 @@
             <tbody>
       <%
       int pageNumber = 1;
-      	UserDAO UserDAO = new UserDAO();
-		//ArrayList<User> list = UserDAO.getList();
-      //for(int i = 0; i < list.size(); i++){
+      BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
+      ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getManageList();
+      for(int i = 0; i < list.size(); i++){
       %>
         <tr>
         <td class="title">
-        <a>1</a>
+        <a><%=list.get(i).getBBSrecipereviewID() %></a>
         </td>
-        <td class="id">admin</td>
-        <td class="nickname">admin</td>
-        <td class="date">2021/01/28</td>
-        <td class="type">레시피게시판</td>
-        <td class="type">한식</td>
+        <td class="id"><%=list.get(i).getBbstitle() %></td>
+        <td class="nickname"><%=list.get(i).getUserName() %></td>
+        <td class="date"><%=list.get(i).getBbsdate() %></td>
+        <td class="type">레시피 게시판</td>
+        <td class="type"><%=list.get(i).getBbstype() %></td>
         <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
         </tr>
           	<%
-      		//}
+      		}
             %>
             </tbody>
         </table>

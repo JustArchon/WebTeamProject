@@ -187,6 +187,18 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
+      #textwrite {
+      margin-right: 100px;
+        float: right;
+        }
+      #NextPage {
+      margin-left: 100px;
+        float: left;
+        }
+      #FormerPage {
+      margin-left: 50px;
+        float: left;
+        }
     </style>
   </head>
   <header>
@@ -266,6 +278,9 @@
             %>
       </div>
     </section>
+    <input type="button" id="NextPage" onclick="location.href='../Writing.jsp' " name="btn1" value="다음">
+    <input type="button" id="FormerPage" onclick="location.href='../Writing.jsp' " name="btn1" value="이전">
+    <input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>
     <div id="footer_box">
