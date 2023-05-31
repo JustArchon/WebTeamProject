@@ -242,7 +242,7 @@
           <h3><%= BBS.getBbstitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
             <!-- 작성자, 날짜 -->
-            <span>작성자:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span><span> | 조회수:</span> <%= BBS.getBbscount() %><span> | 좋아요 수:</span> <%= BBS.getBbslikeamount() %><button type="submit" class="B1">글 수정</button><button type="submit" class="B1">글 삭제</button>
+            <span>작성자:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>년 <span><%= BBS.getBbsdate().substring(5,7) %></span>월<span> <%= BBS.getBbsdate().substring(8,10) %></span>일 <span><%= BBS.getBbsdate().substring(11, 13) + "시" + BBS.getBbsdate().substring(14, 16) + "분 " %></span><span> | 조회수:</span> <%= BBS.getBbscount() %><span> | 좋아요 수:</span> <%= BBS.getBbslikeamount() %><button type="submit" class="B1" onclick="location.href='Modify.jsp?bbsID=<%=bbsID%>'">글 수정</button><button type="submit" class="B1" onclick="location.href='deleteAction.jsp?bbsID=<%=bbsID%>'">글 삭제</button>
           </div>
           <div id="figure">
             <img

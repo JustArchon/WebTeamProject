@@ -194,6 +194,7 @@
     <%
 	String userid = (String)session.getAttribute("userID");
     String username = (String)session.getAttribute("userName");
+    String userrole = (String)session.getAttribute("userRole");
     
     if(userid != null && userid.equals("admin")){
     %>

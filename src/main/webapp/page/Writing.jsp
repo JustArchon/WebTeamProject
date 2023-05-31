@@ -8,18 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
     <style>
-      body {
+body {
+        height: 100vh;
         margin: 0;
       }
-      main {
-        margin: 0px 300px;
-      }
-      .border_bottom {
-        border-bottom: solid 1px #cccccc;
-      }
-
-      .white {
-        color: black;
+      img {
+        width: 100%;
       }
       a {
         text-decoration: none;
@@ -56,7 +50,7 @@
         color: black;
         text-align: center;
         font-family: "D2Coding";
-        font-size: 36px;
+        font-size: 26px;
       }
       #sub_menus {
         float: left;
@@ -94,13 +88,34 @@
       }
       #logo {
         float: left;
-        margin: 0px 30px;
+        margin: 0px 10px;
       }
       footer {
         width: 100%;
         height: 150px;
         margin-top: 30px;
         background: rgb(255, 255, 255);
+      }
+	.title_container {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+	  font-size: 35px;
+	  font-weight: 500;
+	}
+      #top_menu {
+        padding: 15px;
+      }
+      footer {
+        display: flex;
+        height: 200px;
+        align-items: end;
+        background-color: #cccccc;
+        margin-top: 150px;
+      }
+      #address {
+        margin-right: 50px;
       }
       .title_container {
         margin-left: 50px;
@@ -207,6 +222,7 @@ height: 50px;
                 line-height: 1.5;
                 border-top: 1px solid #ccc;
                 margin : 20px 10px;
+                margin-left:auto;margin-right:auto;
         }
         table.table2 tr {
                  width: 50px;

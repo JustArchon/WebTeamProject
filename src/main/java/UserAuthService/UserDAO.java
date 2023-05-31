@@ -84,7 +84,22 @@ public class UserDAO {
             e.printStackTrace();
         }
 		return username;
-		
+	} 
+	
+	public String getRole(String userID) {
+		String userrole = null;
+		String SQL = "SELECT ROLE FROM MEMBER WHERE USERID LIKE ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				userrole = rs.getString(1);
+			}
+		} catch(Exception e) {
+            e.printStackTrace();
+        }
+		return userrole;
 	} 
 	
 	public int update(User user) {

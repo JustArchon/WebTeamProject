@@ -30,9 +30,11 @@
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.login(user.getUserID(), user.getUserPassword());
 		String username = userDAO.getName(user.getUserID());
+		String userrole = userDAO.getRole(user.getUserID());
 		if (result == 1) {
 			session.setAttribute("userID", user.getUserID());
 			session.setAttribute("userName", username);
+			session.setAttribute("userRole", userrole);
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
 			script.println("location.href = 'index.jsp'");

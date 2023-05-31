@@ -226,7 +226,8 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int delete(int BBSrecipereviewID) {
-		String SQL = "UPDATE BBSrecipereview SET BBSrecipereviewAvailable = 0 WHERE BBSID = ?";
+		//String SQL = "UPDATE BBSrecipereview SET BBSrecipereviewAvailable = 0 WHERE BBSID = ?";
+		String SQL = "DELETE FROM BBSRECIPEREVIEW WHERE BBSID =?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, BBSrecipereviewID);
