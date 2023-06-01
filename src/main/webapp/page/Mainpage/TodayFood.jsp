@@ -241,7 +241,7 @@
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
-          <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
+          <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
                 src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg

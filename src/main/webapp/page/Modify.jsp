@@ -330,7 +330,7 @@ height: 50px;
 
                         <tr>
                             <td>사진 첨부</td>
-                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10></td>
+                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10 value ="../bbsUpload/<%=bbsID %><%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>게시글의사진.jpg"></td>
                             </tr>
                         </table>
                 </td>
