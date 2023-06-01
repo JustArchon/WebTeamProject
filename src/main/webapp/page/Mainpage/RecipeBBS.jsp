@@ -240,10 +240,10 @@
   <body>
     <section class="main">
       <div class="header">
-        <a href="TodayFood.jsp"><h3 class="main__header">오늘의 메뉴</h3></a>
-        <a href="Recentlyposts.jsp"><h3 class="main__header">최신 글</h3></a>
-        <a href="RecipeBBS.jsp"><h3 class="main__header">레시피 게시판</h3></a>
-        <a href="#"><h3 class="main__header">검색하기</h3></a>
+        <a href="TodayFood.jsp"><h3 class="main__header">&#x1F44D오늘의 메뉴</h3></a>
+        <a href="Recentlyposts.jsp"><h3 class="main__header">&#x1F550 최신 글</h3></a>
+        <a href="RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 레시피 게시판</h3></a>
+        <a href="#"><h3 class="main__header">&#x1F50E검색하기</h3></a>
       </div>
       <div class="grid_container">
 		<%

@@ -244,7 +244,7 @@
   <body>
     <section class="main">
       <div class="header">
-        <a href="mypage.jsp"><h3 class="main__header">내 게시글</h3></a>
+        <a href="mypage.jsp"><h3 class="main__header">&#x1F4CC내 게시글</h3></a>
         <a href="userUpdate.jsp"><h3 class="main__header">회원 정보 수정</h3></a>
         <a href="Inquirylist.jsp"><h3 class="main__header">내 문의목록</h3></a>
         <a href="Inquiry.jsp"><h3 class="main__header">문의 하기</h3></a>
