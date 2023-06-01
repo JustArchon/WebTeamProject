@@ -301,7 +301,7 @@ height: 50px;
       <section>
         <div id="main_contents">
            <h3>게시글 수정</h3>
-            <form method="post" encType = "multipart/form-data" action="ModifyAction.jsp" id="writing" accept-charset="UTF-8">
+            <form method="post" encType = "multipart/form-data" action="ModifyAction.jsp?bbsID=<%=bbsID%>" id="writing" accept-charset="UTF-8">
             <table  style="padding-top: 1px" align = left width=1000 border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
@@ -325,12 +325,12 @@ height: 50px;
  
                         <tr>
                         <td>내용</td>
-                        <td><textarea class="form-control" name = "bbscontent" cols=85 rows=15><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></textarea></td>
+                        <td><textarea class="form-control" name = "bbscontent" cols=85 rows=15><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "") %></textarea></td>
                         </tr>
 
                         <tr>
                             <td>사진 첨부</td>
-                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10 value ="../bbsUpload/<%=bbsID %><%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>게시글의사진.jpg"></td>
+                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10 ></td>
                             </tr>
                         </table>
                 </td>

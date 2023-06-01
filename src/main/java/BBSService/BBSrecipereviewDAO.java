@@ -210,12 +210,28 @@ public class BBSrecipereviewDAO {
 		return null;
 	}
 	
-	public int update(int BBSrecipereviewID, String BBSrecipereviewTitle, String BBSrecipereviewContent) {
+	public int update(int BBSrecipereviewID, BBSrecipereview to) {
+		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ?, FILENAME = ? WHERE BBSID =?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(2, to.getBbstitle());
+			pstmt.setString(6, to.getBbscontent());
+			pstmt.setString(3, to.getFilename());
+			pstmt.setInt(4, BBSrecipereviewID);
+			
+			return pstmt.executeUpdate(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
+	public int updateNoImage(int BBSrecipereviewID, BBSrecipereview to) {
 		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ? WHERE BBSID =?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, BBSrecipereviewTitle);
-			pstmt.setString(2, BBSrecipereviewContent);
+			pstmt.setString(2, to.getBbstitle());
+			pstmt.setString(6, to.getBbscontent());
 			pstmt.setInt(3, BBSrecipereviewID);
 			
 			return pstmt.executeUpdate(); 
