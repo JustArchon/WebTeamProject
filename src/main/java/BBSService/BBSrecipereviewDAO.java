@@ -211,11 +211,11 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int update(int BBSrecipereviewID, BBSrecipereview to) {
-		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ?, FILENAME = ? WHERE BBSID =?";
+		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSTITLE = ?, BBSContent = ?, FILENAME = ? WHERE BBSID =?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(2, to.getBbstitle());
-			pstmt.setString(6, to.getBbscontent());
+			pstmt.setString(1, to.getBbstitle());
+			pstmt.setString(2, to.getBbscontent());
 			pstmt.setString(3, to.getFilename());
 			pstmt.setInt(4, BBSrecipereviewID);
 			
@@ -227,11 +227,11 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public int updateNoImage(int BBSrecipereviewID, BBSrecipereview to) {
-		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSrecipereviewTitle = ?, BBSrecipereviewContent = ? WHERE BBSID =?";
+		String SQL = "UPDATE BBSRECIPEREVIEW SET BBSTITLE = ?, BBSContent = ? WHERE BBSID =?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(2, to.getBbstitle());
-			pstmt.setString(6, to.getBbscontent());
+			pstmt.setString(1, to.getBbstitle());
+			pstmt.setString(2, to.getBbscontent());
 			pstmt.setInt(3, BBSrecipereviewID);
 			
 			return pstmt.executeUpdate(); 
