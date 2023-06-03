@@ -260,7 +260,7 @@ table.table2{
         <a href="Inquiry.jsp"><h3 class="main__header">문의 하기</h3></a>
       </div>
             <h3>문의하기</h3>
-            <form method="post" action="InquiryContactAction.jsp" id="InquiryContact">
+            <form method="post" encType = "multipart/form-data" action="InquiryAction.jsp" id="InquiryContact" accept-charset="UTF-8">
             <table style="padding-top: 1px" align = left border=0 cellpadding=2 >
                 <table class = "table2">
                         <tr>
@@ -272,9 +272,9 @@ table.table2{
                             <td>문의 유형</td>
                             <td>
                                 <select id="itype" class="form-control" name = 'itype'>
-                                    <option value="1">유저 신고</option>
-                                    <option value="2">계정 관련사항</option>
-                                    <option value="3">건의 사항</option>
+                                    <option value="유저 신고">유저 신고</option>
+                                    <option value="계정 관련사항">계정 관련사항</option>
+                                    <option value="건의 사항">건의 사항</option>
                                 </select>
                             </td>
                             </tr>
@@ -288,14 +288,9 @@ table.table2{
                         <td>문의 내용</td>
                         <td><textarea name = icontent class="form-control" cols=85 rows=15></textarea></td>
                         </tr>
- 
-                        <tr>
-                        <td>비밀번호</td>
-                        <td><input type = ipassword class="form-control" name = pw size=10 maxlength=10></td>
-                        </tr>
                         <tr>
                             <td>파일 첨부</td>
-                            <td><input type = file class="form-control" name = file size=10 maxlength=10></td>
+                            <td><input type = file class="form-control" name = "upload" size=10 maxlength=10></td>
                             </tr>
                         </table>
                 </td>
@@ -305,7 +300,7 @@ table.table2{
         	<input type="submit" class="btn btn-primary form-control" value="문의하기">
          </center>
          </form>
-	<input type="button" id="textwrite" onclick="location.href='Main.html'" name="btn1" value="메인 화면 >">
+	<input type="button" id="textwrite" onclick="location.href='../index.jsp'" name="btn1" value="메인 화면 >">
     </section>
   </body>
   <footer>

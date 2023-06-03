@@ -144,9 +144,10 @@ public class CommentDAO {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Comment cmt = new Comment();
-				cmt.setCommentID(rs.getInt(2));
-				cmt.setBbsID(rs.getInt(3));
-				cmt.setUserID(rs.getString(4));
+				cmt.setCommentID(rs.getInt(1));
+				cmt.setBbsID(rs.getInt(2));
+				cmt.setUserID(rs.getString(3));
+				cmt.setUserName(rs.getString(4));
 				cmt.setCommentDate(rs.getString(5));
 				cmt.setcommentText(rs.getString(6));
 				cmt.setCommentAvilable(rs.getInt(7));

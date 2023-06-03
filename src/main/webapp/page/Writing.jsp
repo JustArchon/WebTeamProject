@@ -276,12 +276,12 @@ height: 50px;
                             <td>음식 분류</td>
                             <td>
                                 <select name = 'bbstype' class="form-control">
-                                    <option value="koreanfood">한식</option>
-                                    <option value="westernfood">양식</option>
-                                    <option value="chinafood">중식</option>
-                                    <option value="simplemeal">간단식</option>
-                                    <option value="diet">다이어트식</option>
-                                    <option value="dessert">디저트</option>
+                                    <option value="한식">한식</option>
+                                    <option value="양식">양식</option>
+                                    <option value="중식">중식</option>
+                                    <option value="간단식">간단식</option>
+                                    <option value="다이어트식">다이어트식</option>
+                                    <option value="디저트">디저트</option>
                                 </select>
                             </td>
                             </tr>

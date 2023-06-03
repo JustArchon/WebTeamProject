@@ -5,9 +5,10 @@ public class Inquiry {
 	private String ititle;
 	private String iemail;
 	private String userID;
+	private String userName;
 	private String InquiryDate;
+	private String itype;
 	private String icontent;
-	private String ipassword;
 	private String InquiryFile;
 	private int InquiryAvailable;
 	public int getInquiryID() {
@@ -40,12 +41,6 @@ public class Inquiry {
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
-	public String getIpassword() {
-		return ipassword;
-	}
-	public void setIpassword(String ipassword) {
-		this.ipassword = ipassword;
-	}
 	public String getIcontent() {
 		return icontent;
 	}
@@ -63,6 +58,18 @@ public class Inquiry {
 	}
 	public void setInquiryAvailable(int inquiryAvailable) {
 		InquiryAvailable = inquiryAvailable;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getItype() {
+		return itype;
+	}
+	public void setItype(String itype) {
+		this.itype = itype;
 	}
 	
 }

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="UserAuthService.User"%>
-<%@ page import="UserAuthService.UserDAO"%>
+<%@ page import="BBSService.Inquiry" %>
+<%@ page import="BBSService.InquiryDAO" %>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -273,22 +273,22 @@
             <tbody>
       <%
       int pageNumber = 1;
-      	UserDAO UserDAO = new UserDAO();
-		//ArrayList<User> list = UserDAO.getList();
-      //for(int i = 0; i < list.size(); i++){
+      	InquiryDAO InquiryDAO = new InquiryDAO();
+		ArrayList<Inquiry> list = InquiryDAO.getMyList(pageNumber, userid);
+      for(int i = 0; i < list.size(); i++){
       %>
         <tr>
         <td class="title">
-        <a>1</a>
+        <a><%=list.get(i).getInquiryID() %></a>
         </td>
-        <td class="id">admin</td>
-        <td class="nickname">admin</td>
-        <td class="date">2021/01/28</td>
-        <td class="type">건의사항</td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
+        <td class="id"><%=list.get(i).getItitle() %></td>
+        <td class="nickname"><%=list.get(i).getUserName() %></td>
+        <td class="date"><%=list.get(i).getInquiryDate() %></td>
+        <td class="type"><%=list.get(i).getItype() %></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="바로가기"></td>
         </tr>
           	<%
-      		//}
+      		}
             %>
             </tbody>
         </table>

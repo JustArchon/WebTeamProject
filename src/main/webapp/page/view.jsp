@@ -279,11 +279,11 @@
 
 												<tr>
 													<td align="left"><%=list.get(i).getcommentText()%></td>
-													<td align="right"><a
-														href="commentUpdate.jsp?bbsID=<%=bbsID%>&commentID="
-														class="btn btn-warning">수정</a> <a
+													<td align="right">
+													<a type="button" onclick="nwindow(<%=bbsID %>,<%=list.get(i).getCommentID()%>)" class="btn-primary">수정</a>
+													<a
 														onclick="return confirm('정말로 삭제하시겠습니까?')"
-														href="commentDeleteAction.jsp?bbsID=<%=bbsID%>&commentID="
+														href="CommentDeleteAction.jsp?bbsID=<%=bbsID%>&commentID=<%=list.get(i).getCommentID()%>"
 														class="btn btn-danger">삭제</a></td>
 												</tr>
 											</tbody>
@@ -308,6 +308,13 @@
         </form>
       </section>
     </main>
+    <script type="text/javascript">
+	function nwindow(bbsID,commentID){
+		window.name = "commentParant";
+		var url= "CommentUpdate.jsp?bbsID="+bbsID+"&commentID="+commentID;
+		window.open(url,"","width=600,height=230,left=300");
+	}
+	</script>
   </body>
   <footer>
     <div id="footer_box">

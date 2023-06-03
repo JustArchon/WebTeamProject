@@ -51,16 +51,33 @@ public class InquiryDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
-	public int write(String InquiryTitle, String userID, String InquiryContent) {
-		String SQL = "INSERT INTO Inquiry VALUES (?, ?, ?, ?, ?, ?)";
+	public int getPresent() {
+		String SQL = "SELECT InquiryID FROM Inquiry ORDER BY InquiryID DESC";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
+	public int write(Inquiry to) {
+		String SQL = "INSERT INTO Inquiry VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, InquiryTitle);
-			pstmt.setString(3, userID);
-			pstmt.setString(4, getDate());
-			pstmt.setString(5, InquiryContent);
-			pstmt.setInt(6, 1);
+			pstmt.setString(2, to.getItitle());
+			pstmt.setString(3, to.getUserID());
+			pstmt.setString(4, to.getUserName());
+			pstmt.setString(5, to.getItype());
+			pstmt.setString(6, to.getIcontent());
+			pstmt.setString(7, getDate());
+			pstmt.setInt(8, 1);
+			pstmt.setString(9, to.getInquiryFile());
 			
 			return pstmt.executeUpdate(); 
 		} catch(Exception e) {
@@ -84,6 +101,33 @@ public class InquiryDAO {
 				Inquiry.setInquiryDate(rs.getString(4));
 				Inquiry.setIcontent(rs.getString(5));
 				Inquiry.setInquiryAvailable(rs.getInt(1));
+				list.add(Inquiry);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public ArrayList<Inquiry> getMyList(int pageNumber, String UserID) {
+		String SQL = "SELECT * FROM Inquiry WHERE InquiryID < ? AND InquiryAvailable = 1 AND UserID = ? ORDER BY InquiryID DESC LIMIT 10";
+		ArrayList<Inquiry> list = new ArrayList<Inquiry>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber -1) * 10);
+			pstmt.setString(2, UserID);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Inquiry Inquiry = new Inquiry();
+				Inquiry.setInquiryID(rs.getInt(1));
+				Inquiry.setItitle(rs.getString(2));
+				Inquiry.setUserID(rs.getString(3));
+				Inquiry.setUserName(rs.getString(4));
+				Inquiry.setItype(rs.getString(5));
+				Inquiry.setIcontent(rs.getString(6));
+				Inquiry.setInquiryDate(rs.getString(7));
+				Inquiry.setInquiryAvailable(rs.getInt(8));
+				Inquiry.setInquiryFile(rs.getString(9));
 				list.add(Inquiry);
 			}			
 		} catch(Exception e) {
