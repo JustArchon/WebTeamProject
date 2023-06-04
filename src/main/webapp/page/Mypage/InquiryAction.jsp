@@ -81,7 +81,7 @@
   					}
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("location.href = 'mypage.jsp'");
+  					script.println("location.href = 'Inquirylist.jsp'");
   					script.println("</script>");
   				}
   			}

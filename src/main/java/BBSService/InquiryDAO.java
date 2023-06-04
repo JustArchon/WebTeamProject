@@ -66,18 +66,19 @@ public class InquiryDAO {
 	}
 	
 	public int write(Inquiry to) {
-		String SQL = "INSERT INTO Inquiry VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO Inquiry VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext());
-			pstmt.setString(2, to.getItitle());
-			pstmt.setString(3, to.getUserID());
-			pstmt.setString(4, to.getUserName());
-			pstmt.setString(5, to.getItype());
-			pstmt.setString(6, to.getIcontent());
-			pstmt.setString(7, getDate());
-			pstmt.setInt(8, 1);
-			pstmt.setString(9, to.getInquiryFile());
+			pstmt.setString(2, to.getIemail());
+			pstmt.setString(3, to.getItitle());
+			pstmt.setString(4, to.getUserID());
+			pstmt.setString(5, to.getUserName());
+			pstmt.setString(6, to.getItype());
+			pstmt.setString(7, to.getIcontent());
+			pstmt.setString(8, getDate());
+			pstmt.setInt(9, 1);
+			pstmt.setString(10, to.getInquiryFile());
 			
 			return pstmt.executeUpdate(); 
 		} catch(Exception e) {
@@ -96,11 +97,15 @@ public class InquiryDAO {
 			while (rs.next()) {
 				Inquiry Inquiry = new Inquiry();
 				Inquiry.setInquiryID(rs.getInt(1));
-				Inquiry.setItitle(rs.getString(2));
-				Inquiry.setUserID(rs.getString(3));
-				Inquiry.setInquiryDate(rs.getString(4));
-				Inquiry.setIcontent(rs.getString(5));
-				Inquiry.setInquiryAvailable(rs.getInt(1));
+				Inquiry.setIemail(rs.getString(2));
+				Inquiry.setItitle(rs.getString(3));
+				Inquiry.setUserID(rs.getString(4));
+				Inquiry.setUserName(rs.getString(5));
+				Inquiry.setItype(rs.getString(6));
+				Inquiry.setIcontent(rs.getString(7));
+				Inquiry.setInquiryDate(rs.getString(8));
+				Inquiry.setInquiryAvailable(rs.getInt(9));
+				Inquiry.setInquiryFile(rs.getString(10));
 				list.add(Inquiry);
 			}			
 		} catch(Exception e) {
@@ -120,14 +125,15 @@ public class InquiryDAO {
 			while (rs.next()) {
 				Inquiry Inquiry = new Inquiry();
 				Inquiry.setInquiryID(rs.getInt(1));
-				Inquiry.setItitle(rs.getString(2));
-				Inquiry.setUserID(rs.getString(3));
-				Inquiry.setUserName(rs.getString(4));
-				Inquiry.setItype(rs.getString(5));
-				Inquiry.setIcontent(rs.getString(6));
-				Inquiry.setInquiryDate(rs.getString(7));
-				Inquiry.setInquiryAvailable(rs.getInt(8));
-				Inquiry.setInquiryFile(rs.getString(9));
+				Inquiry.setIemail(rs.getString(2));
+				Inquiry.setItitle(rs.getString(3));
+				Inquiry.setUserID(rs.getString(4));
+				Inquiry.setUserName(rs.getString(5));
+				Inquiry.setItype(rs.getString(6));
+				Inquiry.setIcontent(rs.getString(7));
+				Inquiry.setInquiryDate(rs.getString(8));
+				Inquiry.setInquiryAvailable(rs.getInt(9));
+				Inquiry.setInquiryFile(rs.getString(10));
 				list.add(Inquiry);
 			}			
 		} catch(Exception e) {
@@ -161,11 +167,15 @@ public class InquiryDAO {
 			if (rs.next()) {
 				Inquiry Inquiry = new Inquiry();
 				Inquiry.setInquiryID(rs.getInt(1));
-				Inquiry.setItitle(rs.getString(2));
-				Inquiry.setUserID(rs.getString(3));
-				Inquiry.setInquiryDate(rs.getString(4));
-				Inquiry.setIcontent(rs.getString(5));
-				Inquiry.setInquiryAvailable(rs.getInt(1));
+				Inquiry.setIemail(rs.getString(2));
+				Inquiry.setItitle(rs.getString(3));
+				Inquiry.setUserID(rs.getString(4));
+				Inquiry.setUserName(rs.getString(5));
+				Inquiry.setItype(rs.getString(6));
+				Inquiry.setIcontent(rs.getString(7));
+				Inquiry.setInquiryDate(rs.getString(8));
+				Inquiry.setInquiryAvailable(rs.getInt(9));
+				Inquiry.setInquiryFile(rs.getString(10));
 				return Inquiry;
 			}			
 		} catch(Exception e) {

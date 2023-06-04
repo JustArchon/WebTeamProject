@@ -285,7 +285,7 @@
         <td class="nickname"><%=list.get(i).getUserName() %></td>
         <td class="date"><%=list.get(i).getInquiryDate() %></td>
         <td class="type"><%=list.get(i).getItype() %></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="바로가기"></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Inquiryview.jsp?InquiryID=<%= list.get(i).getInquiryID() %>' " name="btn1" value="바로가기"></td>
         </tr>
           	<%
       		}
