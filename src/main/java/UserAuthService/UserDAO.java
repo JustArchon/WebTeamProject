@@ -122,6 +122,19 @@ public class UserDAO {
         return -1;
     }
 	
+	public int delete(String userID) {
+		String SQL = "DELETE FROM MEMBER WHERE USERID =?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, userID);
+			
+			return pstmt.executeUpdate(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
 	public ArrayList<User> getManageList() {
 		String SQL = "SELECT * FROM MEMBER ORDER BY ID ASC";
 		ArrayList<User> list = new ArrayList<User>();

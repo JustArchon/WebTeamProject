@@ -263,6 +263,17 @@
             </thead>
             <tbody>
       <%
+      String userID = null;
+		String userRole = null;
+		String admin = "Admin";
+		if(session.getAttribute("userID") != null){	
+			userID = (String) session.getAttribute("userID");
+		}
+		out.print(userID);
+		
+		if(session.getAttribute("userRole") != null){	
+			userRole = (String) session.getAttribute("userRole");
+		}
       int pageNumber = 1;
       	UserDAO UserDAO = new UserDAO();
 		ArrayList<User> list = UserDAO.getManageList();
@@ -280,9 +291,19 @@
         <td class="role"><%=list.get(i).getRole() %></td>
         <td class="role"><%=list.get(i).getFavoritefood() %></td>
         <td class="role"><%=list.get(i).getHobbies() %></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="°ü¸®"></td>
-        </tr>
+        <%
+        if(list.get(i).getUserID().equals("admin")){
+        %>
+        <td class="role"></td>
+        <%
+        }else{
+        %>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../deleteMemberAction.jsp?userid=<%=list.get(i).getUserID()%>' " name="btn1" value="Å»Åð"></td>
           	<%
+      		}
+            %>
+            </tr>
+            <%
       		}
             %>
             </tbody>
