@@ -3,6 +3,7 @@ package BBSService;
 public class Likey {
 	private String userID;
 	private int bbsID;
+	private int userLIKE;
 	public String getUserID() {
 		return userID;
 	}
@@ -14,5 +15,11 @@ public class Likey {
 	}
 	public void setBbsID(int bbsID) {
 		this.bbsID = bbsID;
+	}
+	public int getUserLIKE() {
+		return userLIKE;
+	}
+	public void setUserLIKE(int userLIKE) {
+		this.userLIKE = userLIKE;
 	}
 }

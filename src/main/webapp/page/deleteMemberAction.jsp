@@ -68,7 +68,7 @@ request.setCharacterEncoding("UTF-8");
 				script.println("location.href = 'index.jsp'");
 				script.println("</script>");	
 			}
-
 	%>
+	
 </body>
 </html>

@@ -278,5 +278,18 @@ public class BBSrecipereviewDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int updatelikeCount(int BBSLIKECOUNT, int BBSID) {
+		String SQL = "UPDATE BBSrecipereview SET BBSLIKEAMOUNT = ? WHERE BBSID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, BBSLIKECOUNT);
+			pstmt.setInt(2, BBSID);
+			return pstmt.executeUpdate(); 
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
 
 }

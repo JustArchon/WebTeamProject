@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<%@ page import="BBSService.BBSrecipereview"%>
-<%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="UserAuthService.User"%>
+<%@ page import="UserAuthService.UserDAO"%>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,8 +247,7 @@
 		</div>
 		<hr>
 		<div>
-			<label for="inputId">아이디: </label>
-			<input id="inputId" type="text" required name="userID">
+			<label for="inputId">아이디: <%= userid%></label>
 		</div>
 		<hr>
 		<div>

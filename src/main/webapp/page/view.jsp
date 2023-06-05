@@ -231,8 +231,8 @@
   		script.println("</script>");
   	}
   	BBSrecipereview BBS = new BBSrecipereviewDAO().getBBSrecipereview(bbsID);
-  	BBSrecipereviewDAO BBS2 = new BBSrecipereviewDAO();
-  	BBS2.updateBBShitCnt(bbsID);
+  	BBSrecipereviewDAO BBSdao = new BBSrecipereviewDAO();
+  	BBSdao.updateBBShitCnt(bbsID);
   	//String real = "C:\\Users\\User\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamProject\\bbsUpload";
   	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"게시글의사진.jpg");
   %>
@@ -252,7 +252,13 @@
           </div>
           <p><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %>
           </p>
-          <div id="like"><span>좋아요 </span><span>♡</span></div>
+          <div id="like"><span onclick="location.href='LikeAction.jsp?bbsID=<%=bbsID%>'">좋아요 </span>
+          <% %>
+          <span>
+          ♡
+          </span>
+          
+          </div>
         </div>
 
       </section>
