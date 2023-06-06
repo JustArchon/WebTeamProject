@@ -203,6 +203,14 @@
         	margin: 10px 0;
         	width: 100%;
         }
+       #NextPage {
+      display :inline-block;
+      	margin:auto
+        }
+      #FormerPage {
+       display :inline-block;
+      	margin:auto
+        }
     </style>
   </head>
   <header>
@@ -264,6 +272,9 @@
             <tbody>
       <%
       int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
       	InquiryDAO InquiryDAO = new InquiryDAO();
 		ArrayList<Inquiry> list = InquiryDAO.getList(pageNumber);
       for(int i = 0; i < list.size(); i++){
@@ -285,6 +296,20 @@
         </table>
        </div>
     </section>
+        <div style=" text-align: center;">
+        <%
+		if (pageNumber != 1) {
+		%>
+    <input type="button" id="FormerPage" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+    	<%
+		}
+    	if (InquiryDAO.nextPage(pageNumber + 1)) {
+		%>
+    <input type="button" id="NextPage" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+    	<%
+		}
+		%>
+  	</div>
   </body>
   <footer>
     <div id="footer_box">

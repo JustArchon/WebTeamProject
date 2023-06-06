@@ -203,6 +203,14 @@
         	margin: 10px 0;
         	width: 100%;
         }
+      #NextPage {
+      display :inline-block;
+      	margin:auto
+        }
+      #FormerPage {
+       display :inline-block;
+      	margin:auto
+        }
     </style>
   </head>
   <header>
@@ -266,8 +274,11 @@
             <tbody>
       <%
       int pageNumber = 1;
+      if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
       BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-      ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getManageList();
+      ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getManageList(pageNumber);
       for(int i = 0; i < list.size(); i++){
       %>
         <tr>
@@ -279,7 +290,7 @@
         <td class="date"><%=list.get(i).getBbsdate() %></td>
         <td class="type">레시피 게시판</td>
         <td class="type"><%=list.get(i).getBbstype() %></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>' " name="btn1" value="바로가기"></td>
         </tr>
           	<%
       		}
@@ -288,6 +299,20 @@
         </table>
        </div>
     </section>
+            <div style=" text-align: center;">
+        <%
+		if (pageNumber != 1) {
+		%>
+    <input type="button" id="FormerPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+    	<%
+		}
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1)) {
+		%>
+    <input type="button" id="NextPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+    	<%
+		}
+		%>
+  	</div>
   </body>
   <footer>
     <div id="footer_box">

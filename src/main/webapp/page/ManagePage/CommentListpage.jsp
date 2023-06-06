@@ -279,7 +279,7 @@
         <td class="email"><%=list.get(i).getCommentDate() %></td>
         <td class="gender">레시피 게시판</td>
         <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="바로가기"></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="관리"></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="삭제"></td>
         </tr>
           	<%
       		}

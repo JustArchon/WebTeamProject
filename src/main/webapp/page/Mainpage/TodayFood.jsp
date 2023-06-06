@@ -194,6 +194,7 @@
     <%
 	String userid = (String)session.getAttribute("userID");
     String username = (String)session.getAttribute("userName");
+    String userrole = (String)session.getAttribute("userRole");
     
     if(userid != null && userid.equals("admin")){
     %>
@@ -237,7 +238,7 @@
       <%
       int pageNumber = 1;
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getRandList();
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
@@ -251,7 +252,7 @@
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
                   <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
+                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개· 조회수: <span> <%= list.get(i).getBbscount() %></span>
                 </div>
               </div>
             </div>

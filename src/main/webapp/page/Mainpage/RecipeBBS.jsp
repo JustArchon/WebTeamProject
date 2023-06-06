@@ -248,6 +248,9 @@
       <div class="grid_container">
 		<%
       int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
 		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
       for(int i = 0; i < list.size(); i++){
@@ -278,8 +281,18 @@
             %>
       </div>
     </section>
-    <input type="button" id="NextPage" onclick="location.href='../Writing.jsp' " name="btn1" value="다음">
-    <input type="button" id="FormerPage" onclick="location.href='../Writing.jsp' " name="btn1" value="이전">
+    	<%
+		if (pageNumber != 1) {
+		%>
+		<input type="button" id="FormerPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+		<%
+		}
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1)) {
+		%>
+		<input type="button" id="NextPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+		<%
+		}
+		%>
     <input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>

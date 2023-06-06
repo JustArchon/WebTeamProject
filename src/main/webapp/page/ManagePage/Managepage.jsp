@@ -269,7 +269,6 @@
 		if(session.getAttribute("userID") != null){	
 			userID = (String) session.getAttribute("userID");
 		}
-		out.print(userID);
 		
 		if(session.getAttribute("userRole") != null){	
 			userRole = (String) session.getAttribute("userRole");
