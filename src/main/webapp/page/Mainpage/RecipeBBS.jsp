@@ -3,6 +3,11 @@
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
+<%
+ 
+    request.setCharacterEncoding("EUC-KR");
+ 
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -228,6 +233,13 @@
     }
     %>
     </div>
+    <script type="text/javascript">
+		function food(select){
+        var url = select.options[select.selectedIndex].getAttribute('value');
+        if(url) location.href = "RecipeBBS.jsp?foodtype="+url;
+        
+		}
+	</script>
     <div class="title_container">
       <div id="logo">
         <a href="../index.jsp">
@@ -245,14 +257,33 @@
         <a href="RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 레시피 게시판</h3></a>
         <a href="#"><h3 class="main__header">&#x1F50E검색하기</h3></a>
       </div>
+      <div style= "margin-bottom: 10px">
+      <td>음식 분류</td>
+      <td>
+      <select onchange="food(this)">
+      <option value="%%">음식선택</option>
+      <option value="koreanfood">한식</option>
+      <option value="westernfood">양식</option>
+      <option value="chinafood">중식</option>
+      <option value="simplefood">간단식</option>
+      <option value="dietfood">다이어트식</option>
+      <option value="dessert">디저트</option>
+      <option value="%%">전체</option>
+      </select>
+      </td>
+      </div>
       <div class="grid_container">
 		<%
       int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
+		String foodtype = "%%";
+		if (request.getParameter("foodtype") != null) {
+			foodtype = request.getParameter("foodtype");
+		}
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber, foodtype);
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
@@ -266,7 +297,7 @@
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
                   <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>년 <span><%= list.get(i).getBbsdate().substring(5,7) %></span>월<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>일</p>
-                  · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개
+                   · 댓글 <span> <%= list.get(i).getBBSComentcount() %></span>개 · 조회수: <span> <%= list.get(i).getBbscount() %></span>
                 </div>
               </div>
             </div>
@@ -284,12 +315,12 @@
     	<%
 		if (pageNumber != 1) {
 		%>
-		<input type="button" id="FormerPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+		<input type="button" id="FormerPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber - 1%>&foodtype=<%=foodtype%>'" name="btn1" value="이전">
 		<%
 		}
-    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1)) {
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1, foodtype)) {
 		%>
-		<input type="button" id="NextPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+		<input type="button" id="NextPage" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber + 1%>&foodtype=<%=foodtype%>' " name="btn1" value="다음">
 		<%
 		}
 		%>

@@ -51,6 +51,22 @@ public class BBSrecipereviewDAO {
 		return -1; // 데이터베이스 오류
 	}
 	
+	public int getNext2(String foodtype) {
+		String SQL = "SELECT BBSID FROM BBSRECIPEREVIEW WHERE FOODTYPE LIKE ? ORDER BY BBSID DESC";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, foodtype);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+			return 1; // 첫 번째 게시물인 경우
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -1; // 데이터베이스 오류
+	}
+	
 	public int getPresent() {
 		String SQL = "SELECT BBSID FROM BBSRECIPEREVIEW ORDER BY BBSID DESC";
 		try {
@@ -203,12 +219,13 @@ public class BBSrecipereviewDAO {
 		return list;
 	}
 		
-	public ArrayList<BBSrecipereview> getList(int pageNumber) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID DESC LIMIT 8";
+	public ArrayList<BBSrecipereview> getList(int pageNumber, String foodtype) {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND FOODTYPE LIKE ? ORDER BY BBSID DESC LIMIT 8";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext() - (pageNumber -1) * 8);
+			pstmt.setInt(1, getNext2(foodtype) - (pageNumber -1) * 8);
+			pstmt.setString(2, foodtype);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BBSrecipereview BBSrecipereview = new BBSrecipereview();
@@ -253,12 +270,13 @@ public class BBSrecipereviewDAO {
 		return list;
 	}
 	
-	public boolean nextPage(int pageNumber) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND BBSAVAILABLE = 1";
+	public boolean nextPage(int pageNumber, String foodtype) {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND FOODTYPE LIKE ? AND BBSAVAILABLE = 1";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext() - (pageNumber -1) * 8);
+			pstmt.setInt(1, getNext2(foodtype) - (pageNumber -1) * 8);
+			pstmt.setString(2, foodtype);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return true;

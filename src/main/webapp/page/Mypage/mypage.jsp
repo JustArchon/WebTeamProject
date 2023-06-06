@@ -247,6 +247,7 @@
       </div>
       <div class="grid_container">
       <%
+      String foodtype = "%%";
       int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
@@ -287,7 +288,7 @@
 		<input type="button" id="FormerPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
 		<%
 		}
-    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1)) {
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1,foodtype)) {
 		%>
 		<input type="button" id="NextPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
 		<%
