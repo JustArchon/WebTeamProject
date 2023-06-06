@@ -6,6 +6,8 @@
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="BBSService.CommentDAO"%>
 <%@ page import="BBSService.Comment"%>
+<%@ page import="BBSService.Likey" %>
+<%@ page import="BBSService.LikeyDAO" %>
 <%@ page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -253,11 +255,32 @@
           <p><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %>
           </p>
           <div id="like"><span onclick="location.href='LikeAction.jsp?bbsID=<%=bbsID%>'">좋아요 </span>
-          <% %>
+          <%
+          Likey likey = new LikeyDAO().getlike(userID,bbsID);
+          if(likey != null){ 
+          if(likey.getUserLIKE() == 1){
+          %>
+          <span>
+          ♥
+          </span>
+          <%
+          }else{
+          %>
           <span>
           ♡
           </span>
-          
+          <%
+          }
+          %>
+          <%
+          }else{
+          %>
+          <span>
+          ♡
+          </span>
+          <%
+          }
+          %>
           </div>
         </div>
 
@@ -301,7 +324,7 @@
 								%>
 							</tr>
 					</table>
-        <form method="post" action="CommentAction.jsp?bbsID=<%= bbsID %>" id="comment">
+        <form method="post" action="CommentAction.jsp?bbsID=<%=bbsID %>" id="comment">
           <input
             type="text"
             placeholder="댓글을 입력하세요."
