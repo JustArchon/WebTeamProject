@@ -188,6 +188,13 @@
 	width: 100%;
 	box-sizing: border-box;
 }
+    .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -275,11 +282,11 @@
                 <br />
                 <table>
                     <tr height="40">
-                        <td><input type="submit" class="btn btn-primary form-control" value="회원가입">&nbsp;<input type="button" id="textwrite" onclick="location.href='index.jsp' " name="btn1" value="취소"></td>
+                        <td><input type="submit" class="btn btn-primary button_style form-control" value="회원가입">&nbsp;<input type="button" id="textwrite" class="button_style" onclick="location.href='index.jsp' " name="btn1" value="취소"></td>
                     </tr>
                 </table>
             </form>
-	<input type="button" id="textwrite" onclick="location.href='index.jsp'" name="btn1" value="메인 화면 >">
+	<input type="button" id="textwrite" class="button_style" onclick="location.href='index.jsp'" name="btn1" value="메인 화면 >">
     </section>
   </body>
   <footer>
