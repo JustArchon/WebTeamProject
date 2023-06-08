@@ -1,20 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.util.ArrayList"%>
 <%
  
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
  
 %>
+<jsp:useBean id="search" class="BBSService.Search" scope="page" />
+<jsp:setProperty name="search" property="foodtype" />
+<jsp:setProperty name="search" property="searchField" />
+<jsp:setProperty name="search" property="searchText" />
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -221,66 +226,90 @@
     
     if(userid != null && userid.equals("admin")){
     %>
-    <a href="../ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> |
+    <a href="ManagePage/Managepage.jsp">í™ˆí˜ì´ì§€ ê´€ë¦¬</a> |
     <%
     }
     %>
     <%
     if(userid != null){
     %>
-    <a href="../Mypage/mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="../SignOut.jsp">·Î±×¾Æ¿ô</a>
+    <a href="Mypage/mypage.jsp">ë§ˆì´í˜ì´ì§€</a> | <a href="SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
     <%
     }
     %>
     <%
     if(userid == null){
     %>
-    <a href="../login.jsp">·Î±×ÀÎ</a> | <a href="../SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+    <a href="../login.jsp">ë¡œê·¸ì¸</a> | <a href="../SignUp.jsp">íšŒì›ê°€ì…</a>
     <%
     }
     %>
     </div>
     <div class="title_container">
       <div id="logo">
-        <a href="../index.jsp">
+        <a href="index.jsp">
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="../index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body>
+  <%
+	String SearchText = "";
+	if (search.getSearchText() != null){
+		SearchText = search.getSearchText();
+   }
+	if (request.getParameter("SearchText") != null) {
+		SearchText = request.getParameter("SearchText");
+	}
+	String SearchType = "";
+	if (search.getSearchField() != null){
+		SearchType = search.getSearchField();
+   }
+	if (request.getParameter("SearchType") != null) {
+		SearchType = request.getParameter("SearchType");
+	}
+	
+	String foodtype = "%%";
+	if (search.getFoodtype() != null){
+		foodtype = search.getFoodtype();
+   }
+	if (request.getParameter("foodtype") != null) {
+		foodtype = request.getParameter("foodtype");
+	}
+  %>
     <section class="main">
       <div class="header">
-        <a href="TodayFood.jsp"><h3 class="main__header">&#x1F44D¿À´ÃÀÇ ¸Ş´º</h3></a>
-        <a href="Recentlyposts.jsp"><h3 class="main__header">&#x1F550 ÃÖ½Å ±Û</h3></a>
-        <a href="RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 ·¹½ÃÇÇ °Ô½ÃÆÇ</h3></a>
-        <a href="#"><h3 class="main__header">&#x1F50E°Ë»öÇÏ±â</h3></a>
+        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">&#x1F44Dì˜¤ëŠ˜ì˜ ë©”ë‰´</h3></a>
+        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">&#x1F550 ìµœì‹  ê¸€</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 ë ˆì‹œí”¼ ê²Œì‹œíŒ</h3></a>
+        <a href="Search.jsp"><h3 class="main__header">&#x1F50Eê²€ìƒ‰í•˜ê¸°</h3></a>
       </div>
       <div style= "margin-bottom: 10px">
       <form method="post" name="search" action="SearchResult.jsp">
-      <td>À½½Ä ºĞ·ù</td>
+      <td>ìŒì‹ ë¶„ë¥˜</td>
       <td>
       <select name="foodtype">
-      <option value="%%">À½½Ä¼±ÅÃ</option>
-      <option value="koreanfood">ÇÑ½Ä</option>
-      <option value="westernfood">¾ç½Ä</option>
-      <option value="chinafood">Áß½Ä</option>
-      <option value="simplefood">°£´Ü½Ä</option>
-      <option value="dietfood">´ÙÀÌ¾îÆ®½Ä</option>
-      <option value="dessert">µğÀúÆ®</option>
-      <option value="%%">ÀüÃ¼</option>
+      <option value="%%">ìŒì‹ì„ íƒ</option>
+      <option value="koreanfood">í•œì‹</option>
+      <option value="westernfood">ì–‘ì‹</option>
+      <option value="chinafood">ì¤‘ì‹</option>
+      <option value="simplefood">ê°„ë‹¨ì‹</option>
+      <option value="dietfood">ë‹¤ì´ì–´íŠ¸ì‹</option>
+      <option value="dessert">ë””ì €íŠ¸</option>
+      <option value="%%">ì „ì²´</option>
       </select>
       </td>
 				<table class="pull-right"  style= "margin:auto; float:center;">
 					<tr>
 						<td><select class="form-control" name="searchField">
-								<option value="bbsTitle">Á¦¸ñ</option>
-								<option value="userName">ÀÛ¼ºÀÚ</option>
+								<option value="bbsTitle">ì œëª©</option>
+								<option value="userName">ì‘ì„±ì</option>
 						</select></td>
 						<td><input type="text" class="form-control"
-							placeholder="" name="searchText" maxlength="100"></td>
-						<td><button type="submit" class="btn btn-success button_style">°Ë»ö</button></td>
+							placeholder="" name="searchText" maxlength="100" value="<%=SearchText %>"></td>
+						<td><button type="submit" class="btn btn-success button_style">ê²€ìƒ‰</button></td>
 					</tr>
 
 				</table>
@@ -292,40 +321,29 @@
 		if (request.getParameter("pageNumber") != null) {
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
-		String foodtype = "%%";
-		if (request.getParameter("foodtype") != null) {
-			foodtype = request.getParameter("foodtype");
-		}
-		String searchField = "";
-		if (request.getParameter("searchField") != null) {
-			searchField = request.getParameter("searchField");
-		}
-		String searchText = "";
-		if (request.getParameter("searchText") != null) {
-			searchText = request.getParameter("searchText");
-		}
+		
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getSearchList(pageNumber, foodtype, searchField ,searchText);
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getSearchList(pageNumber, foodtype, SearchType, SearchText);
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
-          <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
+          <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>°Ô½Ã±ÛÀÇ»çÁø.jpg
+                src=../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg
                 alt=""
               />
               <div class="item-title">
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
-                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>³â <span><%= list.get(i).getBbsdate().substring(5,7) %></span>¿ù<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ÀÏ</p>
-                   ¡¤ ´ñ±Û <span> <%= list.get(i).getBBSComentcount() %></span>°³ ¡¤ Á¶È¸¼ö: <span> <%= list.get(i).getBbscount() %></span>
+                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>ë…„ <span><%= list.get(i).getBbsdate().substring(5,7) %></span>ì›”<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ì¼</p>
+                   Â· ëŒ“ê¸€ <span> <%= list.get(i).getBBSComentcount() %></span>ê°œ Â· ì¡°íšŒìˆ˜: <span> <%= list.get(i).getBbscount() %></span>
                 </div>
               </div>
             </div>
             <div class="item-footer">
-              <strong>ÀÛ¼ºÀÚ: <%= list.get(i).getUserName() %></strong>
-              <p>¢¾ <span><%= list.get(i).getBbslikeamount() %></span></p>
+              <strong>ì‘ì„±ì: <%= list.get(i).getUserName() %></strong>
+              <p>â™¥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>
         </div>
@@ -337,22 +355,21 @@
     	<%
 		if (pageNumber != 1) {
 		%>
-		<input type="button" id="FormerPage" class="button_style" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber - 1%>&foodtype=<%=foodtype%>'" name="btn1" value="ÀÌÀü">
+		<input type="button" id="FormerPage" class="button_style" onclick="location.href='SearchResult.jsp?pageNumber=<%=pageNumber - 1%>&foodtype=<%=foodtype%>&SearchText=<%=SearchText%>&SearchType=<%=SearchType%>'" name="btn1" value="ì´ì „">
 		<%
 		}
-    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1, foodtype)) {
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1, search.getFoodtype())) {
 		%>
-		<input type="button" id="NextPage" class="button_style" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber + 1%>&foodtype=<%=foodtype%>' " name="btn1" value="´ÙÀ½">
+		<input type="button" id="NextPage" class="button_style" onclick="location.href='SearchResult.jsp?pageNumber=<%=pageNumber + 1%>&foodtype=<%=foodtype%>&SearchText=<%=SearchText%>&SearchType=<%=SearchType%>' " name="btn1" value="ë‹¤ìŒ">
 		<%
 		}
 		%>
-    <input type="button" id="textwrite" class="button_style" onclick="location.href='../Writing.jsp' " name="btn1" value="±Û¾²±â">
   </body>
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

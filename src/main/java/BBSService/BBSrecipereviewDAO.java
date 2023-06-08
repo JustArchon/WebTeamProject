@@ -250,13 +250,12 @@ public class BBSrecipereviewDAO {
 	}
 	
 	public ArrayList<BBSrecipereview> getSearchList(int pageNumber, String foodtype, String SearchType, String Searchdata) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND "+SearchType.trim()+" LIKE ? AND FOODTYPE LIKE ? AND ORDER BY BBSID DESC LIMIT 8";
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND FOODTYPE LIKE ? AND "+SearchType.trim()+" LIKE '%"+Searchdata.trim()+"%' ORDER BY BBSID DESC LIMIT 8";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1, getNext2(foodtype) - (pageNumber -1) * 8);
-			pstmt.setString(2, Searchdata);
-			pstmt.setString(3, foodtype);
+			pstmt.setString(2, foodtype);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BBSrecipereview BBSrecipereview = new BBSrecipereview();
