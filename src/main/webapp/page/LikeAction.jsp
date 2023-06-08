@@ -26,7 +26,7 @@
       if(userID==null){
          PrintWriter script=response.getWriter();
          script.println("<script>");
-         script.println("alert('로그인후 이용가능합니다.')");
+         script.println("alert('로그인 후 이용가능합니다.')");
          script.println("location.href='login.jsp'");
          script.println("</script>");
       }

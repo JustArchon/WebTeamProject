@@ -3,6 +3,11 @@
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
+<%
+ 
+    request.setCharacterEncoding("EUC-KR");
+ 
+%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -187,64 +192,127 @@
       .main__header:hover {
         border-bottom: 2px solid #959595;
       }
+      #textwrite {
+      margin-right: 100px;
+        float: right;
+        }
+      #NextPage {
+      margin-left: 100px;
+        float: left;
+        }
+      #FormerPage {
+      margin-left: 50px;
+        float: left;
+        }
+      .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
     <div id="top_menu">
-    <%
+<%
 	String userid = (String)session.getAttribute("userID");
     String username = (String)session.getAttribute("userName");
     
     if(userid != null && userid.equals("admin")){
     %>
-    <a href="ManagePage/Managepage.jsp">홈페이지 관리</a> |
+    <a href="../ManagePage/Managepage.jsp">홈페이지 관리</a> |
     <%
     }
     %>
     <%
     if(userid != null){
     %>
-    <a href="Mypage/mypage.jsp">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
+    <a href="../Mypage/mypage.jsp">마이페이지</a> | <a href="../SignOut.jsp">로그아웃</a>
     <%
     }
     %>
     <%
     if(userid == null){
     %>
-    <a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
+    <a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
     <%
     }
     %>
     </div>
     <div class="title_container">
       <div id="logo">
-        <a href="index.jsp">
+        <a href="../index.jsp">
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">오늘 뭐 먹지?</a></h1>
+      <h1 id="title"><a href="../index.jsp">오늘 뭐 먹지?</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">오늘의 메뉴</h3></a>
-        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">최신 글</h3></a>
-        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">레시피 게시판</h3></a>
-        <a href="#"><h3 class="main__header">검색하기</h3></a>
+        <a href="TodayFood.jsp"><h3 class="main__header">&#x1F44D오늘의 메뉴</h3></a>
+        <a href="Recentlyposts.jsp"><h3 class="main__header">&#x1F550 최신 글</h3></a>
+        <a href="RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 레시피 게시판</h3></a>
+        <a href="#"><h3 class="main__header">&#x1F50E검색하기</h3></a>
+      </div>
+      <div style= "margin-bottom: 10px">
+      <form method="post" name="search" action="SearchResult.jsp">
+      <td>음식 분류</td>
+      <td>
+      <select name="foodtype">
+      <option value="%%">음식선택</option>
+      <option value="koreanfood">한식</option>
+      <option value="westernfood">양식</option>
+      <option value="chinafood">중식</option>
+      <option value="simplefood">간단식</option>
+      <option value="dietfood">다이어트식</option>
+      <option value="dessert">디저트</option>
+      <option value="%%">전체</option>
+      </select>
+      </td>
+				<table class="pull-right"  style= "margin:auto; float:center;">
+					<tr>
+						<td><select class="form-control" name="searchField">
+								<option value="bbsTitle">제목</option>
+								<option value="userName">작성자</option>
+						</select></td>
+						<td><input type="text" class="form-control"
+							placeholder="" name="searchText" maxlength="100"></td>
+						<td><button type="submit" class="btn btn-success button_style">검색</button></td>
+					</tr>
+
+				</table>
+			</form>
       </div>
       <div class="grid_container">
-      <%
+		<%
       int pageNumber = 1;
+		if (request.getParameter("pageNumber") != null) {
+			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		}
+		String foodtype = "%%";
+		if (request.getParameter("foodtype") != null) {
+			foodtype = request.getParameter("foodtype");
+		}
+		String searchField = "";
+		if (request.getParameter("searchField") != null) {
+			searchField = request.getParameter("searchField");
+		}
+		String searchText = "";
+		if (request.getParameter("searchText") != null) {
+			searchText = request.getParameter("searchText");
+		}
       	BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getList(pageNumber);
+		ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getSearchList(pageNumber, foodtype, searchField ,searchText);
       for(int i = 0; i < list.size(); i++){
       %>
         <div class="grid-item">
-          <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
+          <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src=../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
+                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>게시글의사진.jpg
                 alt=""
               />
               <div class="item-title">
@@ -266,6 +334,19 @@
             %>
       </div>
     </section>
+    	<%
+		if (pageNumber != 1) {
+		%>
+		<input type="button" id="FormerPage" class="button_style" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber - 1%>&foodtype=<%=foodtype%>'" name="btn1" value="이전">
+		<%
+		}
+    	if (BBSrecipereviewDAO.nextPage(pageNumber + 1, foodtype)) {
+		%>
+		<input type="button" id="NextPage" class="button_style" onclick="location.href='RecipeBBS.jsp?pageNumber=<%=pageNumber + 1%>&foodtype=<%=foodtype%>' " name="btn1" value="다음">
+		<%
+		}
+		%>
+    <input type="button" id="textwrite" class="button_style" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>
     <div id="footer_box">

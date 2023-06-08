@@ -248,6 +248,38 @@ public class BBSrecipereviewDAO {
 		}
 		return list;
 	}
+	
+	public ArrayList<BBSrecipereview> getSearchList(int pageNumber, String foodtype, String SearchType, String Searchdata) {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND "+SearchType.trim()+" LIKE ? AND FOODTYPE LIKE ? AND ORDER BY BBSID DESC LIMIT 8";
+		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext2(foodtype) - (pageNumber -1) * 8);
+			pstmt.setString(2, Searchdata);
+			pstmt.setString(3, foodtype);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				BBSrecipereview BBSrecipereview = new BBSrecipereview();
+				BBSrecipereview.setBBSrecipereviewID(rs.getInt(1));
+				BBSrecipereview.setBbstitle(rs.getString(2));
+				BBSrecipereview.setUserID(rs.getString(3));
+				BBSrecipereview.setUserName(rs.getString(4));
+				BBSrecipereview.setBbstype(rs.getString(5));
+				BBSrecipereview.setBbscontent(rs.getString(6));
+				BBSrecipereview.setBbsdate(rs.getString(7));
+				BBSrecipereview.setBbscount(rs.getInt(8));
+				BBSrecipereview.setBbslikeamount(rs.getInt(9));
+				BBSrecipereview.setBBSrecipereviewAvailable(rs.getInt(10));
+				BBSrecipereview.setFilename(rs.getString(11));
+				BBSrecipereview.setBBSComentcount(rs.getInt(12));
+				list.add(BBSrecipereview);
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public ArrayList<BBSrecipereview> getManageList(int pageNumber) {
 		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID ASC LIMIT 10";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
