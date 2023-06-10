@@ -42,7 +42,28 @@ request.setCharacterEncoding("euc-kr");
 			script.println("history.back()");
 			script.println("</script>");
 		} else {
+			if (user.getUserID().length() < 5 || user.getUserID().length() > 12){
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('아이디는 5자 이상 12자 이하로 작성해주세요!')");
+			    script.println("history.back()");
+				script.println("</script>");
+			}else{
 			UserDAO userDAO = new UserDAO();
+			if (userDAO.isEmail(user.getUserEmail()) == false){
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('정확한 이메일을 입력해주세요!')");
+			    script.println("history.back()");
+				script.println("</script>");
+			}else{
+			if (userDAO.checkPassword(user.getUserPassword()) == false){
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('8자 이상의 영어,숫자,특수문자를 포함한 비밀번호를 입력하십시오.')");
+			    script.println("history.back()");
+				script.println("</script>");
+			}else{
 			int result = userDAO.join(user);
 			if (result == -1) {
 				PrintWriter script = response.getWriter();
@@ -56,8 +77,11 @@ request.setCharacterEncoding("euc-kr");
 				script.println("<script>");
 				script.println("location.href = 'login.jsp'");
 				script.println("</script>");
+				}
 			}
 		}
+	}
+}
 	%>
 </body>
 </html>

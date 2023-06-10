@@ -237,7 +237,10 @@ table.table2{
     <%
     if(userid == null){
     %>
-    <a href="../login.jsp">로그인</a> | <a href="../SignUp.jsp">회원가입</a>
+        	<script>
+			alert("로그인 후 이용 가능합니다.");
+			location.href='../login.jsp';
+			</script>
     <%
     }
     %>

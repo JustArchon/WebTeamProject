@@ -9,7 +9,6 @@
 <jsp:setProperty name="user" property="userGender" />
 <jsp:setProperty name="user" property="userEmail" />
 <jsp:setProperty name="user" property="role" />
-<jsp:setProperty name="user" property="cadeposts" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +23,22 @@
 	}
 	
 	UserDAO userDAO = new UserDAO();
+	if (userDAO.isEmail(user.getUserEmail()) == false){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('정확한 이메일을 입력해주세요!')");
+	    script.println("history.back()");
+		script.println("</script>");
+	}
+	
+	if (userDAO.checkPassword(user.getUserPassword()) == false){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('8자 이상의 영어,숫자,특수문자를 포함한 비밀번호를 입력하십시오.')");
+	    script.println("history.back()");
+		script.println("</script>");
+	}
+	
 	int result = userDAO.update(user);
 	if (result == -1) {
 		// 회원 정보 업데이트 실패
@@ -38,7 +53,7 @@
 	    PrintWriter script = response.getWriter();
 	    script.println("<script>");
 	    script.println("alert('회원 정보가 업데이트되었습니다.')");
-	    script.println("location.href = 'index.jsp'");
+	    script.println("location.href = '../index.jsp'");
 	    script.println("</script>");
 	}
 	%>

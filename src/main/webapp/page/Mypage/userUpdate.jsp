@@ -192,11 +192,18 @@
 	width: 100%;
 	box-sizing: border-box;
 }
+      .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+      }
     </style>
   </head>
   <header>
     <div id="top_menu">
-    <%
+	<%
 	String userid = (String)session.getAttribute("userID");
     String username = (String)session.getAttribute("userName");
     
@@ -220,6 +227,16 @@
     <%
     }
     %>
+        <%
+    if(userid == null){
+    %>
+            <script>
+			alert("로그인 후 이용 가능합니다.");
+			location.href='../login.jsp';
+			</script>
+    <%
+    }
+    %>
     </div>
     <div class="title_container">
       <div id="logo">
@@ -238,12 +255,15 @@
         <a href="Inquirylist.jsp"><h3 class="main__header">내 문의목록</h3></a>
         <a href="Inquiry.jsp"><h3 class="main__header">문의 하기</h3></a>
       </div>
+          <%
+      User user = new UserDAO().getUser(userid);
+      %>
       <h1>회원정보 수정</h1>
 	<form method="post" action="userUpdateAction.jsp" id="userEdit">
 		<hr>
 		<div>
 			<label for="inputName">이 름: </label>
-			<input id="inputName" type="text" required name="userName">
+			<input id="inputName" type="text" required name="userName" value="<%=user.getUserName()%>">
 		</div>
 		<hr>
 		<div>
@@ -257,17 +277,17 @@
 		<div>
 		<hr>
 			<label for="inputEmail">이메일: </label>
-			<input id="inputEmail" type="email" required name="userEmail" >
+			<input id="inputEmail" type="email" required name="userEmail" value="<%=user.getUserEmail()%>">
 		</div>
 		<hr>
 		<div>
 			<label for="inputFavoriteFood">좋아하는 음식: </label>
-			<input id="inputFavoriteFood" type="text" required name="favoriteFood" >
+			<input id="inputFavoriteFood" type="text" required name="favoriteFood" value="<%=user.getFavoritefood()%>">
 		</div>
 		<hr>
 		<div>
 			<label for="inputHobby">취 미: </label>
-			<input id="inputHobby" type="text" required name="hobbies" >
+			<input id="inputHobby" type="text" required name="hobbies" value="<%=user.getHobbies()%>">
 		</div>
 		<hr>
 		<div>
@@ -278,9 +298,9 @@
 		</div>
 		
 		<hr>
-		<input type="submit" value="저 장">
+		<input type="submit" class="button_style" value="저 장">
 	</form>
-	<input type="button" id="textwrite" onclick="location.href='Main.html'" name="btn1" value="메인 화면 >">
+	<input type="button" id="textwrite" class="button_style" onclick="location.href='Main.html'" name="btn1" value="메인 화면 >">
     </section>
   </body>
   <footer>

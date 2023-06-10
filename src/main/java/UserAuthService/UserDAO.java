@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import BBSService.BBSrecipereview;
 
@@ -159,5 +161,49 @@ public class UserDAO {
 		return list;
 	}
 	
+	public User getUser(String UserID) {
+		String SQL = "SELECT * FROM MEMBER WHERE USERID = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, UserID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				User User = new User();
+				User.setUserID(rs.getString(3));
+				User.setUserName(rs.getString(2));
+				User.setUserEmail(rs.getString(5));
+				User.setUserGender(rs.getString(6));
+				User.setUserjoindate(rs.getString(7));
+				User.setRole(rs.getString(8));
+				User.setFavoritefood(rs.getString(9));
+				User.setHobbies(rs.getString(10));
+				return User;
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean isEmail(String str) {
+	    return Pattern.matches("^[a-z0-9A-Z._-]*@[a-z0-9A-Z]*.[a-zA-Z.]*$", str);
+	}
+	
+	public boolean checkPassword(String pwd){
+		 Pattern passPattern1 = Pattern.compile("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$");
+		  Matcher passMatcher1 = passPattern1.matcher(pwd);
+		  if(!passMatcher1.find()){
+			    return false;
+		  }
+		  
+		  Pattern passPattern2 = Pattern.compile("(\\w)\\1\\1\\1");
+		  Matcher passMatcher2 = passPattern2.matcher(pwd);
+		  
+		  if(passMatcher2.find()){
+		    return false;
+		  }
+		  return true;
+	}
 
 }
