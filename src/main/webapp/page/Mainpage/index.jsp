@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -198,21 +198,21 @@
     
     if(userid != null && userid.equals("admin")){
     %>
-    <a href="ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> |
+    <a href="ManagePage/Managepage.jsp">í™ˆíŽ˜ì´ì§€ ê´€ë¦¬</a> |
     <%
     }
     %>
     <%
     if(userid != null){
     %>
-    <a href="Mypage/mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="SignOut.jsp">·Î±×¾Æ¿ô</a>
+    <a href="Mypage/mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a> | <a href="SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
     <%
     }
     %>
     <%
     if(userid == null){
     %>
-    <a href="login.jsp">·Î±×ÀÎ</a> | <a href="SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+    <a href="login.jsp">ë¡œê·¸ì¸</a> | <a href="SignUp.jsp">íšŒì›ê°€ìž…</a>
     <%
     }
     %>
@@ -223,16 +223,16 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">&#x1F44D¿À´ÃÀÇ ¸Þ´º</h3></a>
-        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">&#x1F550 ÃÖ½Å ±Û</h3></a>
-        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 ·¹½ÃÇÇ °Ô½ÃÆÇ</h3></a>
-        <a href="#"><h3 class="main__header">&#x1F50E°Ë»öÇÏ±â</h3></a>
+        <a href="Mainpage/TodayFood.jsp"><h3 class="main__header">&#x1F44Dì˜¤ëŠ˜ì˜ ë©”ë‰´</h3></a>
+        <a href="Mainpage/Recentlyposts.jsp"><h3 class="main__header">&#x1F550 ìµœì‹  ê¸€</h3></a>
+        <a href="Mainpage/RecipeBBS.jsp"><h3 class="main__header">&#x1F4D6 ë ˆì‹œí”¼ ê²Œì‹œíŒ</h3></a>
+        <a href="#"><h3 class="main__header">&#x1F50Eê²€ìƒ‰í•˜ê¸°</h3></a>
       </div>
       <div class="grid_container">
       <%
@@ -245,20 +245,20 @@
           <a href="view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src=../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>°Ô½Ã±ÛÀÇ»çÁø.jpg
+                src=../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg
                 alt=""
               />
               <div class="item-title">
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
-                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>³â <span><%= list.get(i).getBbsdate().substring(5,7) %></span>¿ù<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ÀÏ</p>
-                   ¡¤ ´ñ±Û <span> <%= list.get(i).getBBSComentcount() %></span>°³ ¡¤ Á¶È¸¼ö: <span> <%= list.get(i).getBbscount() %></span>
+                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>ë…„ <span><%= list.get(i).getBbsdate().substring(5,7) %></span>ì›”<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ì¼</p>
+                   Â· ëŒ“ê¸€ <span> <%= list.get(i).getBBSComentcount() %></span>ê°œ Â· ì¡°íšŒìˆ˜: <span> <%= list.get(i).getBbscount() %></span>
                 </div>
               </div>
             </div>
             <div class="item-footer">
-              <strong>ÀÛ¼ºÀÚ: <%= list.get(i).getUserName() %></strong>
-              <p>¢¾ <span><%= list.get(i).getBbslikeamount() %></span></p>
+              <strong>ìž‘ì„±ìž: <%= list.get(i).getUserName() %></strong>
+              <p>â™¥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>
         </div>
@@ -271,8 +271,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

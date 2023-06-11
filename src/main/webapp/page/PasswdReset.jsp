@@ -307,30 +307,23 @@
         <div id="main_contents">
         <div class="inner_login">
             <div class="login">
-            <form method="post" action="loginAction.jsp" id="login">
+            <form method="post" action="PasswordResetAction.jsp" id="login">
                     <fieldset>
                     <legend class="screen_out">로그인 정보 입력폼</legend>
+                    <td>새 비밀번호를 입력하여주십시오.</td>
                     <div class="box_login">
-                        <div class="inp_text">
-                        <label for="loginId" class="screen_out">아이디</label>
-                        <input type="text" id="loginId" name="userID" placeholder="ID" >
-                        </div>
-                        <div class="inp_text">
-                        <label for="loginPw" class="screen_out">비밀번호</label>
-                        <input type="password" id="loginPw" name="userPassword" placeholder="Password" >
-                        </div>
+                    
+                        <form name=fm>
+                        	
+      						<td>새 비밀번호 :</td>
+      						<td><input type="password" name="userPassword" required></td>
                     </div>
-                    <input type="submit" class="btn_login form-control" value="로그인">
+                    <input type="submit" class="btn_login form-control" value="비밀번호 변경">
                     <div class="login_append">
+                        <div class="inp_chk">
+
                 </label>
                         </div>
-                        <span class="txt_find">
-                        <a href="IDFind.jsp" class="link_find">아이디</a>
-                            / 
-                        <a href="PasswdFind.jsp" class="link_find">비밀번호 찾기</a>
-                        	/
-                        <a href="SignUp.jsp" class="link_find">회원가입</a>
-                        </span>
                     </div>
                     
                     </fieldset>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -209,14 +209,14 @@
     
     if(userid != null && userid.equals("admin")){
     %>
-    <a href="../ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> |
+    <a href="../ManagePage/Managepage.jsp">í™ˆíŽ˜ì´ì§€ ê´€ë¦¬</a> |
     <%
     }
     %>
     <%
     if(userid != null){
     %>
-    <a href="mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="../SignOut.jsp">·Î±×¾Æ¿ô</a>
+    <a href="mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a> | <a href="../SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
     <%
     }
     %>
@@ -224,7 +224,7 @@
     if(userid == null){
     %>
     		<script>
-			alert("·Î±×ÀÎ ÈÄ ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù.");
+			alert("ë¡œê·¸ì¸ í›„ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			location.href='../login.jsp';
 			</script>
     <%
@@ -237,16 +237,16 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="../index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="../index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="mypage.jsp"><h3 class="main__header">&#x1F4CC³» °Ô½Ã±Û</h3></a>
-        <a href="userUpdate.jsp"><h3 class="main__header">È¸¿ø Á¤º¸ ¼öÁ¤</h3></a>
-        <a href="Inquirylist.jsp"><h3 class="main__header">³» ¹®ÀÇ¸ñ·Ï</h3></a>
-        <a href="Inquiry.jsp"><h3 class="main__header">¹®ÀÇ ÇÏ±â</h3></a>
+        <a href="mypage.jsp"><h3 class="main__header">&#x1F4CCë‚´ ê²Œì‹œê¸€</h3></a>
+        <a href="userUpdate.jsp"><h3 class="main__header">íšŒì› ì •ë³´ ìˆ˜ì •</h3></a>
+        <a href="Inquirylist.jsp"><h3 class="main__header">ë‚´ ë¬¸ì˜ëª©ë¡</h3></a>
+        <a href="Inquiry.jsp"><h3 class="main__header">ë¬¸ì˜ í•˜ê¸°</h3></a>
       </div>
       <div class="grid_container">
       <%
@@ -263,20 +263,20 @@
           <a href="../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>">
             <div class="item-img">
               <img
-                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>°Ô½Ã±ÛÀÇ»çÁø.jpg
+                src=../../bbsUpload/<%=list.get(i).getBBSrecipereviewID()%><%=list.get(i).getUserID()%><%=list.get(i).getBbstitle().replaceAll(" ", "")%>ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg
                 alt=""
               />
               <div class="item-title">
                 <strong><%= list.get(i).getBbstitle() %></strong>
                 <div class="item_etc">
-                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>³â <span><%= list.get(i).getBbsdate().substring(5,7) %></span>¿ù<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ÀÏ</p>
-                  ¡¤ ´ñ±Û <span> <%= list.get(i).getBBSComentcount() %></span>°³
+                  <p><span><%= list.get(i).getBbsdate().substring(0,4) %></span>ë…„ <span><%= list.get(i).getBbsdate().substring(5,7) %></span>ì›”<span> <%= list.get(i).getBbsdate().substring(8,10) %></span>ì¼</p>
+                  Â· ëŒ“ê¸€ <span> <%= list.get(i).getBBSComentcount() %></span>ê°œ
                 </div>
               </div>
             </div>
             <div class="item-footer">
-              <strong>ÀÛ¼ºÀÚ: <%= list.get(i).getUserName() %></strong>
-              <p>¢¾ <span><%= list.get(i).getBbslikeamount() %></span></p>
+              <strong>ìž‘ì„±ìž: <%= list.get(i).getUserName() %></strong>
+              <p>â™¥ <span><%= list.get(i).getBbslikeamount() %></span></p>
             </div>
           </a>
         </div>
@@ -288,22 +288,22 @@
   	    <%
 		if (pageNumber != 1) {
 		%>
-		<input type="button" id="FormerPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="ÀÌÀü">
+		<input type="button" id="FormerPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="ì´ì „">
 		<%
 		}
     	if (BBSrecipereviewDAO.nextPage(pageNumber + 1,foodtype)) {
 		%>
-		<input type="button" id="NextPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="´ÙÀ½">
+		<input type="button" id="NextPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="ë‹¤ìŒ">
 		<%
 		}
 		%>
-		<input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="±Û¾²±â">
+		<input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="ê¸€ì“°ê¸°">
   </body>
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

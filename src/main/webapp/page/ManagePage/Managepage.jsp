@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="UserAuthService.User"%>
 <%@ page import="UserAuthService.UserDAO"%>
 <%@ page import="java.util.ArrayList"%>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -211,12 +211,12 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null && userid.equals("admin")){
 	%>
-		<a href="../ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> | <a href="../Mypage/mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="../SignOut.jsp">·Î±×¾Æ¿ô</a>
+		<a href="../ManagePage/Managepage.jsp">í™ˆíŽ˜ì´ì§€ ê´€ë¦¬</a> | <a href="../Mypage/mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a> | <a href="../SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 	<%
 	}else{
 	%>
 		<script>
-			alert("ÀÌ ÆäÀÌÁö´Â °ü¸®ÀÚ¸¸ Á¢±Ù °¡´ÉÇÕ´Ï´Ù.");
+			alert("ì´ íŽ˜ì´ì§€ëŠ” ê´€ë¦¬ìžë§Œ ì ‘ê·¼ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			location.href='../index.jsp';
 		</script>
 	<%
@@ -229,36 +229,36 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="Managepage.jsp">¿À´Ã ¹¹ ¸ÔÁö? °ü¸® ÆäÀÌÁö</a></h1>
+      <h1 id="title"><a href="Managepage.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€? ê´€ë¦¬ íŽ˜ì´ì§€</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="Managepage.jsp"><h3 class="main__header">È¸¿ø °ü¸®</h3></a>
-        <a href="PostListpage.jsp"><h3 class="main__header">°Ô½Ã±Û ¸ñ·Ï</h3></a>
-        <a href="CommentListpage.jsp"><h3 class="main__header">µ¡±Û ¸ñ·Ï</h3></a>
-        <a href="InquiryListpage.jsp"><h3 class="main__header">¹®ÀÇ»çÇ× È®ÀÎ</h3></a>
+        <a href="Managepage.jsp"><h3 class="main__header">íšŒì› ê´€ë¦¬</h3></a>
+        <a href="PostListpage.jsp"><h3 class="main__header">ê²Œì‹œê¸€ ëª©ë¡</h3></a>
+        <a href="CommentListpage.jsp"><h3 class="main__header">ë§ê¸€ ëª©ë¡</h3></a>
+        <a href="InquiryListpage.jsp"><h3 class="main__header">ë¬¸ì˜ì‚¬í•­ í™•ì¸</h3></a>
       </div>
       <div class="row text-center">
-      <table class="sub_news" border="1" cellspacing="0" summary="°Ô½ÃÆÇÀÇ ±ÛÁ¦¸ñ ¸®½ºÆ®">
-            <caption>°Ô½ÃÆÇ ¸®½ºÆ®</caption>
+      <table class="sub_news" border="1" cellspacing="0" summary="ê²Œì‹œíŒì˜ ê¸€ì œëª© ë¦¬ìŠ¤íŠ¸">
+            <caption>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸</caption>
             <colgroup>
             <col width="40">
             <col width="60">
             </colgroup>
             <thead>
             <tr>
-            <th scope="col">È¸¿ø ¼ø¹ø</th>
-            <th scope="col">È¸¿ø ID</th>
-            <th scope="col">´Ð³×ÀÓ</th>
-            <th scope="col">ÀÌ¸ÞÀÏ</th>
-            <th scope="col">¼ºº°</th>
-            <th scope="col">°¡ÀÔ³¯Â¥</th>
-            <th scope="col">¿ªÇÒ</th>
-            <th scope="col">ÁÁ¾ÆÇÏ´Â À½½Ä</th>
-            <th scope="col">Ãë¹Ì</th>
-            <th scope="col">È¸¿ø °ü¸®</th>
+            <th scope="col">íšŒì› ìˆœë²ˆ</th>
+            <th scope="col">íšŒì› ID</th>
+            <th scope="col">ë‹‰ë„¤ìž„</th>
+            <th scope="col">ì´ë©”ì¼</th>
+            <th scope="col">ì„±ë³„</th>
+            <th scope="col">ê°€ìž…ë‚ ì§œ</th>
+            <th scope="col">ì—­í• </th>
+            <th scope="col">ì¢‹ì•„í•˜ëŠ” ìŒì‹</th>
+            <th scope="col">ì·¨ë¯¸</th>
+            <th scope="col">íšŒì› ê´€ë¦¬</th>
             </tr>
             </thead>
             <tbody>
@@ -297,7 +297,7 @@
         <%
         }else{
         %>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../deleteMemberAction.jsp?userid=<%=list.get(i).getUserID()%>' " name="btn1" value="Å»Åð"></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../deleteMemberAction.jsp?userid=<%=list.get(i).getUserID()%>' " name="btn1" value="íƒˆí‡´"></td>
           	<%
       		}
             %>
@@ -313,8 +313,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

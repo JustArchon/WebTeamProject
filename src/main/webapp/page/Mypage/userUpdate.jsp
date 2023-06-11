@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <%@ page import="UserAuthService.User"%>
 <%@ page import="UserAuthService.UserDAO"%>
 <%@ page import="java.util.ArrayList"%>
@@ -9,7 +10,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -209,21 +210,21 @@
     
     if(userid != null && userid.equals("admin")){
     %>
-    <a href="../ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> |
+    <a href="../ManagePage/Managepage.jsp">í™ˆíŽ˜ì´ì§€ ê´€ë¦¬</a> |
     <%
     }
     %>
     <%
     if(userid != null){
     %>
-    <a href="mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="../SignOut.jsp">·Î±×¾Æ¿ô</a>
+    <a href="mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a> | <a href="../SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
     <%
     }
     %>
     <%
     if(userid == null){
     %>
-    <a href="../login.jsp">·Î±×ÀÎ</a> | <a href="../SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+    <a href="../login.jsp">ë¡œê·¸ì¸</a> | <a href="../SignUp.jsp">íšŒì›ê°€ìž…</a>
     <%
     }
     %>
@@ -231,7 +232,7 @@
     if(userid == null){
     %>
             <script>
-			alert("·Î±×ÀÎ ÈÄ ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù.");
+			alert("ë¡œê·¸ì¸ í›„ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			location.href='../login.jsp';
 			</script>
     <%
@@ -244,70 +245,70 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="../index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="../index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="mypage.jsp"><h3 class="main__header">&#x1F4CC³» °Ô½Ã±Û</h3></a>
-        <a href="userUpdate.jsp"><h3 class="main__header">È¸¿ø Á¤º¸ ¼öÁ¤</h3></a>
-        <a href="Inquirylist.jsp"><h3 class="main__header">³» ¹®ÀÇ¸ñ·Ï</h3></a>
-        <a href="Inquiry.jsp"><h3 class="main__header">¹®ÀÇ ÇÏ±â</h3></a>
+        <a href="mypage.jsp"><h3 class="main__header">&#x1F4CCë‚´ ê²Œì‹œê¸€</h3></a>
+        <a href="userUpdate.jsp"><h3 class="main__header">íšŒì› ì •ë³´ ìˆ˜ì •</h3></a>
+        <a href="Inquirylist.jsp"><h3 class="main__header">ë‚´ ë¬¸ì˜ëª©ë¡</h3></a>
+        <a href="Inquiry.jsp"><h3 class="main__header">ë¬¸ì˜ í•˜ê¸°</h3></a>
       </div>
           <%
       User user = new UserDAO().getUser(userid);
       %>
-      <h1>È¸¿øÁ¤º¸ ¼öÁ¤</h1>
+      <h1>íšŒì›ì •ë³´ ìˆ˜ì •</h1>
 	<form method="post" action="userUpdateAction.jsp" id="userEdit">
 		<hr>
 		<div>
-			<label for="inputName">ÀÌ ¸§: </label>
+			<label for="inputName">ì´ ë¦„: </label>
 			<input id="inputName" type="text" required name="userName" value="<%=user.getUserName()%>">
 		</div>
 		<hr>
 		<div>
-			<label for="inputId">¾ÆÀÌµð: <%= userid%></label>
+			<label for="inputId">ì•„ì´ë””: <%= userid%></label>
 		</div>
 		<hr>
 		<div>
-			<label for="inputPW">ºñ¹Ð¹øÈ£: </label>
+			<label for="inputPW">ë¹„ë°€ë²ˆí˜¸: </label>
 			<input id="inputPW" type="password" required name="userPassword" >
 		</div>
 		<div>
 		<hr>
-			<label for="inputEmail">ÀÌ¸ÞÀÏ: </label>
+			<label for="inputEmail">ì´ë©”ì¼: </label>
 			<input id="inputEmail" type="email" required name="userEmail" value="<%=user.getUserEmail()%>">
 		</div>
 		<hr>
 		<div>
-			<label for="inputFavoriteFood">ÁÁ¾ÆÇÏ´Â À½½Ä: </label>
-			<input id="inputFavoriteFood" type="text" required name="favoriteFood" value="<%=user.getFavoritefood()%>">
+			<label for="inputFavoriteFood">ì¢‹ì•„í•˜ëŠ” ìŒì‹: </label>
+			<input id="inputFavoriteFood" type="text" required name="favoritefood" value="<%=user.getFavoritefood()%>">
 		</div>
 		<hr>
 		<div>
-			<label for="inputHobby">Ãë ¹Ì: </label>
+			<label for="inputHobby">ì·¨ ë¯¸: </label>
 			<input id="inputHobby" type="text" required name="hobbies" value="<%=user.getHobbies()%>">
 		</div>
 		<hr>
 		<div>
-			<label for="inputUserGender">¼º º°: </label><br/>
+			<label for="inputUserGender">ì„± ë³„: </label><br/>
 			<hr>
-			³² ¼º: <input type="radio" id="inputUserGender" name="userGender" value="1">
-			¿© ¼º: <input type="radio" id="inputUserGender" name="userGender" value="2">
+			ë‚¨ ì„±: <input type="radio" id="inputUserGender" name="userGender" value="ë‚¨ì„±" checked>
+			ì—¬ ì„±: <input type="radio" id="inputUserGender" name="userGender" value="ì—¬ì„±">
 		</div>
 		
 		<hr>
-		<input type="submit" class="button_style" value="Àú Àå">
+		<input type="submit" class="button_style" value="ì € ìž¥">
 	</form>
-	<input type="button" id="textwrite" class="button_style" onclick="location.href='Main.html'" name="btn1" value="¸ÞÀÎ È­¸é >">
+	<input type="button" id="textwrite" class="button_style" onclick="location.href='Main.html'" name="btn1" value="ë©”ì¸ í™”ë©´ >">
     </section>
   </body>
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

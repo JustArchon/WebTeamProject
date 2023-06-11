@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.io.*" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="BBSService.BBSrecipereview"%>
@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</title>
     <style>
       body {
         margin: 0;
@@ -196,11 +196,11 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null){
 	%>
-		<a href="#.html">¸¶ÀÌÆäÀÌÁö</a> | <a href="SignOut.jsp">·Î±×¾Æ¿ô</a>
+		<a href="#.html">ë§ˆì´í˜ì´ì§€</a> | <a href="SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 	<%
 	}else{
 	%>
-		<a href="login.jsp">·Î±×ÀÎ</a> | <a href="SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+		<a href="login.jsp">ë¡œê·¸ì¸</a> | <a href="SignUp.jsp">íšŒì›ê°€ì…</a>
 	<%
 	}
 	%>
@@ -211,7 +211,7 @@
           <img src="img/logotodayfood.png" width="140" height="120" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body bgcolor="#ffffff">
@@ -227,7 +227,7 @@
   	if (bbsID == 0) {
   		PrintWriter script = response.getWriter();
   		script.println("<script>");
-  		script.println("alert('À¯È¿ÇÏÁö ¾Ê´Â ±ÛÀÔ´Ï´Ù.')");
+  		script.println("alert('ìœ íš¨í•˜ì§€ ì•ŠëŠ” ê¸€ì…ë‹ˆë‹¤.')");
   		script.println("location.href = 'index.jsp'");
   		script.println("history.back()");
   		script.println("</script>");
@@ -236,38 +236,38 @@
   	BBSrecipereviewDAO BBSdao = new BBSrecipereviewDAO();
   	BBSdao.updateBBShitCnt(bbsID);
   	//String real = "C:\\Users\\User\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamProject\\bbsUpload";
-  	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"°Ô½Ã±ÛÀÇ»çÁø.jpg");
+  	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg");
   %>
     <main>
       <section>
         <div id="main_contents">
           <h3><%= BBS.getBbstitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
-            <!-- ÀÛ¼ºÀÚ, ³¯Â¥ -->
-            <span>ÀÛ¼ºÀÚ:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>³â <span><%= BBS.getBbsdate().substring(5,7) %></span>¿ù<span> <%= BBS.getBbsdate().substring(8,10) %></span>ÀÏ <span><%= BBS.getBbsdate().substring(11, 13) + "½Ã" + BBS.getBbsdate().substring(14, 16) + "ºĞ " %></span><span> | Á¶È¸¼ö:</span> <%= BBS.getBbscount() %><span> | ÁÁ¾Æ¿ä ¼ö:</span> <%= BBS.getBbslikeamount() %><button type="submit" class="B1 button_style" onclick="location.href='Modify.jsp?bbsID=<%=bbsID%>'">±Û ¼öÁ¤</button><button type="submit" class="B1 button_style" onclick="location.href='deleteAction.jsp?bbsID=<%=bbsID%>'">±Û »èÁ¦</button>
+            <!-- ì‘ì„±ì, ë‚ ì§œ -->
+            <span>ì‘ì„±ì:</span> <%= BBS.getUserName() %> | <span><%= BBS.getBbsdate().substring(0,4) %></span>ë…„ <span><%= BBS.getBbsdate().substring(5,7) %></span>ì›”<span> <%= BBS.getBbsdate().substring(8,10) %></span>ì¼ <span><%= BBS.getBbsdate().substring(11, 13) + "ì‹œ" + BBS.getBbsdate().substring(14, 16) + "ë¶„ " %></span><span> | ì¡°íšŒìˆ˜:</span> <%= BBS.getBbscount() %><span> | ì¢‹ì•„ìš” ìˆ˜:</span> <%= BBS.getBbslikeamount() %><button type="submit" class="B1 button_style" onclick="location.href='Modify.jsp?bbsID=<%=bbsID%>'">ê¸€ ìˆ˜ì •</button><button type="submit" class="B1 button_style" onclick="location.href='deleteAction.jsp?bbsID=<%=bbsID%>'">ê¸€ ì‚­ì œ</button>
           </div>
           <div id="figure">
             <img
-              src="../bbsUpload/<%=bbsID %><%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>°Ô½Ã±ÛÀÇ»çÁø.jpg"
+              src="../bbsUpload/<%=bbsID %><%=BBS.getUserID() %><%=BBS.getBbstitle().replaceAll(" ", "") %>ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg"
               style="width: 700px"
             />
           </div>
           <p><%= BBS.getBbscontent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %>
           </p>
-          <div id="like"><span onclick="location.href='LikeAction.jsp?bbsID=<%=bbsID%>'">ÁÁ¾Æ¿ä </span>
+          <div id="like"><span onclick="location.href='LikeAction.jsp?bbsID=<%=bbsID%>'">ì¢‹ì•„ìš” </span>
           <%
           Likey likey = new LikeyDAO().getlike(userID,bbsID);
           if(likey != null){ 
           if(likey.getUserLIKE() == 1){
           %>
           <span>
-          ¢¾
+          â™¥
           </span>
           <%
           }else{
           %>
           <span>
-          ¢½
+          â™¡
           </span>
           <%
           }
@@ -276,7 +276,7 @@
           }else{
           %>
           <span>
-          ¢½
+          â™¡
           </span>
           <%
           }
@@ -285,9 +285,9 @@
         </div>
 
       </section>
-      <!-- ´ñ±Û -->
+      <!-- ëŒ“ê¸€ -->
       <section class="comment_container">
-        <div class="comment_number"><span><%=BBS.getBBSComentcount() %></span><span>°³ÀÇ ´ñ±Û</span></div>
+        <div class="comment_number"><span><%=BBS.getBBSComentcount() %></span><span>ê°œì˜ ëŒ“ê¸€</span></div>
     <div id="comment">
     	<table class="table table-striped" style="text-align: center;">
 					<tbody>
@@ -303,17 +303,17 @@
 													<td align="left"><%=list.get(i).getUserName()%></td>
 
 													<td align="right"><%=list.get(i).getCommentDate().substring(0, 11) + list.get(i).getCommentDate().substring(11, 13)
-						+ "½Ã" + list.get(i).getCommentDate().substring(14, 16) + "ºĞ"%></td>
+						+ "ì‹œ" + list.get(i).getCommentDate().substring(14, 16) + "ë¶„"%></td>
 												</tr>
 
 												<tr>
 													<td align="left"><%=list.get(i).getcommentText()%></td>
 													<td align="right">
-													<a type="button" onclick="nwindow(<%=bbsID %>,<%=list.get(i).getCommentID()%>)" class="btn-primary">¼öÁ¤</a>
+													<a type="button" onclick="nwindow(<%=bbsID %>,<%=list.get(i).getCommentID()%>)" class="btn-primary">ìˆ˜ì •</a>
 													<a
-														onclick="return confirm('Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?')"
+														onclick="return confirm('ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?')"
 														href="CommentDeleteAction.jsp?bbsID=<%=bbsID%>&commentID=<%=list.get(i).getCommentID()%>"
-														class="btn btn-danger">»èÁ¦</a></td>
+														class="btn btn-danger">ì‚­ì œ</a></td>
 												</tr>
 											</tbody>
 										</table>
@@ -327,12 +327,12 @@
         <form method="post" action="CommentAction.jsp?bbsID=<%=bbsID %>" id="comment">
           <input
             type="text"
-            placeholder="´ñ±ÛÀ» ÀÔ·ÂÇÏ¼¼¿ä."
+            placeholder="ëŒ“ê¸€ì„ ì…ë ¥í•˜ì„¸ìš”."
             class="comment__form_input form-control"
             name="commentText"
           />
           <div>
-            <button type="submit" class="button_style form-control" value="´ñ±Û µî·Ï">´ñ±Û µî·Ï</button>
+            <button type="submit" class="button_style form-control" value="ëŒ“ê¸€ ë“±ë¡">ëŒ“ê¸€ ë“±ë¡</button>
           </div>
         </form>
       </section>
@@ -348,8 +348,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

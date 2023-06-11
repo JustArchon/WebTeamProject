@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.io.File" %>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¿À´Ã ¹¹¸ÔÁö?</title>
+<title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
 </head>
 <body>
 <%
@@ -35,8 +35,8 @@
   	String saveFolder = "bbsUpload";
   	//String uploadPath = "C:\\Users\\User\\eclipse-workspace\\TeamProject\\src\\main\\webapp\\upload";
 	int maxFileSize = 1024 * 1024 * 20;
-	ServletContext context = this.getServletContext();		//Àı´ë°æ·Î¸¦ ¾ò´Â´Ù
-	realFolder = context.getRealPath(saveFolder);			//saveFolderÀÇ Àı´ë°æ·Î¸¦ ¾òÀ½
+	ServletContext context = this.getServletContext();		//ì ˆëŒ€ê²½ë¡œë¥¼ ì–»ëŠ”ë‹¤
+	realFolder = context.getRealPath(saveFolder);			//saveFolderì˜ ì ˆëŒ€ê²½ë¡œë¥¼ ì–»ìŒ
 	String encType = "utf-8";
 	MultipartRequest multi = new MultipartRequest( request, realFolder, maxFileSize, encType, new DefaultFileRenamePolicy() );
 	String filename = multi.getFilesystemName( "upload" );
@@ -59,7 +59,7 @@
   	if (userID == null) {
   		PrintWriter script = response.getWriter();
   		script.println("<script>");
-  		script.println("alert('·Î±×ÀÎ ÈÄ ÀÌ¿ë °¡´ÉÇÕ´Ï´Ù.')");
+  		script.println("alert('ë¡œê·¸ì¸ í›„ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.')");
   		script.println("location.href = 'login.jsp'");
   		script.println("history.back()");
   		script.println("</script>");
@@ -67,7 +67,7 @@
   		if (BBS.getBbstitle() == null || BBS.getBbscontent() == null) {
   				PrintWriter script = response.getWriter();
   				script.println("<script>");
-  				script.println("alert('ÀÔ·ÂÀÌ ¾ÈµÈ »çÇ×ÀÌ ÀÖ½À´Ï´Ù.')");
+  				script.println("alert('ì…ë ¥ì´ ì•ˆëœ ì‚¬í•­ì´ ìˆìŠµë‹ˆë‹¤.')");
   				script.println("history.back()");
   				script.println("</script>");
   			} else {
@@ -77,7 +77,7 @@
   				if (result == -1) {
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("alert('±Û¾²±â¿¡ ½ÇÆĞ Çß½À´Ï´Ù.')");
+  					script.println("alert('ê¸€ì“°ê¸°ì— ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.')");
   					script.println("history.back()");
   					script.println("</script>");
   				} else {
@@ -91,15 +91,15 @@
   				if (result == -1) {
   					PrintWriter script = response.getWriter();
   					script.println("<script>");
-  					script.println("alert('±Û¾²±â¿¡ ½ÇÆĞ Çß½À´Ï´Ù.')");
+  					script.println("alert('ê¸€ì“°ê¸°ì— ì‹¤íŒ¨ í–ˆìŠµë‹ˆë‹¤.')");
   					script.println("history.back()");
   					script.println("</script>");
   				} else {
   					if(filename != null){
-  						File delFile = new File(realFolder+"\\"+(BBS.getBBSrecipereviewID())+(BBS.getUserID())+(BBS.getBbstitle()).replaceAll(" ", "")+"°Ô½Ã±ÛÀÇ»çÁø.jpg");
+  						File delFile = new File(realFolder+"\\"+(BBS.getBBSrecipereviewID())+(BBS.getUserID())+(BBS.getBbstitle()).replaceAll(" ", "")+"ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg");
   						delFile.delete();
   						File oldFile = new File(realFolder+"\\"+filename);
-  						File newFile = new File(realFolder+"\\"+(BBSDAO.getPresent())+(userID)+(BBS.getBbstitle()).replaceAll(" ", "")+"°Ô½Ã±ÛÀÇ»çÁø.jpg");
+  						File newFile = new File(realFolder+"\\"+(BBSDAO.getPresent())+(userID)+(BBS.getBbstitle()).replaceAll(" ", "")+"ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg");
   						oldFile.renameTo(newFile);
   					}
   					PrintWriter script = response.getWriter();

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.BBSrecipereview"%>
 <%@ page import="BBSService.BBSrecipereviewDAO"%>
 <%@ page import="java.util.ArrayList"%>
@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
       body {
         height: 100vh;
@@ -219,12 +219,12 @@
 	String userid = (String)session.getAttribute("userID");
 	if(userid != null && userid.equals("admin")){
 	%>
-		<a href="../ManagePage/Managepage.jsp">È¨ÆäÀÌÁö °ü¸®</a> | <a href="../Mypage/mypage.jsp">¸¶ÀÌÆäÀÌÁö</a> | <a href="../SignOut.jsp">·Î±×¾Æ¿ô</a>
+		<a href="../ManagePage/Managepage.jsp">í™ˆíŽ˜ì´ì§€ ê´€ë¦¬</a> | <a href="../Mypage/mypage.jsp">ë§ˆì´íŽ˜ì´ì§€</a> | <a href="../SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 	<%
 	}else{
 	%>
 		<script>
-			alert("ÀÌ ÆäÀÌÁö´Â °ü¸®ÀÚ¸¸ Á¢±Ù °¡´ÉÇÕ´Ï´Ù.");
+			alert("ì´ íŽ˜ì´ì§€ëŠ” ê´€ë¦¬ìžë§Œ ì ‘ê·¼ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
 			location.href='../index.jsp';
 		</script>
 	<%
@@ -237,20 +237,20 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="Managepage.jsp">¿À´Ã ¹¹ ¸ÔÁö? °ü¸® ÆäÀÌÁö</a></h1>
+      <h1 id="title"><a href="Managepage.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€? ê´€ë¦¬ íŽ˜ì´ì§€</a></h1>
     </div>
   </header>
   <body>
     <section class="main">
       <div class="header">
-        <a href="Managepage.jsp"><h3 class="main__header">È¸¿ø °ü¸®</h3></a>
-        <a href="PostListpage.jsp"><h3 class="main__header">°Ô½Ã±Û ¸ñ·Ï</h3></a>
-        <a href="CommentListpage.jsp"><h3 class="main__header">µ¡±Û ¸ñ·Ï</h3></a>
-        <a href="InquiryListpage.jsp"><h3 class="main__header">¹®ÀÇ»çÇ× È®ÀÎ</h3></a>
+        <a href="Managepage.jsp"><h3 class="main__header">íšŒì› ê´€ë¦¬</h3></a>
+        <a href="PostListpage.jsp"><h3 class="main__header">ê²Œì‹œê¸€ ëª©ë¡</h3></a>
+        <a href="CommentListpage.jsp"><h3 class="main__header">ë§ê¸€ ëª©ë¡</h3></a>
+        <a href="InquiryListpage.jsp"><h3 class="main__header">ë¬¸ì˜ì‚¬í•­ í™•ì¸</h3></a>
       </div>
       <div class="row text-center">
-      <table class="sub_news" border="1" cellspacing="0" summary="°Ô½ÃÆÇÀÇ ±ÛÁ¦¸ñ ¸®½ºÆ®">
-            <caption>°Ô½ÃÆÇ ¸®½ºÆ®</caption>
+      <table class="sub_news" border="1" cellspacing="0" summary="ê²Œì‹œíŒì˜ ê¸€ì œëª© ë¦¬ìŠ¤íŠ¸">
+            <caption>ê²Œì‹œíŒ ë¦¬ìŠ¤íŠ¸</caption>
             <colgroup>
             <col width="15">
             <col width="170">
@@ -262,13 +262,13 @@
             </colgroup>
             <thead>
             <tr>
-            <th scope="col">°Ô½Ã±Û ¼ø¹ø</th>
-            <th scope="col">Á¦¸ñ</th>
-            <th scope="col">±Û¾´ÀÌ</th>
-            <th scope="col">°Ô½Ã±Û ÀÛ¼º³¯Â¥</th>
-            <th scope="col">°Ô½ÃÆÇ</th>
-            <th scope="col">À½½ÄÀ¯Çü</th>
-            <th scope="col">°ü¸®</th>
+            <th scope="col">ê²Œì‹œê¸€ ìˆœë²ˆ</th>
+            <th scope="col">ì œëª©</th>
+            <th scope="col">ê¸€ì“´ì´</th>
+            <th scope="col">ê²Œì‹œê¸€ ìž‘ì„±ë‚ ì§œ</th>
+            <th scope="col">ê²Œì‹œíŒ</th>
+            <th scope="col">ìŒì‹ìœ í˜•</th>
+            <th scope="col">ê´€ë¦¬</th>
             </tr>
             </thead>
             <tbody>
@@ -289,9 +289,9 @@
         <td class="id"><%=list.get(i).getBbstitle() %></td>
         <td class="nickname"><%=list.get(i).getUserName() %></td>
         <td class="date"><%=list.get(i).getBbsdate() %></td>
-        <td class="type">·¹½ÃÇÇ °Ô½ÃÆÇ</td>
+        <td class="type">ë ˆì‹œí”¼ ê²Œì‹œíŒ</td>
         <td class="type"><%=list.get(i).getBbstype() %></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>' " name="btn1" value="¹Ù·Î°¡±â"></td>
+        <td class="role"><input type="button" id="textwrite" onclick="location.href='../view.jsp?bbsID=<%= list.get(i).getBBSrecipereviewID() %>' " name="btn1" value="ë°”ë¡œê°€ê¸°"></td>
         </tr>
           	<%
       		}
@@ -304,12 +304,12 @@
         <%
 		if (pageNumber != 1) {
 		%>
-    <input type="button" id="FormerPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="ÀÌÀü">
+    <input type="button" id="FormerPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="ì´ì „">
     	<%
 		}
     	if (BBSrecipereviewDAO.nextPage(pageNumber + 1,foodtype)) {
 		%>
-    <input type="button" id="NextPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="´ÙÀ½">
+    <input type="button" id="NextPage" onclick="location.href='PostListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="ë‹¤ìŒ">
     	<%
 		}
 		%>
@@ -318,8 +318,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import BBSService.BBSrecipereview;
-
 public class UserDAO {
 	
 	private Connection conn;
@@ -104,19 +102,30 @@ public class UserDAO {
 		return userrole;
 	} 
 	
-	public int update(User user) {
-        String SQL = "UPDATE MEMBER SET NAME=?, PASSWORD=?, USERMAIL=?, USERGENDER=?, ROLE=?, FAVORITE_FOOD=?, HOBBIES=? WHERE USERID=?";
+	public int Userupdate(User user, String UserID) {
+        String SQL = "UPDATE MEMBER SET NAME=?, PASSWORD=?, USERMAIL=?, USERGENDER=?, FAVORITE_FOOD=?, HOBBIES=? WHERE USERID=?";
         try {
-            pstmt = conn.prepareStatement(SQL);
+        	PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, user.getUserName());
             pstmt.setString(2, user.getUserPassword());
             pstmt.setString(3, user.getUserEmail());
             pstmt.setString(4, user.getUserGender());
-            pstmt.setString(5, user.getRole());
-            pstmt.setString(6, user.getFavoritefood());
-            pstmt.setString(7, user.getHobbies());
-            pstmt.setString(8, user.getUserID());
-            
+            pstmt.setString(5, user.getFavoritefood());
+            pstmt.setString(6, user.getHobbies());
+            pstmt.setString(7, UserID);
+            return pstmt.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+	
+	public int PasswordChange(String ChangePassword, String UserID) {
+        String SQL = "UPDATE MEMBER SET PASSWORD=? WHERE USERID=?";
+        try {
+        	PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, ChangePassword);
+            pstmt.setString(2, UserID);
             return pstmt.executeUpdate();
         } catch(Exception e) {
             e.printStackTrace();
@@ -159,6 +168,44 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	
+	public User getUser(String UserName, String UserMail) {
+		String SQL = "SELECT * FROM MEMBER WHERE NAME = ? AND USERMAIL = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, UserName);
+			pstmt.setString(2, UserMail);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				User User = new User();
+				User.setUserID(rs.getString(3));
+				return User;
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public User getUser(String UserName, String UserMail, String UserID) {
+		String SQL = "SELECT * FROM MEMBER WHERE NAME = ? AND USERMAIL = ? AND USERID = ?";
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, UserName);
+			pstmt.setString(2, UserMail);
+			pstmt.setString(3, UserID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				User User = new User();
+				User.setUserID(rs.getString(3));
+				return User;
+			}			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public User getUser(String UserID) {

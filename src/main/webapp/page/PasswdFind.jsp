@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
     <style>
 	body {
   display: flex;
@@ -299,7 +299,7 @@
           <img src="img/logotodayfood.png" width="180" height="160" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body>
@@ -307,33 +307,29 @@
         <div id="main_contents">
         <div class="inner_login">
             <div class="login">
-            <form method="post" action="loginAction.jsp" id="login">
+            <form method="post" action="PasswordFindAction.jsp" id="PasswordFind">
                     <fieldset>
-                    <legend class="screen_out">·Î±×ÀÎ Á¤º¸ ÀÔ·ÂÆû</legend>
+                    <legend class="screen_out">ë¡œê·¸ì¸ ì •ë³´ ìž…ë ¥í¼</legend>
+                    <td>ê°€ìž…ë•Œ ì‚¬ìš©í•œ ì´ë¦„ê³¼ ì•„ì´ë””ì™€ ì´ë©”ì¼ì„ ìž…ë ¥í•´ì£¼ì‹­ì‹œì˜¤.</td>
                     <div class="box_login">
-                        <div class="inp_text">
-                        <label for="loginId" class="screen_out">¾ÆÀÌµð</label>
-                        <input type="text" id="loginId" name="userID" placeholder="ID" >
-                        </div>
-                        <div class="inp_text">
-                        <label for="loginPw" class="screen_out">ºñ¹Ð¹øÈ£</label>
-                        <input type="password" id="loginPw" name="userPassword" placeholder="Password" >
-                        </div>
+                    
+                        <form name=fm>
+                        	
+      						<td>ì´ë¦„ :</td>
+      						<td><input type="text" name="userName" required></td>
+
+      						<td>ì•„ì´ë”” :</td>
+      						<td><input type="text" name="userID" required></td>
+      						
+      						<td>ì´ë©”ì¼ :</td>
+      						<td><input type="email" name="userEmail" required></td>
                     </div>
-                    <input type="submit" class="btn_login form-control" value="·Î±×ÀÎ">
+                    <input type="submit" class="btn_login form-control" value="ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°">
                     <div class="login_append">
                         <div class="inp_chk">
-                        <input type="checkbox" id="keepLogin" class="inp_radio"  name="keepLogin">
-                        <label for="keepLogin" class="lab_g">
-                <span class="img_top ico_check"></span>
-                <span class="txt_lab">·Î±×ÀÎ »óÅÂ À¯Áö</span>
+
                 </label>
                         </div>
-                        <span class="txt_find">
-                        <a href="#" class="link_find">¾ÆÀÌµð</a>
-                            / 
-                        <a href="#" class="link_find">ºñ¹Ð¹øÈ£ Ã£±â</a>
-                        </span>
                     </div>
                     
                     </fieldset>
@@ -346,8 +342,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ý2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>
