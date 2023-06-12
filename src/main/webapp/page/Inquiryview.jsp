@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.io.*" %>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="BBSService.Inquiry" %>
@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>¿À´Ã ¹¹ ¸ÔÁö?</title>
+    <title>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</title>
     <style>
       body {
         margin: 0;
@@ -204,13 +204,26 @@
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
+    
+	if(userid == null){	
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('ë¡œê·¸ì¸ ì´í›„ ì´ìš©ê°€ëŠ¥í•œ ì„œë¹„ìŠ¤ ì…ë‹ˆë‹¤.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");	
+	}
+    if(userid != null && userid.equals("admin")){
+    %>
+    <a href="ManagePage/Managepage.jsp">í™ˆí˜ì´ì§€ ê´€ë¦¬</a> |
+    <%
+    }
 	if(userid != null){
 	%>
-		<a href="#.html">¸¶ÀÌÆäÀÌÁö</a> | <a href="SignOut.jsp">·Î±×¾Æ¿ô</a>
+		<a href="#.html">ë§ˆì´í˜ì´ì§€</a> | <a href="SignOut.jsp">ë¡œê·¸ì•„ì›ƒ</a>
 	<%
 	}else{
 	%>
-		<a href="login.jsp">·Î±×ÀÎ</a> | <a href="SignUp.jsp">È¸¿ø°¡ÀÔ</a>
+		<a href="login.jsp">ë¡œê·¸ì¸</a> | <a href="SignUp.jsp">íšŒì›ê°€ì…</a>
 	<%
 	}
 	%>
@@ -221,7 +234,7 @@
           <img src="img/logotodayfood.png" width="140" height="120" />
         </a>
       </div>
-      <h1 id="title"><a href="index.jsp">¿À´Ã ¹¹ ¸ÔÁö?</a></h1>
+      <h1 id="title"><a href="index.jsp">ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</a></h1>
     </div>
   </header>
   <body bgcolor="#ffffff">
@@ -237,7 +250,7 @@
   	if (InquiryID == 0) {
   		PrintWriter script = response.getWriter();
   		script.println("<script>");
-  		script.println("alert('À¯È¿ÇÏÁö ¾Ê´Â ±ÛÀÔ´Ï´Ù.')");
+  		script.println("alert('ìœ íš¨í•˜ì§€ ì•ŠëŠ” ê¸€ì…ë‹ˆë‹¤.')");
   		script.println("location.href = 'index.jsp'");
   		script.println("history.back()");
   		script.println("</script>");
@@ -245,22 +258,22 @@
   	Inquiry Inquiry = new InquiryDAO().getInquiry(InquiryID);
   	InquiryDAO InquiryDAO = new InquiryDAO();
   	//String real = "C:\\Users\\User\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\TeamProject\\bbsUpload";
-  	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"°Ô½Ã±ÛÀÇ»çÁø.jpg");
+  	//File viewFile = new File(real+"\\"+BBS.getUserID()+BBS.getBbstitle().replaceAll(" ", "")+"ê²Œì‹œê¸€ì˜ì‚¬ì§„.jpg");
   %>
     <main>
       <section>
         <div id="main_contents">
           <h3><%= Inquiry.getItitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
-            <!-- ÀÛ¼ºÀÚ, ³¯Â¥ -->
-            <span>ÀÛ¼ºÀÚ:</span> <%= Inquiry.getUserName() %> | <span><%= Inquiry.getInquiryDate().substring(0,4) %></span>³â <span><%= Inquiry.getInquiryDate().substring(5,7) %></span>¿ù<span> <%= Inquiry.getInquiryDate().substring(8,10) %></span>ÀÏ <span><%= Inquiry.getInquiryDate().substring(11, 13) + "½Ã" + Inquiry.getInquiryDate().substring(14, 16) + "ºĞ " %></span><span> | ¹®ÀÇ À¯Çü:</span> <%= Inquiry.getItype() %><span><button type="submit" class="B1 button_style_nm" onclick="location.href='deleteInquiryAction.jsp?InquiryID=<%=InquiryID%>'">¹®ÀÇ »èÁ¦</button>
+            <!-- ì‘ì„±ì, ë‚ ì§œ -->
+            <span>ì‘ì„±ì:</span> <%= Inquiry.getUserName() %> | <span><%= Inquiry.getInquiryDate().substring(0,4) %></span>ë…„ <span><%= Inquiry.getInquiryDate().substring(5,7) %></span>ì›”<span> <%= Inquiry.getInquiryDate().substring(8,10) %></span>ì¼ <span><%= Inquiry.getInquiryDate().substring(11, 13) + "ì‹œ" + Inquiry.getInquiryDate().substring(14, 16) + "ë¶„ " %></span><span> | ë¬¸ì˜ ìœ í˜•:</span> <%= Inquiry.getItype() %><span><button type="submit" class="B1 button_style_nm" onclick="location.href='deleteInquiryAction.jsp?InquiryID=<%=InquiryID%>'">ë¬¸ì˜ ì‚­ì œ</button>
           </div>
           <div class="main_contents_etc">
-          <span>ÀÛ¼ºÀÚ ÀÌ¸ŞÀÏ:</span>  <%= Inquiry.getIemail() %>
+          <span>ì‘ì„±ì ì´ë©”ì¼:</span>  <%= Inquiry.getIemail() %>
           </div>
           <div id="figure">
             <img
-              src="../inquiryUpload/<%=InquiryID %><%=Inquiry.getUserID() %><%=Inquiry.getItitle().replaceAll(" ", "") %>¹®ÀÇ±ÛÀÇ»çÁø.jpg"
+              src="../inquiryUpload/<%=InquiryID %><%=Inquiry.getUserID() %><%=Inquiry.getItitle().replaceAll(" ", "") %>ë¬¸ì˜ê¸€ì˜ì‚¬ì§„.jpg"
               style="width: 700px"
             />
           </div>
@@ -273,8 +286,8 @@
   <footer>
     <div id="footer_box">
       <ul id="address">
-        <li>´ëÀü½Ã ´ë´ö±¸ ¹ı2µ¿ 1234 ¿ì:123-1234</li>
-        <li>TEL:042-123-1234 ¹®ÀÇ»çÇ× : email@naver.com</li>
+        <li>ëŒ€ì „ì‹œ ëŒ€ë•êµ¬ ë²•2ë™ 1234 ìš°:123-1234</li>
+        <li>TEL:042-123-1234 ë¬¸ì˜ì‚¬í•­ : email@naver.com</li>
         <li>COPYLEFT (C) Kang Gyu Jin ALL LEFTS RESERVED</li>
       </ul>
     </div>

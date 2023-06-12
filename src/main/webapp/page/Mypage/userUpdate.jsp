@@ -4,13 +4,14 @@
 <%@ page import="UserAuthService.User"%>
 <%@ page import="UserAuthService.UserDAO"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.io.PrintWriter" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오늘 뭐먹지?</title>
+    <title>오늘 뭐 먹지?</title>
     <style>
       body {
         height: 100vh;
@@ -208,6 +209,14 @@
 	String userid = (String)session.getAttribute("userID");
     String username = (String)session.getAttribute("userName");
     
+	if(userid == null){	
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 이후 이용가능한 서비스 입니다.')");
+		script.println("location.href = '../login.jsp'");
+		script.println("</script>");	
+	}
+    
     if(userid != null && userid.equals("admin")){
     %>
     <a href="../ManagePage/Managepage.jsp">홈페이지 관리</a> |
@@ -228,16 +237,7 @@
     <%
     }
     %>
-        <%
-    if(userid == null){
-    %>
-            <script>
-			alert("로그인 후 이용 가능합니다.");
-			location.href='../login.jsp';
-			</script>
-    <%
-    }
-    %>
+
     </div>
     <div class="title_container">
       <div id="logo">

@@ -9,12 +9,12 @@
  
 %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오늘 뭐먹지?</title>
+    <title>오늘 뭐 먹지?</title>
     <style>
       body {
         height: 100vh;
@@ -272,6 +272,7 @@
       <option value="koreanfood">한식</option>
       <option value="westernfood">양식</option>
       <option value="chinafood">중식</option>
+      <option value="japanfood">일식</option>
       <option value="simplefood">간단식</option>
       <option value="dietfood">다이어트식</option>
       <option value="dessert">디저트</option>

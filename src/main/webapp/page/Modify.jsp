@@ -254,6 +254,11 @@ height: 50px;
 		script.println("location.href = 'login.jsp'");
 		script.println("</script>");	
 	}
+    if(userid != null && userid.equals("admin")){
+    %>
+    <a href="ManagePage/Managepage.jsp">홈페이지 관리</a> |
+    <%
+    }
 	if(userid != null){
 	%>
 		<a href="#.html">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>

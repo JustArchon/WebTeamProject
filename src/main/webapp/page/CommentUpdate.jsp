@@ -10,7 +10,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<title>오늘 뭐먹지?</title>
+<title>오늘 뭐 먹지?</title>
 </head>
 <body>
 	<%

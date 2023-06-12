@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.Likey" %>
 <%@ page import="BBSService.LikeyDAO" %>
 <%@ page import="BBSService.BBSrecipereview" %>
@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¿À´Ã ¹¹¸ÔÁö?</title>
+<meta charset="UTF-8">
+<title>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</title>
 </head>
 <body>
 <%
@@ -26,7 +26,7 @@
       if(userID==null){
          PrintWriter script=response.getWriter();
          script.println("<script>");
-         script.println("alert('·Î±×ÀÎ ÈÄ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.')");
+         script.println("alert('ë¡œê·¸ì¸ í›„ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.')");
          script.println("location.href='login.jsp'");
          script.println("</script>");
       }
@@ -39,7 +39,7 @@
              if (bbsID == 0){
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("alert('À¯È¿ÇÏÁö ¾ÊÀº ±ÛÀÔ´Ï´Ù.')");
+                script.println("alert('ìœ íš¨í•˜ì§€ ì•Šì€ ê¸€ì…ë‹ˆë‹¤.')");
                 script.println("location.href = 'index.jsp'");
                 script.println("</script>");
              }
@@ -51,7 +51,7 @@
             	if (result == -1){
                     PrintWriter script = response.getWriter();
                     script.println("<script>");
-                    script.println("alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.')");
+                    script.println("alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.')");
                     script.println("history.back()");
                     script.println("</script>");
                  }else{
@@ -59,7 +59,7 @@
                 BBSrecipereviewDAO.updatelikeCount(LikeyDAO.getLikeCount(bbsID), bbsID);
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("alert('ÁÁ¾Æ¿ä°¡ ÇØÁ¦µÇ¾ú½À´Ï´Ù.')");
+                script.println("alert('ì¢‹ì•„ìš”ê°€ í•´ì œë˜ì—ˆìŠµë‹ˆë‹¤.')");
                 script.println("location.href=document.referrer;");
                 script.println("</script>");
                  }
@@ -68,7 +68,7 @@
                 if (result == -1){
                    PrintWriter script = response.getWriter();
                    script.println("<script>");
-                   script.println("alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.')");
+                   script.println("alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.')");
                    script.println("history.back()");
                    script.println("</script>");
                 }
@@ -86,7 +86,7 @@
               if (result == -1){
                  PrintWriter script = response.getWriter();
                  script.println("<script>");
-                 script.println("alert('¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.')");
+                 script.println("alert('ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.')");
                  script.println("history.back()");
                  script.println("</script>");
               }
@@ -95,7 +95,7 @@
                  BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
                  BBSrecipereviewDAO.updatelikeCount(LikeyDAO.getLikeCount(bbsID), bbsID);
                  script.println("<script>");
-                 script.println("alert('°Ô½Ã±ÛÀ» ÁÁ¾Æ¿ä ÇÏ¿´½À´Ï´Ù.')");
+                 script.println("alert('ê²Œì‹œê¸€ì„ ì¢‹ì•„ìš” í•˜ì˜€ìŠµë‹ˆë‹¤.')");
                  script.println("location.href=document.referrer;");
                  script.println("</script>");
           }

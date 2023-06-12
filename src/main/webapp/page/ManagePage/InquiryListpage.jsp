@@ -9,7 +9,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>오늘 뭐먹지?</title>
+    <title>오늘 뭐 먹지?</title>
     <style>
       body {
         height: 100vh;

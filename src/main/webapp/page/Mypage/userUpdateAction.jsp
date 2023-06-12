@@ -24,6 +24,14 @@
 		userID = (String) session.getAttribute("userID");
 	}
 	
+	if(userID == null){	
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 이후 이용가능한 서비스 입니다.')");
+		script.println("location.href = '../login.jsp'");
+		script.println("</script>");	
+	}
+	
 	UserDAO userDAO = new UserDAO();
 	if (userDAO.isEmail(user.getUserEmail()) == false){
 		PrintWriter script = response.getWriter();

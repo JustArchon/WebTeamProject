@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>오늘 뭐먹지?</title>
+<title>오늘 뭐 먹지?</title>
 </head>
 <body>
 <%

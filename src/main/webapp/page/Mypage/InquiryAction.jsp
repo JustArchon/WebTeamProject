@@ -11,8 +11,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>오늘 뭐먹지?</title>
+<meta charset="UTF-8">
+<title>오늘 뭐 먹지?</title>
 </head>
 <body>
 <%
@@ -25,6 +25,14 @@
   		userName = (String) session.getAttribute("userName");
   	}
   	
+	//로그인 안 한 사용자 체크하는 부분
+	if(userID == null){	
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 이후 이용가능한 서비스 입니다.')");
+		script.println("location.href = '../login.jsp'");
+		script.println("</script>");	
+	}
   	
   	String realFolder="";
   	String saveFolder = "inquiryUpload";

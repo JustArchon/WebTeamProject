@@ -5,7 +5,7 @@
 <%@ page import="java.util.ArrayList"%>
 <%
  
-    request.setCharacterEncoding("EUC-KR");
+    request.setCharacterEncoding("UTF-8");
  
 %>
 <!DOCTYPE html>
@@ -275,6 +275,7 @@
       <option value="koreanfood">한식</option>
       <option value="westernfood">양식</option>
       <option value="chinafood">중식</option>
+      <option value="japanfood">일식</option>
       <option value="simplefood">간단식</option>
       <option value="dietfood">다이어트식</option>
       <option value="dessert">디저트</option>
