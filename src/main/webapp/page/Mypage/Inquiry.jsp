@@ -213,6 +213,13 @@ table.table2{
                  vertical-align: top;
                  border-bottom: 1px solid #ccc;
         }
+        .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -300,10 +307,10 @@ table.table2{
                 </tr>
         </table>
         <center>
-        	<input type="submit" class="btn btn-primary form-control" value="문의하기">
+        	<input type="submit" class="button_style" class="btn btn-primary form-control" value="문의하기">
          </center>
          </form>
-	<input type="button" id="textwrite" onclick="location.href='../index.jsp'" name="btn1" value="메인 화면 >">
+	<input type="button" id="textwrite" class="button_style" onclick="location.href='../index.jsp'" name="btn1" value="메인 화면 >">
     </section>
   </body>
   <footer>

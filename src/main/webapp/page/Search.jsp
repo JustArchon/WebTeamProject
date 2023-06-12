@@ -211,6 +211,13 @@
         border-radius: 5px;
         padding: 5px 15px;
 	}
+	
+	    .button_style_nm {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -282,7 +289,7 @@
 						</select></td>
 						<td><input type="text" class="form-control"
 							placeholder="" name="searchText" maxlength="100"></td>
-						<td><button type="submit" class="btn btn-success button_style">검색</button></td>
+						<td><button type="submit" class="btn btn-success button_style_nm">검색</button></td>
 					</tr>
 
 				</table>

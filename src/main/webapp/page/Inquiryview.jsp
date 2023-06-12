@@ -184,6 +184,20 @@
   max-width: 100%;
   margin-bottom: 20px;
 }
+    .button_style_nm {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
+
+      .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -239,7 +253,7 @@
           <h3><%= Inquiry.getItitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">","&gt;").replaceAll("\n", "<br>") %></h3>
           <div class="main_contents_etc">
             <!-- 작성자, 날짜 -->
-            <span>작성자:</span> <%= Inquiry.getUserName() %> | <span><%= Inquiry.getInquiryDate().substring(0,4) %></span>년 <span><%= Inquiry.getInquiryDate().substring(5,7) %></span>월<span> <%= Inquiry.getInquiryDate().substring(8,10) %></span>일 <span><%= Inquiry.getInquiryDate().substring(11, 13) + "시" + Inquiry.getInquiryDate().substring(14, 16) + "분 " %></span><span> | 문의 유형:</span> <%= Inquiry.getItype() %><span><button type="submit" class="B1" onclick="location.href='deleteInquiryAction.jsp?InquiryID=<%=InquiryID%>'">문의 삭제</button>
+            <span>작성자:</span> <%= Inquiry.getUserName() %> | <span><%= Inquiry.getInquiryDate().substring(0,4) %></span>년 <span><%= Inquiry.getInquiryDate().substring(5,7) %></span>월<span> <%= Inquiry.getInquiryDate().substring(8,10) %></span>일 <span><%= Inquiry.getInquiryDate().substring(11, 13) + "시" + Inquiry.getInquiryDate().substring(14, 16) + "분 " %></span><span> | 문의 유형:</span> <%= Inquiry.getItype() %><span><button type="submit" class="B1 button_style_nm" onclick="location.href='deleteInquiryAction.jsp?InquiryID=<%=InquiryID%>'">문의 삭제</button>
           </div>
           <div class="main_contents_etc">
           <span>작성자 이메일:</span>  <%= Inquiry.getIemail() %>

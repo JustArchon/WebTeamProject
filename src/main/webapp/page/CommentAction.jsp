@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="BBSService.BBSrecipereview" %>
 <%@ page import="BBSService.BBSrecipereviewDAO" %>
 <%@ page import="BBSService.Comment" %>
@@ -7,7 +7,7 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.io.File" %>
 <%
-request.setCharacterEncoding("euc-kr");
+request.setCharacterEncoding("UTF-8");
 %>
 <jsp:useBean id="comment" class="BBSService.Comment" scope="page" />
 <jsp:setProperty name="comment" property="commentText" />
@@ -15,7 +15,7 @@ request.setCharacterEncoding("euc-kr");
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>¿À´Ã ¹¹¸ÔÁö?</title>
+<title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
 </head>
 <body>
 	 <%
@@ -32,7 +32,7 @@ request.setCharacterEncoding("euc-kr");
       if(userID==null){
          PrintWriter script=response.getWriter();
          script.println("<script>");
-         script.println("alert('·Î±×ÀÎÈÄ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.')");
+         script.println("alert('ë¡œê·¸ì¸í›„ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.')");
          script.println("location.href='login.jsp'");
          script.println("</script>");
       }
@@ -45,14 +45,14 @@ request.setCharacterEncoding("euc-kr");
              if (bbsID == 0){
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("alert('À¯È¿ÇÏÁö ¾ÊÀº ±ÛÀÔ´Ï´Ù.')");
+                script.println("alert('ìœ íš¨í•˜ì§€ ì•Šì€ ê¸€ì…ë‹ˆë‹¤.')");
                 script.println("location.href = 'index.jsp'");
                 script.println("</script>");
              }
              if (comment.getcommentText() == null){
                 PrintWriter script = response.getWriter();
                 script.println("<script>");
-                script.println("alert('ÀÔ·ÂÀÌ ¾ÈµÈ »çÇ×ÀÌ ÀÖ½À´Ï´Ù.')");
+                script.println("alert('ì…ë ¥ì´ ì•ˆëœ ì‚¬í•­ì´ ìˆìŠµë‹ˆë‹¤.')");
                 script.println("history.back()");
                 script.println("</script>");
              } else {
@@ -62,7 +62,7 @@ request.setCharacterEncoding("euc-kr");
                 if (result == -1){
                    PrintWriter script = response.getWriter();
                    script.println("<script>");
-                   script.println("alert('´ñ±Û ¾²±â¿¡ ½ÇÆĞÇß½À´Ï´Ù.')");
+                   script.println("alert('ëŒ“ê¸€ ì“°ê¸°ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.')");
                    script.println("history.back()");
                    script.println("</script>");
                 }

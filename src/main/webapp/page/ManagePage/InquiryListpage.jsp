@@ -211,6 +211,12 @@
        display :inline-block;
       	margin:auto
         }
+   	.button_style {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -287,7 +293,7 @@
         <td class="nickname"><%=list.get(i).getUserName() %></td>
         <td class="date"><%=list.get(i).getInquiryDate() %></td>
         <td class="type"><%=list.get(i).getItype() %></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../Inquiryview.jsp?InquiryID=<%= list.get(i).getInquiryID() %>' " name="btn1" value="바로가기"></td>
+        <td class="role"><input type="button" class="button_style" id="textwrite" onclick="location.href='../Inquiryview.jsp?InquiryID=<%= list.get(i).getInquiryID() %>' " name="btn1" value="바로가기"></td>
         </tr>
           	<%
       		}
@@ -300,12 +306,12 @@
         <%
 		if (pageNumber != 1) {
 		%>
-    <input type="button" id="FormerPage" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+    <input type="button" id="FormerPage" class="button_style" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
     	<%
 		}
     	if (InquiryDAO.nextPage(pageNumber + 1)) {
 		%>
-    <input type="button" id="NextPage" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+    <input type="button" id="NextPage" class="button_style" onclick="location.href='InquiryListpage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
     	<%
 		}
 		%>

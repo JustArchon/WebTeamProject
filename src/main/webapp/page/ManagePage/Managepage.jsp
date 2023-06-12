@@ -203,6 +203,12 @@
         	margin: 10px 0;
         	width: 100%;
         }
+    .button_style {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -297,7 +303,7 @@
         <%
         }else{
         %>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../deleteMemberAction.jsp?userid=<%=list.get(i).getUserID()%>' " name="btn1" value="탈퇴"></td>
+        <td class="role"><input type="button" class="button_style" id="textwrite" onclick="location.href='../deleteMemberAction.jsp?userid=<%=list.get(i).getUserID()%>' " name="btn1" value="탈퇴"></td>
           	<%
       		}
             %>

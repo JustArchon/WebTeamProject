@@ -199,6 +199,13 @@
       margin-left: 50px;
         float: left;
         }
+        .button_style {
+        margin-top: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -288,16 +295,16 @@
   	    <%
 		if (pageNumber != 1) {
 		%>
-		<input type="button" id="FormerPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
+		<input type="button" id="FormerPage" class="button_style" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber - 1%>'" name="btn1" value="이전">
 		<%
 		}
     	if (BBSrecipereviewDAO.nextPage(pageNumber + 1,foodtype)) {
 		%>
-		<input type="button" id="NextPage" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
+		<input type="button" id="NextPage" class="button_style" onclick="location.href='mypage.jsp?pageNumber=<%=pageNumber + 1%>' " name="btn1" value="다음">
 		<%
 		}
 		%>
-		<input type="button" id="textwrite" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
+		<input type="button" id="textwrite" class="button_style" onclick="location.href='../Writing.jsp' " name="btn1" value="글쓰기">
   </body>
   <footer>
     <div id="footer_box">

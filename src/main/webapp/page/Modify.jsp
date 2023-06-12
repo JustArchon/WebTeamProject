@@ -247,13 +247,16 @@ height: 50px;
     <div id="top_menu">
     <%
 	String userid = (String)session.getAttribute("userID");
+	if(userid == null){	
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 이후 이용가능한 서비스 입니다.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");	
+	}
 	if(userid != null){
 	%>
 		<a href="#.html">마이페이지</a> | <a href="SignOut.jsp">로그아웃</a>
-	<%
-	}else{
-	%>
-		<a href="login.jsp">로그인</a> | <a href="SignUp.jsp">회원가입</a>
 	<%
 	}
 	%>

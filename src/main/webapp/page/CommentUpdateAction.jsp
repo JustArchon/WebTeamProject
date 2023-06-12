@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="BBSService.Comment" %>
 <%@ page import="BBSService.CommentDAO" %>
@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset="EUC-KR">
-<title>¿À´Ã ¹¹¸ÔÁö?</title>
+<meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+<title>ì˜¤ëŠ˜ ë­ë¨¹ì§€?</title>
 <script type="text/javascript">
 	window.name='commentUpdate';
 </script>
@@ -18,8 +18,8 @@
 <body>
 <%
 		String userID = null;
-		if (session.getAttribute("userID") != null) {//À¯Àú¾ÆÀÌµğÀÌ¸§À¸·Î ¼¼¼ÇÀÌ Á¸ÀçÇÏ´Â È¸¿øµéÀº 
-			userID = (String) session.getAttribute("userID");//À¯Àú¾ÆÀÌµğ¿¡ ÇØ´ç ¼¼¼Ç°ªÀ» ³Ö¾îÁØ´Ù.
+		if (session.getAttribute("userID") != null) {//ìœ ì €ì•„ì´ë””ì´ë¦„ìœ¼ë¡œ ì„¸ì…˜ì´ ì¡´ì¬í•˜ëŠ” íšŒì›ë“¤ì€ 
+			userID = (String) session.getAttribute("userID");//ìœ ì €ì•„ì´ë””ì— í•´ë‹¹ ì„¸ì…˜ê°’ì„ ë„£ì–´ì¤€ë‹¤.
 		}
 		int commentID = 0;
 		if (request.getParameter("commentID") != null){
@@ -33,11 +33,11 @@
 		if (userID == null) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('·Î±×ÀÎÈÄ ÀÌ¿ë°¡´ÉÇÕ´Ï´Ù.')");
+			script.println("alert('ë¡œê·¸ì¸í›„ ì´ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤.')");
 			script.println("location.href = 'login.jsp'");
 			script.println("</script>");
 		} 
-		//±ÛÀÌ À¯È¿ÇÑÁö ÆÇº°
+		//ê¸€ì´ ìœ íš¨í•œì§€ íŒë³„
 		int bbsID = 0;
 		if (request.getParameter("bbsID") != null) {
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
@@ -45,7 +45,7 @@
 		if (bbsID == 0) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('À¯È¿ÇÏÁö ¾ÊÀº ±Û ÀÔ´Ï´Ù.')");
+			script.println("alert('ìœ íš¨í•˜ì§€ ì•Šì€ ê¸€ ì…ë‹ˆë‹¤.')");
 			script.println("location.href = 'index.jsp'");
 			script.println("</script>");
 		}
@@ -54,14 +54,14 @@
 		if (!userID.equals(comment.getUserID())) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('±ÇÇÑÀÌ ¾ø½À´Ï´Ù.')");
+			script.println("alert('ê¶Œí•œì´ ì—†ìŠµë‹ˆë‹¤.')");
 			script.println("location.href = 'index.jsp'");
 			script.println("</script>");				
 		} else {
 	 		if (comment.getcommentText().equals("")){
 				PrintWriter script = response.getWriter();
 				script.println("<script>");
-				script.println("alert('ÀÔ·ÂÀÌ ¾ÈµÈ »çÇ×ÀÌ ÀÖ½À´Ï´Ù')");
+				script.println("alert('ì…ë ¥ì´ ì•ˆëœ ì‚¬í•­ì´ ìˆìŠµë‹ˆë‹¤')");
 				script.println("history.back()");
 				script.println("</script>");
 			} else {
@@ -70,7 +70,7 @@
 				if (result == -1) {
 					PrintWriter script = response.getWriter();
 					script.println("<script>");
-					script.println("alert('µ¡±Û¼öÁ¤¿¡ ½ÇÆĞÇß½À´Ï´Ù')");
+					script.println("alert('ë§ê¸€ìˆ˜ì •ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤')");
 					script.println("history.back()");
 					script.println("</script>");
 				} else {

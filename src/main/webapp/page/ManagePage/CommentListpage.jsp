@@ -203,6 +203,12 @@
         	margin: 10px 0;
         	width: 100%;
         }
+    .button_style {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+	}
     </style>
   </head>
   <header>
@@ -278,8 +284,8 @@
         <td class="nickname"><%=list.get(i).getUserName() %></td>
         <td class="email"><%=list.get(i).getCommentDate() %></td>
         <td class="gender">레시피 게시판</td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../view.jsp?bbsID=<%= list.get(i).getBbsID() %>'" name="btn1" value="바로가기"></td>
-        <td class="role"><input type="button" id="textwrite" onclick="location.href='../CommentDeleteAction.jsp?bbsID=<%=list.get(i).getBbsID()%>&commentID=<%=list.get(i).getCommentID()%>' " name="btn1" value="삭제"></td>
+        <td class="role"><input type="button" class="button_style" id="textwrite" onclick="location.href='../view.jsp?bbsID=<%= list.get(i).getBbsID() %>'" name="btn1" value="바로가기"></td>
+        <td class="role"><input type="button" class="button_style" id="textwrite" onclick="location.href='../CommentDeleteAction.jsp?bbsID=<%=list.get(i).getBbsID()%>&commentID=<%=list.get(i).getCommentID()%>' " name="btn1" value="삭제"></td>
         </tr>
           	<%
       		}

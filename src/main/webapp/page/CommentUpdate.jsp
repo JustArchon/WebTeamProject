@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
 <%@ page import="BBSService.Comment" %>
 <%@ page import="BBSService.CommentDAO" %>
@@ -10,7 +10,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<title>ฟภดร นนธิม๖?</title>
+<title>์ค๋ ๋ญ๋จน์ง€?</title>
 </head>
 <body>
 	<%
@@ -28,10 +28,10 @@
 	<div class="container" align="center">
 		<div class="col-lg-10">
 			<div class="jumbotron" style="padding-top: 1px;">				
-				<h3><br>ด๑ฑÛ ผ๖มครข</h3>
+				<h3><br>๋“๊ธ€ ์์ •์ฐฝ</h3>
 				<form name = c_commentUpdate>
 					<input type="text" id="update" style="width:400px;height:50px;" maxlength=1024 value="<%= commentText %>">
-					<input type="button" onclick="send(<%=bbsID %>,<%=commentID %>)" value="ผ๖มค">
+					<input type="button" onclick="send(<%=bbsID %>,<%=commentID %>)" value="์์ •">
 					<br><br>	
 				</form>
 			</div>
