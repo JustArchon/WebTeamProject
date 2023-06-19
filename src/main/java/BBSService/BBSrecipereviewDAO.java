@@ -279,12 +279,13 @@ public class BBSrecipereviewDAO {
 		return list;
 	}
 	
-	public ArrayList<BBSrecipereview> getManageList(int pageNumber) {
-		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? ORDER BY BBSID ASC LIMIT 10";
+	public ArrayList<BBSrecipereview> getManageList(int pageNumber, String foodtype) {
+		String SQL = "SELECT * FROM BBSRECIPEREVIEW WHERE BBSID < ? AND FOODTYPE LIKE ? ORDER BY BBSID ASC LIMIT 10";
 		ArrayList<BBSrecipereview> list = new ArrayList<BBSrecipereview>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1, getNext() - (pageNumber -1) * 10);
+			pstmt.setInt(1, getNext2(foodtype) - (pageNumber -1) * 10);
+			pstmt.setString(2, foodtype);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				BBSrecipereview BBSrecipereview = new BBSrecipereview();

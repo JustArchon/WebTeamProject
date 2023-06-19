@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¿À´Ã ¹¹ ¸ÔÁö?</title>
+<meta charset="UTF-8">
+<title>ì˜¤ëŠ˜ ë­ ë¨¹ì§€?</title>
 </head>
 <body>
 <%
-    // 1: ±âÁ¸ÀÇ ¼¼¼Ç µ¥ÀÌÅÍ¸¦ ¸ðµÎ »èÁ¦
+    // 1: ê¸°ì¡´ì˜ ì„¸ì…˜ ë°ì´í„°ë¥¼ ëª¨ë‘ ì‚­ì œ
     session.invalidate();
-    // 2: ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿½ÃÅ´.
+    // 2: ë¡œê·¸ì¸ íŽ˜ì´ì§€ë¡œ ì´ë™ì‹œí‚´.
     response.sendRedirect("index.jsp");
 %>
 </body>

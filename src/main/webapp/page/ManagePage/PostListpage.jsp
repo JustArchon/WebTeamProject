@@ -285,7 +285,7 @@
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
       BBSrecipereviewDAO BBSrecipereviewDAO = new BBSrecipereviewDAO();
-      ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getManageList(pageNumber);
+      ArrayList<BBSrecipereview> list = BBSrecipereviewDAO.getManageList(pageNumber, foodtype);
       for(int i = 0; i < list.size(); i++){
       %>
         <tr>
